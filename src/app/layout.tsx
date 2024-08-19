@@ -1,10 +1,13 @@
 import './globals.css';
-import './fonts.css';
-import './onboarding.css';
 
 import type { Metadata } from 'next';
-// import { Inter } from 'next/font/google';
-// const inter = Inter({ subsets: ['latin'] });
+import localFont from 'next/font/local';
+
+const pretendard = localFont({
+  src: '../fonts/PretendardVariable.woff2',
+  display: 'swap',
+  weight: '45 920',
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="ko">
+      <body className={pretendard.className}>{children}</body>
     </html>
   );
 }
