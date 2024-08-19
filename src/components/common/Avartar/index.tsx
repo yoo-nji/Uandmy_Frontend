@@ -1,12 +1,12 @@
 interface AvartarProps {
-  src: string;
-  alt: string;
+  src?: string;
+  alt?: string;
   size?: number | string;
   borderRadius?: number | string;
 }
 const Avartar = ({
-  src,
-  alt,
+  src = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
+  alt = '기본 이미지',
   size = 50,
   borderRadius = '50%',
 }: AvartarProps) => {
