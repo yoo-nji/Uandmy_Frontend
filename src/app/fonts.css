@@ -1,7 +1,0 @@
-/* Pretendard font */
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css");
-
-body {
-  font-family: 'Pretendard', sans-serif;
-  letter-spacing: -0.04em;
-}
