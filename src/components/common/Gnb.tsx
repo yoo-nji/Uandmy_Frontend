@@ -1,11 +1,20 @@
 'use client';
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const Gnb = () => {
   const [activeMenu, setActiveMenu] = useState<string>('studyroom');
+  const router = useRouter(); // useRouter 훅 사용
 
-  const handleMenuClick = (menuName: string) => {
+  useEffect(() => {
+    if (activeMenu === 'studyroom') {
+      router.push('/studyroom');
+    }
+  }, [activeMenu, router]);
+
+  const handleMenuClick = (menuName: string, route: string) => {
     setActiveMenu(menuName);
+    router.push(route); // 클릭 시 해당 경로로 라우팅
   };
 
   const setMenuColor = (iconName: string) => {
@@ -34,6 +43,7 @@ const Gnb = () => {
           />
         </svg>
       ),
+      route: '/studyroom',
     },
     {
       name: 'search',
@@ -56,6 +66,7 @@ const Gnb = () => {
           />
         </svg>
       ),
+      route: '/search',
     },
     {
       name: 'manageStudyroom',
@@ -85,6 +96,7 @@ const Gnb = () => {
           </defs>
         </svg>
       ),
+      route: 'manage-studyroom',
     },
     {
       name: 'mypage',
@@ -103,6 +115,7 @@ const Gnb = () => {
           />
         </svg>
       ),
+      route: 'mypage',
     },
   ];
 
@@ -111,7 +124,7 @@ const Gnb = () => {
       {menuItems.map((item) => (
         <div
           className="flex flex-col justify-center items-center"
-          onClick={() => handleMenuClick(item.name)}>
+          onClick={() => handleMenuClick(item.name, item.route)}>
           <div className={setMenuColor(item.name)}>{item.icon}</div>
           <p className={`text-xs ${setMenuColor(item.name)}`}>{item.label}</p>
         </div>
