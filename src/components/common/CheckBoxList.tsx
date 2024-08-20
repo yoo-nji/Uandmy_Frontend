@@ -2,15 +2,20 @@
 import { useState } from 'react';
 import CheckBox from './CheckBox';
 
-const checkBoxDatas = ['툴 능력 확장', '해당 분야의 네트워킹 확장', '취미'];
+const checkBoxDatas = [
+  '자기 개발',
+  '툴 능력 향상',
+  '해당 분야의 네트워킹 확장',
+  '취미',
+];
 
 const CheckBoxList = () => {
-  const [checkedList, setCheckedList] = useState<boolean[]>(
+  const [isCheckedList, setIsCheckedList] = useState<boolean[]>(
     new Array(checkBoxDatas.length).fill(false),
   );
 
   const handleCheckboxChange = (index: number) => {
-    setCheckedList((prevCheckedList) => {
+    setIsCheckedList((prevCheckedList) => {
       const updatedCheckedList = [...prevCheckedList];
       updatedCheckedList[index] = !updatedCheckedList[index];
       return updatedCheckedList;
@@ -23,7 +28,7 @@ const CheckBoxList = () => {
         <CheckBox
           key={index}
           label={label}
-          checked={checkedList[index]}
+          checked={isCheckedList[index]}
           onChange={() => handleCheckboxChange(index)}
         />
       ))}
