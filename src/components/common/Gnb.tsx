@@ -2,10 +2,14 @@
 import { useState } from 'react';
 
 const Gnb = () => {
-  const [activeIcon, setActiveIcon] = useState<string>('studyroom');
+  const [activeMenu, setActiveMenu] = useState<string>('studyroom');
 
-  const handleMenuClick = (iconName: string) => {
-    setActiveIcon(iconName);
+  const handleMenuClick = (menuName: string) => {
+    setActiveMenu(menuName);
+  };
+
+  const setMenuColor = (iconName: string) => {
+    return activeMenu === iconName ? 'text-primary' : 'text-[#82829B]';
   };
 
   const menuItems = [
@@ -103,21 +107,13 @@ const Gnb = () => {
   ];
 
   return (
-    <div className="w-[375px] h-[62px] grid grid-cols-4 gap-3 bg-white">
+    <div className="w-[23.4375rem] h-[3.875rem] grid grid-cols-4 gap-3 bg-white">
       {menuItems.map((item) => (
         <div
           className="flex flex-col justify-center items-center"
           onClick={() => handleMenuClick(item.name)}>
-          <div
-            className={
-              activeIcon === item.name ? 'text-primary' : 'text-[#82829B]'
-            }>
-            {item.icon}
-          </div>
-          <p
-            className={`text-xs ${activeIcon === item.name ? 'text-primary' : 'text-[#82829B]'}`}>
-            {item.label}
-          </p>
+          <div className={setMenuColor(item.name)}>{item.icon}</div>
+          <p className={`text-xs ${setMenuColor(item.name)}`}>{item.label}</p>
         </div>
       ))}
     </div>
