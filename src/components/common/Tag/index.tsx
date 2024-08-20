@@ -7,7 +7,7 @@ interface tagProps {
 const Tag = ({ label, selected, onClick }: tagProps) => {
   return (
     <button
-      className={`px-4 py-2 m-1 rounded-full border transition ${selected ? 'bg-primary text-white border-primary' : '*:bg-grey text-white border-grey'} `}
+      className={`w-auto h-[2.5rem] cursor-pointer box-border border-2 rounded-lg px-2 ${selected ? 'bg-primaryHover text-primary border-primary' : '*:bg-grey text-black border-greyBorder'} `}
       onClick={onClick}>
       {label}
     </button>
