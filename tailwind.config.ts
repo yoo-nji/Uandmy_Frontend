@@ -10,9 +10,11 @@ const config: Config = {
     colors: {
       primary: '#6224FD',
       secondary: '#F472B6',
+      primaryHover: '#EFE9FF',
       white: '#FFFFFF',
       black: '#000000',
       grey: '#D0D6E0',
+      greyBorder: '#D9D9D9',
     },
     extend: {
       backgroundImage: {

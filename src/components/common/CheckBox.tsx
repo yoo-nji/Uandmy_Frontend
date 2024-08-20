@@ -13,7 +13,7 @@ const CheckBox = ({ label, checked, onChange }: CheckBoxProps) => {
       <label
         htmlFor={`checkbox-${label}`}
         className={`flex items-center w-auto h-[2.5rem] cursor-pointer box-border border-2 rounded-lg pl-1 pr-2 ${
-          checked ? 'bg-[#EFE9FF] border-blue' : 'border-[#D9D9D9]'
+          checked ? 'bg-primaryHover border-primary' : 'border-greyBorder'
         }`}>
         <input
           id={`checkbox-${label}`}
@@ -23,7 +23,7 @@ const CheckBox = ({ label, checked, onChange }: CheckBoxProps) => {
           className="appearance-none w-4 h-4 rounded-lg peer -ml-2 focus:outline-none focus:ring-0 focus:border-transparent "
         />
         <CheckSvg fillColor={checked ? '#6224FD' : '#E9E9E9'} />
-        <span className={`ml-2 ${checked ? 'text-blue' : 'text-black'}`}>
+        <span className={`ml-2 ${checked ? 'text-primary' : 'text-black'}`}>
           {label}
         </span>
       </label>
