@@ -50,8 +50,8 @@ const StudyroomCard = ({
       <div className="flex justify-between items-center text-xs">
         <div className="flex gap-x-3">
           <div className="font-bold text-primary">D-{diffInDays}</div>
-          <div className="text-[#BEB4BF] flex items-center gap-1">
-            <Calendar />
+          <div className="text-[#555555] flex items-center gap-1">
+            <Calendar style={{ fill: '#BEB4BF' }} />
             {start.getFullYear() === end.getFullYear() ? (
               <p>{`${start.getFullYear()}.${start.getMonth() + 1}.${start.getDate()} (${dayOfTheWeek[start.getDay()]}) - ${end.getMonth() + 1}.${end.getDate()} (${dayOfTheWeek[end.getDay()]})`}</p>
             ) : (
