@@ -1,8 +1,9 @@
-import React from 'react';
-import Bookmark from '../../../public/images/bookmark.svg';
+'use client';
+import React, { useState } from 'react';
 import Calendar from '../../../public/images/event_available.svg';
 import View from '../../../public/images/Eye.svg';
 import TagBox from './TagBox';
+import Bookmark from './Bookmark';
 
 interface StudyroomCardProps {
   position: string;
@@ -32,11 +33,18 @@ const StudyroomCard = ({
   const diffInMs = end.getTime() - start.getTime();
   const diffInDays = Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
 
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
+  const handleBookmarkClick = () => {
+    setIsBookmarked(!isBookmarked);
+    // 여기에서 북마크 상태를 서버에 전송하거나 다른 로직을 추가할 수 있습니다.
+  };
+
   return (
     <div className="w-[21.4375rem] h-[10.5625rem] px-[1rem] py-[1.125rem] rounded-lg border-[.0625rem] border-[#EAEAEA] drop-shadow-custom">
       <div className="flex justify-between items-center mb-[.5rem]">
         <div className="text-[#555555] text-xs">{position}</div>
-        <Bookmark />
+        <Bookmark onClick={handleBookmarkClick} filled={isBookmarked} />
       </div>
 
       <p className="text-base text-[#434343] font-semibold">{title}</p>
