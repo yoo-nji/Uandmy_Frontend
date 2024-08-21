@@ -1,6 +1,6 @@
 import './globals.css';
+import './onboarding.css';
 
-// import './onboarding.css';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 

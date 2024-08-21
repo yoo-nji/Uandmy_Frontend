@@ -17,6 +17,15 @@ const config: Config = {
       greyBorder: '#D9D9D9',
     },
     extend: {
+      keyframes: {
+        softBounce: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' }, // 살짝 올라가게 설정
+        },
+      },
+      animation: {
+        softBounce: 'softBounce 1.5s ease-in-out infinite',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
