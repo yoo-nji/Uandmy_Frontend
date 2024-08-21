@@ -1,7 +1,7 @@
-type ProgressProps = {
+interface ProgressProps {
   progress: number;
   page: number;
-};
+}
 
 const ProgressBar = ({ progress, page }: ProgressProps) => {
   const progressBarPercent = `${progress}%`;
