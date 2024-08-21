@@ -2,15 +2,15 @@ export default function Home() {
   return (
     <main>
       <div className="h-screen flex flex-col justify-between items-center onboarding-bg ">
-        <div className="flex flex-col items-center gap-2 mt-[104px]">
-          <h2 className="text-[18px] font-[600] text-[#20243A]">
+        <div className="flex flex-col items-center gap-[0.125rem] mt-[6.5rem]">
+          <h2 className="text-[1.125rem] font-[600] text-[#20243A]">
             같은 목표로 공부 중인 유저
           </h2>
-          <h3 className="text-[24px] text-[#7677FF] font-[800]">124,368명</h3>
+          <h3 className="text-[1.5rem] text-[#7677FF] font-[800]">124,368명</h3>
         </div>
         {/* 이미지 */}
-        <div className="w-[372px] h-[298px] bg-[url('/images/splash-icon-bg.png')] bg-center bg-no-repeat relative">
-          <div className="w-[100px]  absolute top-[45px] left-[110px] animate-softBounce">
+        <div className="w-[23.25rem] h-[18.625rem] bg-[url('/images/splash-icon-bg.png')] bg-center bg-no-repeat relative">
+          <div className="w-[6.25rem] absolute top-[2.8125rem] left-[6.875rem] animate-softBounce">
             <img
               className="w-full"
               src="/images/splash-icon.png"
@@ -18,9 +18,9 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="flex flex-col items-center gap-[98px]">
+        <div className="flex flex-col items-center gap-[6.125rem]">
           {/* 아이콘 */}
-          <div className="flex gap-[23px]">
+          <div className="flex gap-[1.4375rem]">
             <button>
               <img
                 className="hover:brightness-110 transition"
@@ -50,14 +50,14 @@ export default function Home() {
               />
             </button>
           </div>
-          <div className="flex mb-[41px] text-[12px] text-[#ADB5BD;] font-[500]">
+          <div className="flex mb-[2.5625rem] text-[0.75rem] text-[#ADB5BD] font-[500]">
             <a
-              className="hover:text-[#82829B] relative after:content-['|'] after:mx-3 after:text-[#ADB5BD]"
+              className="hover:text-[#82829B] relative after:content-['|'] after:mx-[0.1875rem] after:text-[#ADB5BD]"
               href="#">
               회원가입하기
             </a>
             <a
-              className="hover:text-[#82829B] relative after:content-['|'] after:mx-3 after:text-[#ADB5BD]"
+              className="hover:text-[#82829B] relative after:content-['|'] after:mx-[0.1875rem] after:text-[#ADB5BD]"
               href="#">
               아이디 찾기
             </a>
