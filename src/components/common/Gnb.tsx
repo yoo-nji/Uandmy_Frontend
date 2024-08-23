@@ -60,9 +60,9 @@ const Gnb = () => {
           <path
             d="M16.8927 16.9195L19.9727 19.9995M19.0837 11.5805C19.0837 15.7675 15.7007 19.1615 11.5287 19.1615C7.35566 19.1615 3.97266 15.7675 3.97266 11.5815C3.97266 7.39251 7.35566 3.99951 11.5277 3.99951C15.7007 3.99951 19.0837 7.39351 19.0837 11.5805Z"
             stroke="currentColor" // currentColor로 변경
-            stroke-width="1.44231"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="1.5" // strokeWidth와 다른 속성들은 유지
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       ),
@@ -79,7 +79,7 @@ const Gnb = () => {
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
           className="fill-current">
-          <g clip-path="url(#clip0_95_2864)">
+          <g clipPath="url(#clip0_95_2864)">
             <path
               d="M15.333 17.3329C15.333 17.5097 15.2628 17.6793 15.1377 17.8043C15.0127 17.9293 14.8432 17.9996 14.6663 17.9996H5.33301C5.18634 17.9996 5.04634 18.1329 4.92634 18.2196L2.66634 19.9996V9.33289C2.66634 9.15607 2.73658 8.98651 2.8616 8.86148C2.98663 8.73646 3.1562 8.66622 3.33301 8.66622H5.90634V7.33289H3.33301C2.80257 7.33289 2.29387 7.5436 1.91879 7.91867C1.54372 8.29374 1.33301 8.80245 1.33301 9.33289V21.3329C1.334 21.4567 1.36945 21.5778 1.43539 21.6826C1.50133 21.7874 1.59515 21.8717 1.70634 21.9262C1.81346 21.9749 1.93157 21.9944 2.04866 21.9827C2.16575 21.971 2.27766 21.9285 2.37301 21.8596L5.80634 19.3329H14.7663C15.019 19.3404 15.2705 19.2959 15.5053 19.2022C15.7401 19.1085 15.9531 18.9676 16.1313 18.7882C16.3094 18.6089 16.4488 18.3948 16.5408 18.1594C16.6329 17.924 16.6756 17.6722 16.6663 17.4196V16.6662H15.333V17.3329Z"
               fill="currentColor"
@@ -121,10 +121,11 @@ const Gnb = () => {
 
   return (
     <div className="w-[23.4375rem] h-[3.875rem] grid grid-cols-4 gap-3 bg-white drop-shadow-upside fixed bottom-0">
-      {menuItems.map((item) => (
+      {menuItems.map((item, idx) => (
         <div
           className="flex flex-col justify-center items-center"
-          onClick={() => handleMenuClick(item.name, item.route)}>
+          onClick={() => handleMenuClick(item.name, item.route)}
+          key={idx}>
           <div className={setMenuColor(item.name)}>{item.icon}</div>
           <p className={`text-xs ${setMenuColor(item.name)}`}>{item.label}</p>
         </div>
