@@ -7,6 +7,7 @@ import StudyroomCard, {
   StudyroomCardProps,
 } from '@/components/common/StudyroomCard';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const StudyroomCardItems: StudyroomCardProps[] = [
   {
@@ -41,6 +42,20 @@ const Page = () => {
   const handleClick = (route: string) => {
     router.push(route);
   };
+
+  const [showRecruitingOnly, setShowRecruitingOnly] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setShowRecruitingOnly(!showRecruitingOnly);
+  };
+
+  // 모집 중인 카드 항목 필터링
+  const today = new Date();
+  const filteredStudyroomCardItems = StudyroomCardItems.filter((cardItem) => {
+    return showRecruitingOnly
+      ? new Date(cardItem.startDate).getTime() >= today.getTime()
+      : true;
+  });
 
   return (
     <div className="w-[23.4375rem] min-h-screen bg-[#F6F6F6]">
@@ -110,21 +125,43 @@ const Page = () => {
             <label className="flex items-center text-sm font-bold text-[#262626]">
               <input
                 type="checkbox"
-                // disabled={disabled}
-                // checked={checked}
-                // onChange={({ target: { checked } }) => onChange(checked)}
-                className="w-[1.125rem] h-[1.125rem] mr-[.5625rem]"
+                checked={showRecruitingOnly}
+                onChange={handleCheckboxChange}
+                className="hidden"
               />
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="mr-[.5625rem] rounded">
+                <rect
+                  width="18"
+                  height="18"
+                  rx="4"
+                  fill={showRecruitingOnly ? '#4B494C' : 'none'}
+                  stroke="#4B494C"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M14.3337 5L7.00033 12.3333L3.66699 9"
+                  stroke="#FBFBFB"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
               모집 중인 스터디만 보기
             </label>
             {/* <p> 2 / 6</p> */}
           </div>
 
           <div className="flex flex-col gap-y-[1.125rem]">
-            {StudyroomCardItems.map((cardItem, idx) => (
+            {filteredStudyroomCardItems.map((cardItem, idx) => (
               <StudyroomCard
-                key={idx} // 각 카드에 고유한 key prop을 추가
-                position={cardItem.position} // 각 cardItem의 속성을 개별적으로 지정
+                key={idx}
+                position={cardItem.position}
                 title={cardItem.title}
                 tags={cardItem.tags}
                 startDate={cardItem.startDate}
