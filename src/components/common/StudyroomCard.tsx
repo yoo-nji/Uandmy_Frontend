@@ -30,8 +30,9 @@ const StudyroomCard = ({
   const dayOfTheWeek = ['일', '월', '화', '수', '목', '금', '토'];
 
   // D-day
-  const diffInMs = end.getTime() - start.getTime();
-  const diffInDays = Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
+  const today = new Date();
+  const dDayInMs = start.getTime() - today.getTime();
+  const dDayInDays = Math.ceil(dDayInMs / (1000 * 60 * 60 * 24));
 
   const [isBookmarked, setIsBookmarked] = useState(false);
 
@@ -57,7 +58,9 @@ const StudyroomCard = ({
 
       <div className="flex justify-between items-center text-xs">
         <div className="flex gap-x-3">
-          <div className="font-bold text-primary">D-{diffInDays}</div>
+          <div className="font-bold text-primary">
+            {dDayInDays < 0 ? `D+${Math.abs(dDayInDays)}` : `D-${dDayInDays}`}
+          </div>
           <div className="text-[#555555] flex items-center gap-1">
             <Calendar style={{ fill: '#BEB4BF' }} />
             {start.getFullYear() === end.getFullYear() ? (
@@ -69,7 +72,7 @@ const StudyroomCard = ({
         </div>
         <div className="text-[#908794] flex items-center gap-[.1875rem]">
           <View />
-          <p>{views}</p>
+          <p>{views.toLocaleString()}</p>
         </div>
       </div>
     </div>
