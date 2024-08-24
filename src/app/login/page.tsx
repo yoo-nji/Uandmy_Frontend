@@ -34,11 +34,12 @@ const Login = () => {
   return (
     <>
       <div className="flex justify-center items-center flex-col space-y-2">
-        <div className="flex items-start flex-col -ml-[3rem] ">
+        <div className="flex items-start flex-col w-[21.438rem] ">
           <Image
-            className="w-[5.3125rem] h-[5.3125rem]"
-            src={hand}
-            alt="hand"
+            src="/images/wavingHand.svg"
+            alt="wavingHand"
+            width={85}
+            height={85}
           />
           <div className="flex items-left text-[1.625rem] font-semibold">
             반가워요!
