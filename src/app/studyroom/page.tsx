@@ -1,8 +1,12 @@
+'use client';
 import Gnb from '@/components/common/Gnb';
 import Question from '../../../public/images/Question.svg';
+import ThinkingFace from '../../../public/images/Thinking_face.svg';
+import WavingHand from '../../../public/images//Waving_hand.svg';
 import StudyroomCard, {
   StudyroomCardProps,
 } from '@/components/common/StudyroomCard';
+import { useRouter } from 'next/navigation';
 
 const StudyroomCardItems: StudyroomCardProps[] = [
   {
@@ -17,23 +21,29 @@ const StudyroomCardItems: StudyroomCardProps[] = [
     position: '디자이너 | UXUI 디자인',
     title: '피그마 고급 스킬 스터디 모집 🥰',
     tags: ['오토레이아웃', '과제인증 필수'],
-    startDate: '1111/11/11',
-    endDate: '1111/11/12',
+    startDate: '2024/08/21',
+    endDate: '2024/09/01',
     views: 1203,
   },
   {
     position: '디자이너 | 그래픽 디자인',
     title: '하반기 영상 공모전 대비 스터디',
     tags: ['C4D', '블렌더', '3D 디자인'],
-    startDate: '1111/11/11',
-    endDate: '1111/11/12',
+    startDate: '2024/08/26',
+    endDate: '2024/09/20',
     views: 1230,
   },
 ];
 
 const Page = () => {
+  const router = useRouter();
+
+  const handleClick = (route: string) => {
+    router.push(route);
+  };
+
   return (
-    <div className="w-[375px] min-h-screen bg-[#F6F6F6]">
+    <div className="w-[23.4375rem] min-h-screen bg-[#F6F6F6]">
       <div className="w-full px-[.9375rem] py-11">
         <header className="h-10 flex items-center mb-[.6875rem]">
           <div className="w-1/2">
@@ -45,7 +55,7 @@ const Page = () => {
           </div>
         </header>
 
-        {/* TODO) 참여 스터디룸 존재시 아래 div는 렌더링 X */}
+        {/* TODO) 참여 스터디룸 존재시 아래 요소 전체 렌더링 X */}
         <div>
           <p className="text-lg text-[#212529] font-bold mb-2">
             아직 스터디룸이
@@ -57,20 +67,36 @@ const Page = () => {
           </p>
         </div>
 
-        {/* TODO) 참여 스터디룸 존재시 아래 div는 렌더링 X */}
-        <div className="my-[1.9375rem] flex flex-col gap-y-[11px]">
-          <div className="w-full h-[8.75rem] bg-white rounded-lg">
-            <p>밋티의 맞춤형 스터디를 탐색해보세요!</p>
-            <div>
-              <p>스터디 탐색하기</p>
-              <button>바로가기</button>
-              <p>얼굴</p>
+        <div className="my-[1.9375rem] flex flex-col gap-y-[.6875rem]">
+          <div className="w-full h-fit px-[1.5625rem] py-[1.875rem] bg-white rounded-lg flex flex-col gap-y-1">
+            <p className="text-[#808080] text-sm">
+              밋티의 맞춤형 스터디를 탐색해보세요!
+            </p>
+            <div className="flex justify-between items-center">
+              <div className="flex flex-col gap-y-3">
+                <p className="font-bold text-lg">스터디 탐색하기</p>
+                <button
+                  className="p-2 w-fit rounded-lg bg-[#E3E3FA] text-[#4A5999] text-xs font-semibold"
+                  onClick={() => handleClick('/search')}>
+                  바로가기
+                </button>
+              </div>
+              <ThinkingFace />
             </div>
           </div>
-          <div className="w-full h-[5.1875rem] bg-[#E3E3FA] rounded-lg">
-            <p>찾으시는 스터디룸이 없나요?</p>
-            <p>쉽고 빠른 스터디룸 개설하기</p>
-            <p>손</p>
+
+          <div
+            className="w-full h-[5.1875rem] px-[1.5625rem] py-[1.375rem] bg-[#E3E3FA] rounded-lg flex justify-between items-center cursor-pointer"
+            onClick={() => handleClick('/studyroom-create')}>
+            <div>
+              <p className="text-[#786A82] text-[.8125rem]">
+                찾으시는 스터디룸이 없나요?
+              </p>
+              <p className="font-semibold text-sm">
+                쉽고 빠른 스터디룸 개설하기
+              </p>
+            </div>
+            <WavingHand />
           </div>
         </div>
 
