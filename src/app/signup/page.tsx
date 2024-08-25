@@ -28,8 +28,7 @@ const SignUp = () => {
     console.log(data);
   };
 
-  const handleSignUpClick = () => {};
-  const handleLoginClick = (route: string) => {
+  const handleClick = (route: string) => {
     router.push(route);
   };
 
@@ -89,7 +88,7 @@ const SignUp = () => {
             <Button
               label="회원가입"
               type="submit"
-              onClick={handleSignUpClick}
+              onClick={() => handleClick('/signup-complete')}
               className="w-[21.438rem] h-[3.125rem] rounded-lg"
             />
           </div>
@@ -103,7 +102,7 @@ const SignUp = () => {
       <div className="flex justify-center items-center">
         <p className="text-[1rem]">계정이 있으신가요?</p>
         <button
-          onClick={() => handleLoginClick('/login')}
+          onClick={() => handleClick('/login')}
           className="text-[1rem] hover:text-grey">
           로그인
         </button>
