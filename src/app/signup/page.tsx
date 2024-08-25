@@ -29,7 +29,7 @@ const SignUp = () => {
   const handleSignUpClick = () => {};
   return (
     <>
-      <div className="flex justify-center items-center flex-col">
+      <div className="flex justify-center items-center flex-col space-y-2">
         <div className="flex items-start flex-col w-[21.438rem]">
           <Image
             src="images/wavingHand.svg"

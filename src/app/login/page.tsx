@@ -79,7 +79,9 @@ const Login = () => {
               {...register('saveId')}
               className="accent-[#9A81D9]"
             />
-            <span className="ml-1.5 text-[#82829B]">아이디 저장</span>
+            <span className="ml-1.5 text-[#82829B] text-sm font-semibold ">
+              아이디 저장
+            </span>
           </div>
           <div className="flex justify-center">
             <Button
