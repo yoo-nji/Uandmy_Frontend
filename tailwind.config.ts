@@ -24,6 +24,7 @@ const config: Config = {
       },
       dropShadow: {
         custom: '0 4px 4px rgba(0, 0, 0, 0.03)',
+        upside: '0 -2px 5px rgba(0, 0, 0, 0.12)', // Y: -2px, Blur: 5px, Color: rgba(0, 0, 0, 0.12)
       },
     },
   },
