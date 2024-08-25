@@ -1,8 +1,32 @@
+'use client';
+import { useForm } from 'react-hook-form';
 import Input from '@/components/common/Input';
 import Image from 'next/image';
-import wavingHand from '../../../public/images/wavingHand.svg';
+import Button from '@/components/common/Button';
 
+interface SignUpDatas {
+  name: string;
+  email: string;
+  password: string;
+}
 const SignUp = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignUpDatas>({
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
+  });
+
+  const onSignUpSubmit = (data: SignUpDatas) => {
+    console.log(data);
+  };
+
+  const handleSignUpClick = () => {};
   return (
     <>
       <div className="flex justify-center items-center flex-col">
@@ -21,31 +45,58 @@ const SignUp = () => {
             유앤미에 오신 것을 환영해요!
           </div>
         </div>
+        <form onSubmit={handleSubmit(onSignUpSubmit)}>
+          <div className="flex justify-center flex-col space-y-[1rem]">
+            <Input
+              placeholder="이름"
+              type="text"
+              {...register('name', { required: '이름을 입력해주세요' })}
+            />
+            {errors.name && (
+              <span className="text-primary">{errors.name.message}</span>
+            )}
+            <Input
+              placeholder="이메일"
+              type="email"
+              {...register('email', { required: '이메일을 입력해주세요' })}
+            />
+            {errors.email && (
+              <span className="text-primary">{errors.email.message}</span>
+            )}
+            <Input
+              placeholder="비밀번호(8자 이상)"
+              type="password"
+              {...register('password', {
+                required: '비밀번호를 입력해주세요',
+                minLength: {
+                  value: 8,
+                  message: '비밀번호는 최소 8자 이상이어야 합니다',
+                },
+              })}
+            />
+            {errors.password && (
+              <span className="text-primary">{errors.password.message}</span>
+            )}
+          </div>
 
-        <div className="flex justify-center flex-col space-y-[1rem]">
-          <Input placeholder="이름" type="text" />
-          <Input placeholder="이메일" type="email" />
-          <Input
-            placeholder="비밀번호(8자 이상)"
-            type="password"
-            className="mb-10"
-          />
-        </div>
+          <div className="flex justify-center mt-6">
+            <Button
+              label="회원가입"
+              type="submit"
+              onClick={handleSignUpClick}
+              className="w-[21.438rem] h-[3.125rem] rounded-lg"
+            />
+          </div>
+        </form>
       </div>
-      <div className="flex justify-center ">
-        <button className="w-[21.438rem] h-[3.125rem] bg-[#6224FD] text-white rounded-lg">
-          회원가입
-        </button>
-      </div>
-
-      <div className="flex items-center my-4 w-full">
-        <hr className="flex-grow border-t-1 border-[#9E9E9E]" />
-        <span className="mx-4 text-[#9E9E9E]">OR</span>
-        <hr className="flex-grow border-t-1 border-[#9E9E9E]" />
+      <div className="flex justify-center items-center my-4 ">
+        <hr className="w-[9.563rem]  border-t-1 border-[#9E9E9E] " />
+        <span className="mx-4 text-[#9E9E9E] text-[0.75rem]">OR</span>
+        <hr className="w-[9.563rem]  border-t-1 border-[#9E9E9E]" />
       </div>
       <div className="flex justify-center items-center">
         <p className="text-[1rem]">계정이 있으신가요?</p>
-        <span className="text-[1rem]">로그인</span>
+        <button className="text-[1rem] hover:text-grey">로그인</button>
       </div>
     </>
   );
