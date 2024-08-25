@@ -1,5 +1,6 @@
 'use client';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 import Input from '@/components/common/Input';
 import Image from 'next/image';
 import Button from '@/components/common/Button';
@@ -10,6 +11,7 @@ interface SignUpDatas {
   password: string;
 }
 const SignUp = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -27,6 +29,10 @@ const SignUp = () => {
   };
 
   const handleSignUpClick = () => {};
+  const handleLoginClick = (route: string) => {
+    router.push(route);
+  };
+
   return (
     <>
       <div className="flex justify-center items-center flex-col space-y-2">
@@ -96,7 +102,11 @@ const SignUp = () => {
       </div>
       <div className="flex justify-center items-center">
         <p className="text-[1rem]">계정이 있으신가요?</p>
-        <button className="text-[1rem] hover:text-grey">로그인</button>
+        <button
+          onClick={() => handleLoginClick('/login')}
+          className="text-[1rem] hover:text-grey">
+          로그인
+        </button>
       </div>
     </>
   );
