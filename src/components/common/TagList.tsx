@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import Tag from '../Tag';
+import Tag from './Tag';
 
 const tagData = [
   '주도적인',
