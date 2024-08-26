@@ -1,6 +1,6 @@
 'use client';
 
-import ImageUploader from '@/components/common/ImageUploader';
+import TagList from '@/components/common/TagList';
 
 export default function Home() {
   const handleImageUpload = (filePath: File) => {
@@ -10,7 +10,8 @@ export default function Home() {
   return (
     <main>
       <div>
-        <ImageUploader onImageUpload={handleImageUpload} />
+        <span>hi</span>
+        <TagList />
       </div>
     </main>
   );
