@@ -5,6 +5,7 @@ import StudyroomCard, {
   StudyroomCardProps,
 } from '@/components/common/StudyroomCard';
 import MagnifyingGlass from '../../../public/images/MagnifyingGlass.svg';
+import Filter from '../../../public/images/Filter.svg';
 import ToggleSwitch from '@/components/common/ToggleSwitch';
 import Dropdown from '@/components/common/Dropdown';
 
@@ -57,17 +58,48 @@ const recommendedStudyroomCards: StudyroomCardProps[] = [
 const dropdownItems = [
   {
     id: 'sortPost',
-    label: '최신순',
-    options: ['최신순', '오래된 순', '조회수 순'],
+    label: '최신 순',
+    options: ['최신 순', '오래된 순', '마감 임박 순', '조회수 순'], // 최신 순, 오래된 순 → 포스팅 등록일 기준으로 설정한 상태.
   },
-  {
-    id: 'postDates',
-    label: '등록일 전체',
-    options: ['등록일 전체', '1주일 이내', '1개월 이내', '3개월 이내'],
-  },
+  // {
+  //   id: 'postDates',
+  //   label: '등록일 전체',
+  //   options: ['등록일 전체', '1주일 이내', '1개월 이내', '3개월 이내'], // 최신순, 오래된 순과 겹침.
+  // },
 ];
 
 const Page = () => {
+  // 슬라이드 메뉴
+  const [selectedMenu, setSelectedMenu] = useState('study'); // 초기값은 'study'로 설정
+  const menus = [
+    { id: 'study', label: '스터디 찾기' },
+    { id: 'user', label: '팀원 찾기' },
+  ];
+
+  const handleMenuClick = (menu: string) => {
+    setSelectedMenu(menu);
+  };
+
+  const tags = [
+    '전체',
+    '#IT',
+    '#개발',
+    '#디자이너',
+    '#피그마',
+    '#UXUI 디자인',
+    '#그래픽 디자인',
+  ];
+
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  const handleTagClick = (tag: string) => {
+    if (selectedTags.includes(tag)) {
+      setSelectedTags(selectedTags.filter((t) => t !== tag));
+    } else {
+      setSelectedTags([...selectedTags, tag]);
+    }
+  };
+
   const [showRecruitingOnly, setShowRecruitingOnly] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -81,17 +113,6 @@ const Page = () => {
       ? new Date(cardItem.startDate).getTime() >= today.getTime()
       : true;
   });
-
-  // 슬라이드 메뉴
-  const [selectedMenu, setSelectedMenu] = useState('study'); // 초기값은 'study'로 설정
-  const menus = [
-    { id: 'study', label: '스터디 찾기' },
-    { id: 'user', label: '팀원 찾기' },
-  ];
-
-  const handleMenuClick = (menu: string) => {
-    setSelectedMenu(menu);
-  };
 
   return (
     <div className="w-[23.4375rem] min-h-screen bg-[#F6F6F6]">
@@ -139,9 +160,25 @@ const Page = () => {
         </div>
 
         <div className="px-4 py-5 bg-white">
-          <div>
-            {/* 태그 */}
-            {/* 필터 */}
+          {/* 태그, 필터 */}
+          <div className="flex justify-between gap-x-2 mb-5">
+            <div className="w-full flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <div
+                  key={tag}
+                  onClick={() => handleTagClick(tag)}
+                  className={`flex justify-center items-center px-2.5 py-0.5 w-fit rounded-[.3125rem] border-[.0625rem] text-sm cursor-pointer ${
+                    selectedTags.includes(tag)
+                      ? 'text-primary border-primary'
+                      : 'text-[#82829B] border-[#e1e1e1]'
+                  }`}>
+                  {tag}
+                </div>
+              ))}
+            </div>
+            <div>
+              <Filter />
+            </div>
           </div>
 
           {/* 총 개수, 최신 순, 등록일 전체 */}

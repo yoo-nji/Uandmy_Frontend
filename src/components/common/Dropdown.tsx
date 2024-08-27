@@ -17,6 +17,25 @@ const Dropdown = ({ items }: DropdownProps) => {
     setOpenMenu((prev) => (prev === menuId ? null : menuId));
   };
 
+  // 선택된 옵션을 저장할 상태, 각 id에 대해 선택된 값을 저장
+  const [selectedOptions, setSelectedOptions] = useState<
+    Record<string, string>
+  >(
+    items.reduce((acc: Record<string, string>, item) => {
+      acc[item.id] = item.label; // 초기값은 label로 설정
+      return acc;
+    }, {}),
+  );
+
+  const handleOptionClick = (menuId: string, option: string) => {
+    // 선택된 옵션 값을 상태에 저장
+    setSelectedOptions((prev) => ({
+      ...prev,
+      [menuId]: option,
+    }));
+    setOpenMenu(null); // 선택 후 드롭다운 닫기
+  };
+
   return (
     <div className="flex gap-4">
       {items.map((menu) => (
@@ -24,7 +43,7 @@ const Dropdown = ({ items }: DropdownProps) => {
           <div
             className="flex items-center cursor-pointer"
             onClick={() => toggleDropdown(menu.id)}>
-            <p>{menu.label}</p>
+            <p>{selectedOptions[menu.id]}</p>
             <DropdownIcon />
           </div>
           {openMenu === menu.id && (
@@ -33,7 +52,8 @@ const Dropdown = ({ items }: DropdownProps) => {
                 {menu.options.map((option, index) => (
                   <button
                     key={index}
-                    className="p-2 text-center hover:bg-[#8655FF] hover:text-white">
+                    className="p-2 text-center hover:bg-[#8655FF] hover:text-white"
+                    onClick={() => handleOptionClick(menu.id, option)}>
                     {option}
                   </button>
                 ))}
