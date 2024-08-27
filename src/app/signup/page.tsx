@@ -37,12 +37,11 @@ const SignUp = () => {
       <div className="flex justify-center items-center flex-col space-y-2">
         <div className="flex items-start flex-col w-[21.438rem]">
           <Image
-            src="images/wavingHand.svg"
-            alt="wavingHand"
+            src="/images/Waving_hand.svg"
+            alt="Waving Hand"
             width={85}
             height={85}
           />
-
           <div className="flex items-left text-[1.625rem] font-semibold">
             반가워요!
           </div>

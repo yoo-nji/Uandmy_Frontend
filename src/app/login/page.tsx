@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 
 import Input from '@/components/common/Input';
 import Image from 'next/image';
-import hand from '../../../public/images/hand.png';
 import Button from '@/components/common/Button';
 
 interface FormDatas {
@@ -36,8 +35,8 @@ const Login = () => {
       <div className="flex justify-center items-center flex-col space-y-2">
         <div className="flex items-start flex-col w-[21.438rem] ">
           <Image
-            src="/images/wavingHand.svg"
-            alt="wavingHand"
+            src="/images/Waving_hand.svg"
+            alt="Waving Hand"
             width={85}
             height={85}
           />
