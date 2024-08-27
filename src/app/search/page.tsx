@@ -6,6 +6,7 @@ import StudyroomCard, {
 } from '@/components/common/StudyroomCard';
 import MagnifyingGlass from '../../../public/images/MagnifyingGlass.svg';
 import ToggleSwitch from '@/components/common/ToggleSwitch';
+import Dropdown from '@/components/common/Dropdown';
 
 const searchResults: StudyroomCardProps[] = [
   {
@@ -50,6 +51,19 @@ const recommendedStudyroomCards: StudyroomCardProps[] = [
     startDate: '2024/09/20',
     endDate: '2024/10/20',
     views: 823,
+  },
+];
+
+const dropdownItems = [
+  {
+    id: 'sortPost',
+    label: '최신순',
+    options: ['최신순', '오래된 순', '조회수 순'],
+  },
+  {
+    id: 'postDates',
+    label: '등록일 전체',
+    options: ['등록일 전체', '1주일 이내', '1개월 이내', '3개월 이내'],
   },
 ];
 
@@ -124,9 +138,17 @@ const Page = () => {
           ))}
         </div>
 
-        <div>
-          {/* 태그, 필터 */}
-          {/* 검색 결과 게수, 최신 순, 등록일 전체 */}
+        <div className="px-4 py-5 bg-white">
+          <div>
+            {/* 태그 */}
+            {/* 필터 */}
+          </div>
+
+          {/* 총 개수, 최신 순, 등록일 전체 */}
+          <div className="flex justify-between items-center text-xs text-[#555555]">
+            <p>총 2,001건</p>
+            <Dropdown items={dropdownItems} />
+          </div>
         </div>
 
         {selectedMenu === 'study' ? (
