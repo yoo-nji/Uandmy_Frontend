@@ -1,35 +1,51 @@
 'use client';
+import Image from 'next/image';
 import Button from '@/components/common/Button';
 import UserProfileCard from '../common/UserProfileCard';
+import ClappingHands from '../../../public/images/ClappingHands.svg';
 const handleConfirmClick = () => {};
 
 const StepComplete = () => {
   return (
     <>
-      <div className="flex justify-center items-center w-[23.438rem] flex-col space-y-4">
-        <div className="flex justify-start flex-col gap-4 w-full">
-          <span className="text-[rgb(38,38,38)] font-semibold text-2xl">
-            김서희님의
-          </span>
-          <span className="text-[rgb(38,38,38)] font-semibold text-2xl">
-            공개 프로필이 생성되었어요
-          </span>
-          <p className=" text-[#82829B] text-[0.875rem]">
-            나와 딱 맞는 스터디를 찾으러 떠나볼까요?
-          </p>
-        </div>
+      <div className="flex justify-center items-center w-[23.438rem] flex-col gap-y-4">
+        <div className="flex justify-start flex-col w-full mt-[1.313rem]">
+          <div className="flex flex-col p-[0.938rem] gap-y-4">
+            <span className="text-black font-semibold text-2xl">
+              김서희님의
+            </span>
+            <div className="flex items-center">
+              <span className="text-black font-semibold text-2xl">
+                공개 프로필이 생성되었어요
+              </span>
 
-        <UserProfileCard
-          name={'김서희님'}
-          role={'디자이너'}
-          description={'뉴비.열정적인.손이빠른'}
-          profileImage={'/images/profile.png'}
-        />
+              <Image
+                src={'/images/ClappingHands.svg'}
+                alt="Clapping Hands"
+                width={24}
+                height={24}
+                className="ml-2"
+              />
+            </div>
+
+            <p className=" text-[#82829B] text-[0.875rem]">
+              나와 딱 맞는 스터디를 찾으러 떠나볼까요?
+            </p>
+          </div>
+        </div>
+        <div className="mt-8 mb-12">
+          <UserProfileCard
+            name={'김서희님'}
+            role={'디자이너'}
+            description={'뉴비.열정적인.손이빠른'}
+            profileImage={'/images/profile.png'}
+          />
+        </div>
 
         <Button
           label="확인하러 가기"
           onClick={handleConfirmClick}
-          className="w-[12.875rem] h-[3.063rem] bg-[#C6BBE1] text-white rounded-lg  "
+          className="w-[21.438rem] h-[3.063rem] bg-[#C6BBE1] text-white rounded-lg"
         />
       </div>
     </>
