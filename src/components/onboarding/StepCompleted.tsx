@@ -1,12 +1,11 @@
 'use client';
-import Image from 'next/image';
 import Button from '@/components/common/Button';
 const handleConfirmClick = () => {};
 
 const StepComplete = () => {
   return (
     <>
-      <div className="flex justify-center items-center flex-col space-y-4">
+      <div className="flex justify-center items-center w-[23.438rem] flex-col space-y-4">
         <div className="flex justify-start flex-col gap-4 w-full">
           <span className="text-[rgb(38,38,38)] font-semibold text-2xl">
             김서희님의
