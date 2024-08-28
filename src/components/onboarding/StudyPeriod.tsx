@@ -46,6 +46,7 @@ const StudyPeriod = ({ onNext, onBack }: StudyPeriodProps) => {
         </p>
         <CheckBoxList
           checkBoxDatas={checkBoxDatas}
+          selectedValue={selectedPeriod}
           onChange={(value) => {
             handlePeriodClick(value as string);
           }}
