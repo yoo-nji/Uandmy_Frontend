@@ -2,34 +2,47 @@
 import { useState } from 'react';
 import CheckBox from './CheckBox';
 
-const checkBoxDatas = [
-  '자기 개발',
-  '툴 능력 향상',
-  '해당 분야의 네트워킹 확장',
-  '취미',
-];
-
-const CheckBoxList = () => {
+interface CheckBoxListProps {
+  checkBoxDatas: string[];
+  onChange: (data: string[] | string | null) => void;
+  singleSelect?: boolean;
+}
+const CheckBoxList = ({
+  checkBoxDatas,
+  onChange,
+  singleSelect = false,
+}: CheckBoxListProps) => {
   const [isCheckedList, setIsCheckedList] = useState<boolean[]>(
     new Array(checkBoxDatas.length).fill(false),
   );
 
-  const handleCheckboxChange = (index: number) => {
-    setIsCheckedList((prevCheckedList) => {
-      const updatedCheckedList = [...prevCheckedList];
-      updatedCheckedList[index] = !updatedCheckedList[index];
-      return updatedCheckedList;
-    });
+  const handleCheckBox = (index: number) => {
+    let updatedCheckedList: boolean[];
+
+    if (singleSelect) {
+      updatedCheckedList = new Array(checkBoxDatas.length).fill(false);
+      updatedCheckedList[index] = true;
+      const selected = checkBoxDatas[index];
+      onChange(selected);
+    } else {
+      updatedCheckedList = isCheckedList.map((item, i) =>
+        i === index ? !item : item,
+      );
+      const selected = checkBoxDatas.filter((_, i) => updatedCheckedList[i]);
+      onChange(selected);
+    }
+
+    setIsCheckedList(updatedCheckedList);
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-4">
       {checkBoxDatas.map((label, index) => (
         <CheckBox
           key={index}
           label={label}
           checked={isCheckedList[index]}
-          onChange={() => handleCheckboxChange(index)}
+          onChange={() => handleCheckBox(index)}
         />
       ))}
     </div>
