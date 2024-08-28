@@ -1,5 +1,6 @@
 'use client';
 import Button from '@/components/common/Button';
+import UserProfileCard from '../common/UserProfileCard';
 const handleConfirmClick = () => {};
 
 const StepComplete = () => {
@@ -17,6 +18,13 @@ const StepComplete = () => {
             나와 딱 맞는 스터디를 찾으러 떠나볼까요?
           </p>
         </div>
+
+        <UserProfileCard
+          name={'김서희님'}
+          role={'디자이너'}
+          description={'뉴비.열정적인.손이빠른'}
+          profileImage={'/images/profile.png'}
+        />
 
         <Button
           label="확인하러 가기"
