@@ -1,18 +1,47 @@
 'use client';
 
+import { useForm } from 'react-hook-form';
+
 import { Input } from '@/components/common/Input';
 
+interface FormDatas {
+  jobPosition: string;
+  topic: string;
+  goal: string;
+  introduction: string;
+  methodAndCurriculum: string;
+  startDate: string;
+  endDate: string;
+  regularMeeting: string;
+  studyRecruitmentNumber: number;
+  tags: string;
+}
+
 const CreateStudyPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormDatas>();
+
+  const onSubmit = (data: FormDatas) => {
+    console.log(data);
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="rounded-md shadow-sm -space-y-px">
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
               모집 직군
             </label>
-            <select className="w-[25rem] h-[3rem] border-solid border-2 border-[#CED4DA] rounded-lg placeholder-[#82829B] p-[0.625rem]">
-              <option></option>
+            <select
+              className="w-[25rem] h-[3rem] border-solid border-2 border-[#CED4DA] rounded-lg placeholder-[#82829B] p-[0.625rem]"
+              {...register('jobPosition')}>
+              <option value="기획자">기획자</option>
+              <option value="디자이너">디자이너</option>
+              <option value="개발자">개발자</option>
             </select>
           </div>
 
@@ -20,14 +49,27 @@ const CreateStudyPage = () => {
             <label className="block text-sm font-medium text-gray-700">
               주제
             </label>
-            <Input type="text" placeholder="주제를 입력하세요" maxLength={20} />
+            <Input
+              type="text"
+              placeholder="주제를 입력하세요"
+              maxLength={20}
+              {...register('topic', { required: '주제를 입력하세요' })}
+            />
+            {errors.topic && (
+              <p className="text-danger">{errors.topic.message}</p>
+            )}
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               목표
             </label>
-            <Input type="text" placeholder="목표를 입력하세요" maxLength={20} />
+            <Input
+              type="text"
+              placeholder="목표를 입력하세요"
+              maxLength={20}
+              {...register('goal', { required: '목표를 입력하세요' })}
+            />
           </div>
 
           <div>
@@ -38,6 +80,7 @@ const CreateStudyPage = () => {
               className="w-[25rem] h-[3rem] border-solid border-2 border-[#CED4DA] rounded-lg placeholder-[#82829B] p-[0.625rem]"
               placeholder="소개 내용을 입력하세요"
               maxLength={200}
+              {...register('introduction')}
             />
           </div>
         </div>

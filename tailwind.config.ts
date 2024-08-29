@@ -13,6 +13,7 @@ const config: Config = {
       primaryHover: '#EFE9FF',
       white: '#FFFFFF',
       black: '#000000',
+      danger: '#ED4545',
       grey: '#D0D6E0',
       greyBorder: '#D9D9D9',
     },
