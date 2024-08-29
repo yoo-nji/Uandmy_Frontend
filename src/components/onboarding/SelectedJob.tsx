@@ -15,12 +15,12 @@ const SelectedJob = ({ onNext }: SelectedJobProps) => {
 
   const Jobs = [
     {
-      id: 'designer',
+      id: '디자이너',
       label: '디자이너',
       img: '/images/Designer.svg',
     },
-    { id: 'developer', label: '개발자', img: '/images/Developer.svg' },
-    { id: 'planner', label: '기획자', img: '/images/Planner.svg' },
+    { id: '개발자', label: '개발자', img: '/images/Developer.svg' },
+    { id: '기획자', label: '기획자', img: '/images/Planner.svg' },
   ];
 
   const handleJobCardClick = (job: string) => {

@@ -2,14 +2,15 @@
 import Image from 'next/image';
 import Button from '@/components/common/Button';
 import UserProfileCard from '../common/UserProfileCard';
-import ClappingHands from '../../../public/images/ClappingHands.svg';
 
 interface StepCompleteProps {
   role?: string;
+  description?: string[];
 }
 const handleConfirmClick = () => {};
 
-const StepComplete = ({ role }: StepCompleteProps) => {
+const StepComplete = ({ role, description }: StepCompleteProps) => {
+  const descriptionString = description ? description.join('. ') : '';
   return (
     <>
       <div className="flex justify-center items-center w-[23.438rem] flex-col gap-y-4">
@@ -41,7 +42,7 @@ const StepComplete = ({ role }: StepCompleteProps) => {
           <UserProfileCard
             name={'김서희님'}
             role={role}
-            description={'뉴비.열정적인.손이빠른'}
+            description={descriptionString}
             profileImage={'/images/profile.png'}
           />
         </div>

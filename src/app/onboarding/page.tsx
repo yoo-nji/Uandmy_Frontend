@@ -67,7 +67,10 @@ const Onboarding = () => {
         />
       )}
       stepCompleted={({ context }) => (
-        <StepCompleted role={context.selectedJob} />
+        <StepCompleted
+          role={context.selectedJob}
+          description={context.character}
+        />
       )}
     />
   );
