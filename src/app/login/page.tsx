@@ -1,10 +1,9 @@
 'use client';
+import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 
-import Input from '@/components/common/Input';
-import Image from 'next/image';
-import hand from '../../../public/images/hand.png';
 import Button from '@/components/common/Button';
+import { Input } from '@/components/common/Input';
 
 interface FormDatas {
   email: string;
