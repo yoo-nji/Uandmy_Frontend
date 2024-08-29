@@ -1,9 +1,10 @@
 'use client';
 import React, { useState } from 'react';
+
 import Calendar from '../../../public/images/event_available.svg';
 import View from '../../../public/images/Eye.svg';
-import TagBox from './TagBox';
 import Bookmark from './Bookmark';
+import TagBox from './TagBox';
 
 export interface StudyroomCardProps {
   position: string;
@@ -52,7 +53,7 @@ const StudyroomCard = ({
 
       <div className="flex flex-wrap gap-2 mt-[.75rem] mb-[1.5rem]">
         {tags.map((tag, idx) => (
-          <TagBox key={idx} label={tag} />
+          <TagBox key={idx}>{tag}</TagBox>
         ))}
       </div>
 
