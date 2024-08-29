@@ -66,7 +66,9 @@ const Onboarding = () => {
           onBack={() => history.push('character', context)}
         />
       )}
-      stepCompleted={({ context }) => <StepCompleted />}
+      stepCompleted={({ context }) => (
+        <StepCompleted role={context.selectedJob} />
+      )}
     />
   );
 };
