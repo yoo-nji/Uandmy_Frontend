@@ -54,25 +54,24 @@ const SelectedJob = ({ onNext }: SelectedJobProps) => {
             <p className="text-[#82829B] text-[0.875rem] ">
               선택한 직무를 바탕으로 스터디를 추천해줄게요!
             </p>
-          </div>
 
-          <div className="flex space-x-4 pt-10 pb-20">
-            {Jobs.map((job) => {
-              return (
-                <JobCard
-                  key={job.id}
-                  id={job.id}
-                  label={job.label}
-                  img={job.img}
-                  width={24}
-                  height={24}
-                  isSelected={selectedJob === job.id}
-                  onClick={() => handleJobCardClick(job.id)}
-                />
-              );
-            })}
+            <div className="flex space-x-2 pt-10 pb-20">
+              {Jobs.map((job) => {
+                return (
+                  <JobCard
+                    key={job.id}
+                    id={job.id}
+                    label={job.label}
+                    img={job.img}
+                    width={24}
+                    height={24}
+                    isSelected={selectedJob === job.id}
+                    onClick={() => handleJobCardClick(job.id)}
+                  />
+                );
+              })}
+            </div>
           </div>
-
           <p className="text-[#ADB5BD] text-[0.75rem] text-center mb-2">
             내용은 다시 수정할 수 있어요!
           </p>

@@ -33,7 +33,7 @@ const Onboarding = () => {
       selectedJob={({ history }) => (
         <SelectedJob
           onNext={(job) => {
-            console.log('job');
+            console.log('job', job);
             history.push('studyPurpose', { selectedJob: job });
           }}
         />
@@ -41,6 +41,7 @@ const Onboarding = () => {
       studyPurpose={({ context, history }) => (
         <StudyPurpose
           onNext={(purposes) => {
+            console.log('purposes', purposes);
             history.push('character', { ...context, studyPurpose: purposes });
           }}
           onBack={() => history.push('selectedJob', context)}
@@ -49,6 +50,7 @@ const Onboarding = () => {
       character={({ context, history }) => (
         <Characters
           onNext={(character) => {
+            console.log('character', character);
             history.push('studyPeriod', { ...context, character });
           }}
           onBack={() => history.push('studyPurpose', context)}
@@ -57,7 +59,9 @@ const Onboarding = () => {
       studyPeriod={({ context, history }) => (
         <StudyPeriod
           onNext={(period) => {
+            console.log('period', period);
             history.push('stepCompleted', { ...context, studyPeriod: period });
+            console.log('all', context);
           }}
           onBack={() => history.push('character', context)}
         />

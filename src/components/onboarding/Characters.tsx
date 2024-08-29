@@ -10,7 +10,7 @@ interface SelectedCharacterProps {
 }
 
 const Character = ({ onNext, onBack }: SelectedCharacterProps) => {
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedTag, setSelectedTag] = useState<string[]>([]);
 
   const tagDatas = [
     '주도적인',
@@ -27,50 +27,57 @@ const Character = ({ onNext, onBack }: SelectedCharacterProps) => {
     '동기부여가 필요한',
     '완벽주의',
   ];
+  const handleTagSelect = (selectedTags: string[]) => {
+    setSelectedTag(selectedTags);
+  };
 
   const handleNextClick = () => {
-    // if (selectedTags.length > 0) {
-    //   console.log('selectedTag', selectedTags);
-    onNext(selectedTags);
-    // }
+    onNext(selectedTag);
   };
   return (
     <>
       <div className=" flex justify-center items-center w-[23.438rem] flex-col space-y-4">
-        <div className="flex justify-start flex-col gap-4">
-          <ProgressBar progress={75} page={3} />
-          <span className="text-[#262626] font-semibold text-2xl">
-            김서희님은
-          </span>
-          <span className="text-[#262626] font-semibold text-2xl">
-            어떤 스타일이신가요?
-          </span>
-          <p className="text-[#82829B] text-[0.875rem] ">
-            유앤미님과 비슷하다고 생각되는 키워드를 모두 선택해주세요!
-          </p>
-        </div>
-        <div className="flex w-[23.438rem]">
-          <TagList />
-        </div>
-        <p className="text-[#ADB5BD] text-[0.75rem]">
-          내용은 다시 수정할 수 있어요!
-        </p>
-        <div className="flex justify-center items-center space-x-[0.813rem] ">
-          <Button
-            label="이전"
-            bgColor="bg-white"
-            textColor="text-[#CED4DA]"
-            className="w-[7.75rem] h-[3.063rem] border-2 border-[#CED4DA] rounded-lg
-          "
-            onClick={onBack}
-          />
+        <ProgressBar progress={75} page={3} />
+        <div className="p-[0.938rem] w-full">
+          <div className="flex justify-start flex-col gap-4 w-full">
+            <span className="text-[#262626] font-semibold text-2xl">
+              김서희님은
+            </span>
+            <span className="text-[#262626] font-semibold text-2xl">
+              어떤 스타일이신가요?
+            </span>
+            <p className="text-[#82829B] text-[0.875rem] ">
+              유앤미님과 비슷하다고 생각되는 키워드를 모두 선택해주세요!
+            </p>
+          </div>
+          <div className="flex w-[23.438rem] mt-10 mb-15">
+            <TagList
+              tagData={tagDatas}
+              className={'flex flex-wrap gap-2'}
+              onTagSelect={handleTagSelect}
+            />
+          </div>
 
-          <Button
-            label="다음"
-            // disabled={selectedTags.length === 0}
-            onClick={handleNextClick}
-            className="w-[12.875rem] h-[3.063rem] bg-[#C6BBE1] text-white rounded-lg  "
-          />
+          <p className="text-[#ADB5BD] text-[0.75rem] text-center mb-2">
+            내용은 다시 수정할 수 있어요!
+          </p>
+          <div className="flex justify-center items-center space-x-[0.813rem] ">
+            <Button
+              label="이전"
+              bgColor="bg-white"
+              textColor="text-[#CED4DA]"
+              className="w-[7.75rem] h-[3.063rem] border-2 border-[#CED4DA] rounded-lg
+          "
+              onClick={onBack}
+            />
+
+            <Button
+              label="다음"
+              disabled={selectedTag.length === 0}
+              onClick={handleNextClick}
+              className="w-[12.875rem] h-[3.063rem] bg-[#C6BBE1] text-white rounded-lg  "
+            />
+          </div>
         </div>
       </div>
     </>
