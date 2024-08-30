@@ -6,8 +6,6 @@ import Characters from '@/components/onboarding/Characters';
 import SelectedJob from '@/components/onboarding/SelectedJob';
 import StepCompleted from '@/components/onboarding/StepCompleted';
 import StudyPeriod from '@/components/onboarding/StudyPeriod';
-import StudyPeriod from '@/components/onboarding/StudyPeriod';
-import StudyPurpose from '@/components/onboarding/StudyPurpose';
 import StudyPurpose from '@/components/onboarding/StudyPurpose';
 
 type OnboardingDatas = {
