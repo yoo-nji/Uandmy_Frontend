@@ -34,6 +34,10 @@ const config: Config = {
         'onboarding-gradient':
           'linear-gradient(191deg, #E4E4FF -7.98%, #FFF 44.59%), #FFF',
       },
+      dropShadow: {
+        custom: '0 4px 4px rgba(0, 0, 0, 0.03)',
+        upside: '0 -2px 5px rgba(0, 0, 0, 0.12)', // Y: -2px, Blur: 5px, Color: rgba(0, 0, 0, 0.12)
+      },
     },
   },
   plugins: [],

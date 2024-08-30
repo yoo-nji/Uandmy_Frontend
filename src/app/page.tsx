@@ -1,10 +1,10 @@
-import TagList from '@/components/common/TagList';
+'use client';
 
 export default function Home() {
   return (
     <main>
       <div>
-        <TagList />
+        <span>hi</span>
       </div>
     </main>
   );
