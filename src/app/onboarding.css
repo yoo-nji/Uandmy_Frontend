@@ -1,9 +1,0 @@
-.onboarding-bg {
-  background: var(--linear-05, linear-gradient(191deg, #E4E4FF -7.98%, #FFF 44.59%), #FFF);
-  color: #000;
-}
-
-/* 스와이퍼 페이지네이션 */
-.custom-pagination {
-  --swiper-theme-color: #8655FF
-}
