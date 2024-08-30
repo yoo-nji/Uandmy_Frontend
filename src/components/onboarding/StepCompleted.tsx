@@ -1,6 +1,8 @@
 'use client';
 import Image from 'next/image';
+
 import Button from '@/components/common/Button';
+
 import UserProfileCard from '../common/UserProfileCard';
 
 interface StepCompleteProps {

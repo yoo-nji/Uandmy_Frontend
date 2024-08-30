@@ -1,8 +1,9 @@
 'use client';
-import { useState, KeyboardEvent } from 'react';
+import { KeyboardEvent, useState } from 'react';
+
+import Button from '../common/Button';
 import ProgressBar from '../common/ProgressBar';
 import TagList from '../common/TagList';
-import Button from '../common/Button';
 
 interface SelectedCharacterProps {
   onNext: (data: string[]) => void;

@@ -1,10 +1,11 @@
 'use client';
 import { useFunnel } from '@use-funnel/browser';
-import SelectedJob from '@/components/onboarding/SelectedJob';
-import StudyPurpose from '@/components/onboarding/StudyPurpose';
-import StudyPeriod from '@/components/onboarding/StudyPeriod';
-import StepCompleted from '@/components/onboarding/StepCompleted';
+
 import Characters from '@/components/onboarding/Characters';
+import SelectedJob from '@/components/onboarding/SelectedJob';
+import StepCompleted from '@/components/onboarding/StepCompleted';
+import StudyPeriod from '@/components/onboarding/StudyPeriod';
+import StudyPurpose from '@/components/onboarding/StudyPurpose';
 
 type OnboardingDatas = {
   selectedJob?: string;

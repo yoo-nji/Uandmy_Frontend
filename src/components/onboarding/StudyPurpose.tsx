@@ -1,8 +1,10 @@
 'use client';
+import { KeyboardEvent, useState } from 'react';
+
 import CheckBoxList from '@/components/common/CheckBoxList';
-import ProgressBar from '../common/ProgressBar';
-import { useState, KeyboardEvent } from 'react';
+
 import Button from '../common/Button';
+import ProgressBar from '../common/ProgressBar';
 
 interface StudyPurposeProps {
   onNext: (data: string[]) => void;
@@ -36,9 +38,9 @@ const StudyPurpose = ({ onNext, onBack }: StudyPurposeProps) => {
     }
   };
 
-  const handleCheckBoxChange = (value: string[]) => {
-    setSelectedPurposes(value);
-  };
+  // const handleCheckBoxChange = (value: string[]) => {
+  //   setSelectedPurposes(value);
+  // };
 
   const handleNext = () => {
     onNext(selectedPurposes);
