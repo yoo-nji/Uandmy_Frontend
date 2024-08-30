@@ -1,8 +1,10 @@
 'use client';
+import { KeyboardEvent, useState } from 'react';
+
 import CheckBoxList from '@/components/common/CheckBoxList';
-import ProgressBar from '../common/ProgressBar';
-import { useState } from 'react';
+
 import Button from '../common/Button';
+import ProgressBar from '../common/ProgressBar';
 
 interface StudyPurposeProps {
   onNext: (data: string[]) => void;
@@ -11,12 +13,35 @@ interface StudyPurposeProps {
 
 const StudyPurpose = ({ onNext, onBack }: StudyPurposeProps) => {
   const [selectedPurposes, setSelectedPurposes] = useState<string[]>([]);
+  const [newPurpose, setNewPurpose] = useState<string>('');
+  const [isInput, setIsInput] = useState<boolean>(false);
+
   const checkBoxDatas = [
     '자기 개발',
     '툴 능력 확장',
     '해당 분야의 네트워킹 확장',
     '취미',
   ];
+  const handleNewPurpose = () => {
+    if (newPurpose.trim() && !selectedPurposes.includes(newPurpose)) {
+      const updatePurposes = [...selectedPurposes, newPurpose.trim()];
+      setSelectedPurposes(updatePurposes);
+      console.log(updatePurposes);
+      setNewPurpose('');
+      setIsInput(!isInput);
+    }
+  };
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      console.log('enter');
+      handleNewPurpose();
+    }
+  };
+
+  // const handleCheckBoxChange = (value: string[]) => {
+  //   setSelectedPurposes(value);
+  // };
+
   const handleNext = () => {
     onNext(selectedPurposes);
   };
@@ -36,11 +61,40 @@ const StudyPurpose = ({ onNext, onBack }: StudyPurposeProps) => {
             <p className="text-[#82829B] text-[0.875rem]">
               중복선택도 가능해요
             </p>
-            <div className="flex space-x-4 pt-10 pb-20">
+            <div className="flex space-x-4 pt-10 pb-20 overflow-y-auto max-h-96">
               <CheckBoxList
-                checkBoxDatas={checkBoxDatas}
-                onChange={(value) => setSelectedPurposes(value as string[])}
+                checkBoxDatas={[
+                  ...checkBoxDatas,
+                  ...selectedPurposes.filter(
+                    (purpose) => !checkBoxDatas.includes(purpose),
+                  ),
+                ]}
+                onChange={(value) => {
+                  setSelectedPurposes(value as string[]);
+                  console.log('selectedvalue', value);
+                }}
               />
+            </div>
+            <div className="flex ">
+              {!isInput ? (
+                <Button
+                  label="+직접 입력하기"
+                  onClick={() => setIsInput(true)}
+                  bgColor="bg-[#ECECEC]"
+                  textColor="text-[#82829B]"
+                  className="flex items-center w-auto h-[2.5rem] cursor-pointer box-border border-2 rounded-lg pl-1 pr-2 border-greyBorder"
+                />
+              ) : (
+                <input
+                  type="text"
+                  value={newPurpose}
+                  onChange={(e) => setNewPurpose(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="직접 입력"
+                  className="border border-gray-300 rounded-md px-3 py-2 text-sm mt-2"
+                  autoFocus
+                />
+              )}
             </div>
           </div>
 

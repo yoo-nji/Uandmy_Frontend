@@ -1,8 +1,10 @@
 'use client';
-import { useEffect, useState } from 'react';
-import ProgressBar from '../common/ProgressBar';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+
 import Button from '@/components/common/Button';
+
+import ProgressBar from '../common/ProgressBar';
 import JobCard from './JobCard';
 
 interface SelectedJobProps {

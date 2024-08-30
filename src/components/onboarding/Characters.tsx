@@ -1,8 +1,9 @@
 'use client';
-import { useState } from 'react';
+import { KeyboardEvent, useState } from 'react';
+
+import Button from '../common/Button';
 import ProgressBar from '../common/ProgressBar';
 import TagList from '../common/TagList';
-import Button from '../common/Button';
 
 interface SelectedCharacterProps {
   onNext: (data: string[]) => void;
@@ -11,6 +12,8 @@ interface SelectedCharacterProps {
 
 const Character = ({ onNext, onBack }: SelectedCharacterProps) => {
   const [selectedTag, setSelectedTag] = useState<string[]>([]);
+  const [newTag, setNewTag] = useState<string>('');
+  const [isInput, setIsInput] = useState<boolean>(false);
 
   const tagDatas = [
     '주도적인',
@@ -29,6 +32,21 @@ const Character = ({ onNext, onBack }: SelectedCharacterProps) => {
   ];
   const handleTagSelect = (selectedTags: string[]) => {
     setSelectedTag(selectedTags);
+  };
+  const handleNewTag = () => {
+    if (newTag.trim() && !selectedTag.includes(newTag)) {
+      const updateTags = [...selectedTag, newTag.trim()];
+      setSelectedTag(updateTags);
+      console.log(updateTags);
+      setNewTag('');
+      setIsInput(!isInput);
+    }
+  };
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      console.log('enter');
+      handleNewTag();
+    }
   };
 
   const handleNextClick = () => {
@@ -50,12 +68,36 @@ const Character = ({ onNext, onBack }: SelectedCharacterProps) => {
               유앤미님과 비슷하다고 생각되는 키워드를 모두 선택해주세요!
             </p>
           </div>
-          <div className="flex w-[23.438rem] mt-10 mb-15">
+          <div className="flex w-[23.438rem] mt-10 mb-15 overflow-y-auto max-h-96">
             <TagList
-              tagData={tagDatas}
+              tagData={[
+                ...tagDatas,
+                ...selectedTag.filter((tag) => !tagDatas.includes(tag)),
+              ]}
               className={'flex flex-wrap gap-2'}
               onTagSelect={handleTagSelect}
             />
+          </div>
+          <div className="flex ">
+            {!isInput ? (
+              <Button
+                label="+직접 입력하기"
+                onClick={() => setIsInput(true)}
+                bgColor="bg-[#ECECEC]"
+                textColor="text-[#82829B]"
+                className="flex items-center w-auto h-[2.5rem] cursor-pointer box-border border-2 rounded-lg pl-1 pr-2 border-greyBorder"
+              />
+            ) : (
+              <input
+                type="text"
+                value={newTag}
+                onChange={(e) => setNewTag(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="직접 입력"
+                className="border border-gray-300 rounded-md px-3 py-2 text-sm mt-2"
+                autoFocus
+              />
+            )}
           </div>
 
           <p className="text-[#ADB5BD] text-[0.75rem] text-center mb-2">

@@ -20,7 +20,7 @@ const CheckBox = ({ label, checked, onChange }: CheckBoxProps) => {
           type="checkbox"
           checked={checked}
           onChange={onChange}
-          className="appearance-none w-4 h-4 rounded-lg peer -ml-2 focus:outline-none focus:ring-0 focus:border-transparent "
+          className="appearance-none w-4 h-4 rounded-lg peer -ml-2 focus:outline-none focus:ring-0 focus:border-transparent"
         />
         <CheckSvg fillColor={checked ? '#6224FD' : '#E9E9E9'} />
         <span className={`ml-2 ${checked ? 'text-primary' : 'text-black'}`}>
