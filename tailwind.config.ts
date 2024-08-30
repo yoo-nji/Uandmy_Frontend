@@ -15,6 +15,7 @@ const config: Config = {
       black: '#000000',
       grey: '#D0D6E0',
       greyBorder: '#D9D9D9',
+      swiperTheme: '#8655FF',
     },
     extend: {
       keyframes: {
@@ -30,9 +31,12 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'onboarding-gradient':
+          'linear-gradient(191deg, #E4E4FF -7.98%, #FFF 44.59%), #FFF',
       },
     },
   },
   plugins: [],
 };
+
 export default config;
