@@ -37,14 +37,12 @@ const Character = ({ onNext, onBack }: SelectedCharacterProps) => {
     if (newTag.trim() && !selectedTag.includes(newTag)) {
       const updateTags = [...selectedTag, newTag.trim()];
       setSelectedTag(updateTags);
-      console.log(updateTags);
       setNewTag('');
       setIsInput(!isInput);
     }
   };
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      console.log('enter');
       handleNewTag();
     }
   };
@@ -78,14 +76,14 @@ const Character = ({ onNext, onBack }: SelectedCharacterProps) => {
               onTagSelect={handleTagSelect}
             />
           </div>
-          <div className="flex ">
+          <div className="flex">
             {!isInput ? (
               <Button
                 label="+직접 입력하기"
                 onClick={() => setIsInput(true)}
                 bgColor="bg-[#ECECEC]"
                 textColor="text-[#82829B]"
-                className="flex items-center w-auto h-[2.5rem] cursor-pointer box-border border-2 rounded-lg pl-1 pr-2 border-greyBorder"
+                className="flex items-center w-auto h-[2.5rem] cursor-pointer box-border border-2 rounded-lg pl-1 pr-2 border-greyBorder mt-2"
               />
             ) : (
               <input

@@ -26,14 +26,12 @@ const StudyPurpose = ({ onNext, onBack }: StudyPurposeProps) => {
     if (newPurpose.trim() && !selectedPurposes.includes(newPurpose)) {
       const updatePurposes = [...selectedPurposes, newPurpose.trim()];
       setSelectedPurposes(updatePurposes);
-      console.log(updatePurposes);
       setNewPurpose('');
       setIsInput(!isInput);
     }
   };
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      console.log('enter');
       handleNewPurpose();
     }
   };
@@ -61,7 +59,7 @@ const StudyPurpose = ({ onNext, onBack }: StudyPurposeProps) => {
             <p className="text-[#82829B] text-[0.875rem]">
               중복선택도 가능해요
             </p>
-            <div className="flex space-x-4 pt-10 pb-20 overflow-y-auto max-h-96">
+            <div className="flex space-x-4 pt-10 overflow-y-auto max-h-96">
               <CheckBoxList
                 checkBoxDatas={[
                   ...checkBoxDatas,
