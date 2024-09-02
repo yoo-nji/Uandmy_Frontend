@@ -1,5 +1,5 @@
 'use client';
-import { InputHTMLAttributes, forwardRef } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   placeholder?: string;
   className?: string;

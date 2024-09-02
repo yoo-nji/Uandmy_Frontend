@@ -1,9 +1,10 @@
 'use client';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 
-import Input from '@/components/common/Input';
-import Image from 'next/image';
 import Button from '@/components/common/Button';
+import Input from '@/components/common/Input';
 
 interface FormDatas {
   email: string;
@@ -121,7 +122,9 @@ const Login = () => {
       </div>
 
       <div className="flex justify-center items-center space-x-4 mt-[4rem] text-[#E0E0E0] text-[0.75rem] ">
-        <button className="hover:text-[#82829B]">회원가입하기</button>
+        <Link href="signup" className="hover:text-[#82829B]">
+          회원가입하기
+        </Link>
         <span>|</span>
         <button className="hover:text-[#82829B]">아이디 찾기</button>
         <span>|</span>
