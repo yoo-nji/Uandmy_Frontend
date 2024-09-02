@@ -3,6 +3,7 @@
 import Avartar from '@/components/common/Avatar';
 import Button from '@/components/common/Button';
 import StudyExperienceCard from '@/components/common/StudyExperienceCard';
+import TagList from '@/components/common/TagList';
 
 const handleAccept = () => {};
 
@@ -19,15 +20,34 @@ const PublicProfile = () => {
       score: 80,
       attendance: 100,
     },
+  ];
+
+  const StudyStyleDatas = [
     {
-      title: '피그마 중급 스터디',
-      score: 70,
-      attendance: 90,
+      style: '툴 능력 향상',
+    },
+    {
+      style: '해당 분야의 네트워크 확장',
+    },
+  ];
+
+  const StudyPurposeDatas = [
+    {
+      purpose: '손이 빠름',
+    },
+    {
+      purpose: '해당 네트워크 확장',
+    },
+  ];
+
+  const StudyPeriodDatas = [
+    {
+      period: '1개월 ~ 3개월',
     },
   ];
   return (
     <>
-      <div className="flex justify-center items-center  h-screen">
+      <div className="flex justify-center items-center h-auto">
         <div className="flex items-center flex-col w-[21.438rem] space-y-5">
           <div className="text-center space-y-5 ">
             <div className="font-bold text-[1.125rem]">오픈 프로필</div>
@@ -47,20 +67,36 @@ const PublicProfile = () => {
             <hr className="w-full border-[0.188rem] border-[#E9E9E9] mt-5 mb-5" />
             <div className="flex flex-col space-y-5">
               <div>
-                <p className="text-base font-bold">스터디 목적</p>
+                <p className="text-base font-bold">스타일</p>
+                <div className="flex flex-row gap-2">
+                  {StudyStyleDatas.map((style, index) => (
+                    <TagList key={index} tagData={[style.style]} disabled />
+                  ))}
+                </div>
               </div>
               <div>
-                <p className="text-base font-bold">스타일</p>
+                <p className=" text-base font-bold">스터디 목적</p>
+                <div className="flex flex-row gap-2">
+                  {StudyPurposeDatas.map((purpose, index) => (
+                    <TagList key={index} tagData={[purpose.purpose]} disabled />
+                  ))}
+                </div>
               </div>
               <div>
                 <p className="text-base font-bold">스터디 기간</p>
+                <div className="flex flex-row gap-2">
+                  {StudyPeriodDatas.map((period, index) => (
+                    <TagList key={index} tagData={[period.period]} disabled />
+                  ))}
+                </div>
               </div>
               <div>
                 <p className="text-base font-bold">스터디 경험</p>
                 <p className="text-[#82829B]">
                   &#035; 성실함이 보이는 기록이에요
                 </p>
-                <div className="flex flex-row gap-3">
+
+                <div className="flex flex-row p-5 gap-3">
                   {StudyExperienceDatas.map((study, index) => (
                     <StudyExperienceCard
                       key={index}

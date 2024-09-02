@@ -8,6 +8,7 @@ interface TagListProps {
   tagData: string[];
   onTagSelect?: (selectedTag: string[]) => void;
   className?: string;
+  disabled?: boolean;
 }
 
 /**
@@ -21,7 +22,12 @@ interface TagListProps {
  * @returns {JSX.Element} 렌더링된 TagList 컴포넌트.
  */
 
-const TagList = ({ tagData, onTagSelect, className }: TagListProps) => {
+const TagList = ({
+  tagData,
+  onTagSelect,
+  className,
+  disabled,
+}: TagListProps) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const handleTagClick = (label: string) => {
     const updatedTags = selectedTags.includes(label)
@@ -43,6 +49,7 @@ const TagList = ({ tagData, onTagSelect, className }: TagListProps) => {
           label={tag}
           selected={selectedTags.includes(tag)}
           onClick={() => handleTagClick(tag)}
+          disabled={disabled}
         />
       ))}
     </div>
