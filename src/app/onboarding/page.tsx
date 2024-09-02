@@ -65,7 +65,6 @@ const Onboarding = () => {
         studyPeriod={({ context, history }) => (
           <StudyPeriod
             onNext={(period) => {
-              console.log('period', period);
               history.push('stepCompleted', {
                 ...context,
                 studyPeriod: period,

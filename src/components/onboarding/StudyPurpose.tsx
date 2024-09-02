@@ -69,7 +69,6 @@ const StudyPurpose = ({ onNext, onBack }: StudyPurposeProps) => {
                 ]}
                 onChange={(value) => {
                   setSelectedPurposes(value as string[]);
-                  console.log('selectedvalue', value);
                 }}
               />
             </div>
