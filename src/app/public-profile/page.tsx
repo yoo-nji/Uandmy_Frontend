@@ -19,22 +19,24 @@ const PublicProfile = () => {
       attendance: 100,
     },
   ];
-
-  const StudyStyleDatas = [
+  const StudyPurposeDatas = [
     {
-      style: '툴 능력 향상',
+      purpose: '툴 능력 향상',
     },
     {
-      style: '해당 분야의 네트워크 확장',
+      purpose: '해당 분야의 네트워킹 확장',
     },
   ];
 
-  const StudyPurposeDatas = [
+  const StudyStyleDatas = [
     {
-      purpose: '손이 빠름',
+      style: '손이 빠름',
     },
     {
-      purpose: '해당 네트워크 확장',
+      style: '열정적',
+    },
+    {
+      style: '동기부여가 필요한',
     },
   ];
 
@@ -91,14 +93,6 @@ const PublicProfile = () => {
             <hr className="w-full border-[0.188rem] border-[#E9E9E9] mt-5 mb-5" />
             <div className="flex flex-col space-y-5">
               <div>
-                <p className="text-base font-bold">스타일</p>
-                <div className="flex flex-row gap-2">
-                  {StudyStyleDatas.map((style, index) => (
-                    <TagList key={index} tagData={[style.style]} disabled />
-                  ))}
-                </div>
-              </div>
-              <div>
                 <p className=" text-base font-bold">스터디 목적</p>
                 <div className="flex flex-row gap-2">
                   {StudyPurposeDatas.map((purpose, index) => (
@@ -106,6 +100,15 @@ const PublicProfile = () => {
                   ))}
                 </div>
               </div>
+              <div>
+                <p className="text-base font-bold">스타일</p>
+                <div className="flex flex-row gap-2">
+                  {StudyStyleDatas.map((style, index) => (
+                    <TagList key={index} tagData={[style.style]} disabled />
+                  ))}
+                </div>
+              </div>
+
               <div>
                 <p className="text-base font-bold">스터디 기간</p>
                 <div className="flex flex-row gap-2">
