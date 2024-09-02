@@ -1,13 +1,14 @@
 'use client';
-import Gnb from '@/components/common/Gnb';
-import Question from '../../../public/images/Question.svg';
-import ThinkingFace from '../../../public/images/Thinking_face.svg';
-import WavingHand from '../../../public/images//Waving_hand.svg';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+
 import StudyroomCard, {
   StudyroomCardProps,
 } from '@/components/common/StudyroomCard';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+
+import WavingHand from '../../../public/images//Waving_hand.svg';
+import Question from '../../../public/images/Question.svg';
+import ThinkingFace from '../../../public/images/Thinking_face.svg';
 
 const StudyroomCardItems: StudyroomCardProps[] = [
   {
@@ -58,7 +59,7 @@ const Page = () => {
   });
 
   return (
-    <div className="w-[23.4375rem] min-h-screen bg-[#F6F6F6]">
+    <div className="min-h-screen bg-[#F6F6F6]">
       <div className="w-full px-[.9375rem] pt-11 pb-20">
         <header className="h-10 flex items-center mb-[.6875rem]">
           <div className="w-1/2">
@@ -172,7 +173,6 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <Gnb />
     </div>
   );
 };

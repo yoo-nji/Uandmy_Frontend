@@ -118,7 +118,7 @@ const Gnb = () => {
   ];
 
   return (
-    <div className="w-[23.4375rem] h-[3.875rem] grid grid-cols-4 gap-3 bg-white drop-shadow-upside fixed bottom-0">
+    <div className="w-full h-[3.875rem] grid grid-cols-4 gap-3 bg-white drop-shadow-upside fixed bottom-0">
       {menuItems.map((item, idx) => (
         <div
           className="flex flex-col justify-center items-center"
