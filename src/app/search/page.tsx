@@ -1,13 +1,15 @@
 'use client';
 import { useState } from 'react';
+
+import Dropdown from '@/components/common/Dropdown';
 import Gnb from '@/components/common/Gnb';
 import StudyroomCard, {
   StudyroomCardProps,
 } from '@/components/common/StudyroomCard';
-import MagnifyingGlass from '../../../public/images/MagnifyingGlass.svg';
-import Filter from '../../../public/images/Filter.svg';
 import ToggleSwitch from '@/components/common/ToggleSwitch';
-import Dropdown from '@/components/common/Dropdown';
+
+import Filter from '../../../public/images/Filter.svg';
+import MagnifyingGlass from '../../../public/images/MagnifyingGlass.svg';
 
 const searchResults: StudyroomCardProps[] = [
   {
@@ -115,7 +117,7 @@ const Page = () => {
   });
 
   return (
-    <div className="w-[23.4375rem] min-h-screen bg-[#F6F6F6]">
+    <div className="min-h-screen bg-[#F6F6F6]">
       <div className="w-full px-[.9375rem] pt-11 pb-6 bg-white">
         {/* Contents */}
         <header className="h-10 flex items-center mb-[.6875rem] text-lg text-[#212529] font-bold">
