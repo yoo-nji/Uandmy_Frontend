@@ -77,9 +77,9 @@ const PublicProfile = () => {
               <Avartar size={'100%'} />
             </div>
           </div>
-          <div>
+          <div className="text-center">
             <div className="font-semibold text-[1.25rem]">제이크</div>
-            <p className=" text-[0.875rem]">기획자</p>
+            <p className=" text-[0.875rem] ">기획자</p>
           </div>
 
           <div>
