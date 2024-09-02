@@ -1,17 +1,37 @@
 'use client';
 
+import Avartar from '@/components/common/Avatar';
 import Button from '@/components/common/Button';
+import StudyExperienceCard from '@/components/common/StudyExperienceCard';
 
 const handleAccept = () => {};
 
 const PublicProfile = () => {
+  const StudyExperienceDatas = [
+    {
+      title: '피그마 초급 실습 스터디',
+      score: 80,
+      attendance: 98,
+    },
+
+    {
+      title: '디자인 기획 실습 스터디',
+      score: 80,
+      attendance: 100,
+    },
+    {
+      title: '피그마 중급 스터디',
+      score: 70,
+      attendance: 90,
+    },
+  ];
   return (
     <>
       <div className="flex justify-center items-center  h-screen">
         <div className="flex items-center flex-col w-[21.438rem] space-y-5">
           <div className="text-center space-y-5 ">
-            <div className="font-bold text-[1.125rem]  ">오픈 프로필</div>
-            <img src="/images/profile.png" alt="프로필 " />
+            <div className="font-bold text-[1.125rem]">오픈 프로필</div>
+            <Avartar size={100} />
           </div>
           <div>
             <div className="font-semibold text-[1.25rem]">이름</div>
@@ -24,15 +44,33 @@ const PublicProfile = () => {
               안녕하세요. 개발 관련 글을 꾸준히 쓰고 싶은데 의지가 부족해 스터디
               버디들을 구하고 싶습니다 화이팅
             </p>
-            <hr className="w-full  border-[0.188rem] border-[#E9E9E9] mt-5 mb-5" />
+            <hr className="w-full border-[0.188rem] border-[#E9E9E9] mt-5 mb-5" />
             <div className="flex flex-col space-y-5">
-              <p className="text-base font-bold">스터디 목적</p>
-              <p className="text-base font-bold">스타일</p>
-              <p className="text-base font-bold">스터디 기간</p>
-              <p className="text-base font-bold">스터디 경험</p>
-              <p className="text-[#82829B]">
-                &#035; 성실함이 보이는 기록이에요
-              </p>
+              <div>
+                <p className="text-base font-bold">스터디 목적</p>
+              </div>
+              <div>
+                <p className="text-base font-bold">스타일</p>
+              </div>
+              <div>
+                <p className="text-base font-bold">스터디 기간</p>
+              </div>
+              <div>
+                <p className="text-base font-bold">스터디 경험</p>
+                <p className="text-[#82829B]">
+                  &#035; 성실함이 보이는 기록이에요
+                </p>
+                <div className="flex flex-row gap-3">
+                  {StudyExperienceDatas.map((study, index) => (
+                    <StudyExperienceCard
+                      key={index}
+                      title={study.title}
+                      score={study.score}
+                      attendance={study.attendance}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
