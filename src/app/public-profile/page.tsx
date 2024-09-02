@@ -4,7 +4,7 @@ import Button from '@/components/common/Button';
 
 const handleAccept = () => {};
 
-const page = () => {
+const PublicProfile = () => {
   return (
     <>
       <div className="flex justify-center items-center  h-screen">
@@ -57,4 +57,4 @@ const page = () => {
     </>
   );
 };
-export default page;
+export default PublicProfile;
