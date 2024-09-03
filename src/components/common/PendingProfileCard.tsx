@@ -24,7 +24,9 @@ const PendingProfileCard = ({
       <div className="flex flex-col gap-2">
         {ProfileDatas.map((profile, index) => (
           <div key={index}>
-            <div className="m-2">{profile.registerDate}</div>
+            <div className="mb-2 text-sm font-medium">
+              {profile.registerDate}
+            </div>
             <div className="w-full h-auto p-3 border-2 border-[#E9E9E9] rounded-lg space-y-2">
               <div className="flex flex-row gap-2">
                 <Avartar size={56} />
