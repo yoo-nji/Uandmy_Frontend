@@ -6,45 +6,40 @@ import StudyExperienceCard from '@/components/common/StudyExperienceCard';
 import TagList from '@/components/common/TagList';
 
 const PublicProfile = () => {
-  const StudyExperienceDatas = [
-    {
-      title: '피그마 초급 실습 스터디',
-      score: 80,
+  // const { id } = useParams();
+
+  const profiles = {
+    '1': {
+      name: '제이크',
+      job: '기획자',
+      totalStudy: 8,
       attendance: 98,
+      text: '안녕하세요. 개발 관련 글을 꾸준히 쓰고 싶은데 의지가 부족해 스터디 버디들을 구하고 싶습니다 화이팅',
+      StudyExperienceDatas: [
+        {
+          title: '피그마 초급 실습 스터디',
+          score: 80,
+          attendance: 98,
+        },
+        {
+          title: '디자인 기획 실습 스터디',
+          score: 80,
+          attendance: 100,
+        },
+      ],
+      StudyPurposeDatas: [
+        { purpose: '툴 능력 향상' },
+        { purpose: '해당 분야의 네트워킹 확장' },
+      ],
+      StudyStyleDatas: [
+        { style: '손이 빠름' },
+        { style: '열정적' },
+        { style: '동기부여가 필요한' },
+      ],
+      StudyPeriodDatas: [{ period: '1개월 ~ 3개월' }],
     },
-
-    {
-      title: '디자인 기획 실습 스터디',
-      score: 80,
-      attendance: 100,
-    },
-  ];
-  const StudyPurposeDatas = [
-    {
-      purpose: '툴 능력 향상',
-    },
-    {
-      purpose: '해당 분야의 네트워킹 확장',
-    },
-  ];
-
-  const StudyStyleDatas = [
-    {
-      style: '손이 빠름',
-    },
-    {
-      style: '열정적',
-    },
-    {
-      style: '동기부여가 필요한',
-    },
-  ];
-
-  const StudyPeriodDatas = [
-    {
-      period: '1개월 ~ 3개월',
-    },
-  ];
+  };
+  // const profile = profiles[id as keyof typeof profiles];
 
   const handleLeftClick = () => {};
   const handleAccept = () => {};
@@ -80,22 +75,21 @@ const PublicProfile = () => {
             </div>
           </div>
           <div className="text-center">
-            <div className="font-semibold text-[1.25rem]">제이크</div>
-            <p className=" text-[0.875rem] ">기획자</p>
+            <div className="font-semibold text-[1.25rem]">
+              {profiles[1].name}
+            </div>
+            <p className=" text-[0.875rem] ">{profiles[1].job}</p>
           </div>
 
           <div>
             <div className="font-bold">한줄 자기소개</div>
-            <p>
-              안녕하세요. 개발 관련 글을 꾸준히 쓰고 싶은데 의지가 부족해 스터디
-              버디들을 구하고 싶습니다 화이팅
-            </p>
+            <p>{profiles[1].text}</p>
             <hr className="w-full border-[0.188rem] border-[#E9E9E9] mt-5 mb-5" />
             <div className="flex flex-col space-y-5">
               <div>
                 <p className=" text-base font-bold">스터디 목적</p>
                 <div className="flex flex-row gap-2">
-                  {StudyPurposeDatas.map((purpose, index) => (
+                  {profiles[1].StudyPurposeDatas.map((purpose, index) => (
                     <TagList key={index} tagData={[purpose.purpose]} disabled />
                   ))}
                 </div>
@@ -103,7 +97,7 @@ const PublicProfile = () => {
               <div>
                 <p className="text-base font-bold">스타일</p>
                 <div className="flex flex-row gap-2">
-                  {StudyStyleDatas.map((style, index) => (
+                  {profiles[1].StudyStyleDatas.map((style, index) => (
                     <TagList key={index} tagData={[style.style]} disabled />
                   ))}
                 </div>
@@ -112,7 +106,7 @@ const PublicProfile = () => {
               <div>
                 <p className="text-base font-bold">스터디 기간</p>
                 <div className="flex flex-row gap-2">
-                  {StudyPeriodDatas.map((period, index) => (
+                  {profiles[1].StudyPeriodDatas.map((period, index) => (
                     <TagList key={index} tagData={[period.period]} disabled />
                   ))}
                 </div>
@@ -124,7 +118,7 @@ const PublicProfile = () => {
                 </p>
 
                 <div className="flex flex-row p-5 gap-3">
-                  {StudyExperienceDatas.map((study, index) => (
+                  {profiles[1].StudyExperienceDatas.map((study, index) => (
                     <StudyExperienceCard
                       key={index}
                       title={study.title}
