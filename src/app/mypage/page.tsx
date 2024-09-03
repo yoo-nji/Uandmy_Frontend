@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 import Button from '@/components/common/Button';
 import ImageUploader from '@/components/common/ImageUploader';
+import ToggleSwitch from '@/components/common/ToggleSwitch';
 
 const Page = () => {
   const router = useRouter();
@@ -89,28 +90,37 @@ const Page = () => {
             </div>
           </div>
         </div>
+        <div className="w-full h-[0.5rem] box-border bg-[#F1F2F6] mt-5 mb-5"></div>
         <div className="flex flex-col gap-3">
           <div className="font-medium">
             <div className=" text-lg mb-2">내 스터디</div>
             <div>참여 중인 스터디</div>
             <div>지난 스터디</div>
           </div>
+
+          <hr className="w-[95%] mx-auto border-t-1 border-[#EEEAFF]" />
           <div className="font-medium">
             <div className=" text-lg mb-2">관심 보인 스터디</div>
             <div>최근 방문</div>
             <div>관심 스터디</div>
           </div>
+          <div className="w-full h-[0.5rem] box-border bg-[#F1F2F6] mt-5 mb-5"></div>
           <div className="font-medium">
             <div className="text-lg mb-2">고객 센터</div>
             <div>FAQ</div>
             <div>문의하기</div>
             <div>공지사항</div>
           </div>
+          <hr className="w-[95%] mx-auto border-t-1 border-[#EEEAFF]" />
           <div className="font-medium">
             <div className=" text-lg mb-2">계정 정보</div>
             <div>회원 정보 수정</div>
             <div>비밀번호 설정</div>
-            <div>마케팅 개인정보 제3자 제공동의</div>
+            <div className="flex flex-row justify-between">
+              <div>마케팅 개인정보 제3자 제공동의</div>
+              <ToggleSwitch />
+            </div>
+
             <div>회원 탈퇴</div>
           </div>
         </div>
