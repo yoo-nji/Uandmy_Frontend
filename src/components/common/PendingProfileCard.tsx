@@ -1,9 +1,14 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+
 import Avartar from './Avatar';
 import Button from './Button';
 import TagBox from './TagBox';
 
 interface ProfileCardProps {
   ProfileDatas: {
+    id: number;
     name: string;
     job: string;
     totalStudy: number;
@@ -19,11 +24,18 @@ const PendingProfileCard = ({
   ProfileDatas,
   handleAccept,
 }: ProfileCardProps) => {
+  const router = useRouter();
+
+  const handleClick = (id: number) => {
+    //해당 공개프로필 상세 페이지로 이동
+    router.push(`/public-profile/${id}`);
+  };
+
   return (
     <>
       <div className="flex flex-col gap-2">
         {ProfileDatas.map((profile, index) => (
-          <div key={index}>
+          <div key={index} onClick={() => handleClick(profile.id)}>
             <div className="mb-2 text-sm font-medium">
               {profile.registerDate}
             </div>

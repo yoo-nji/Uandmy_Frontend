@@ -6,6 +6,7 @@ import PendingProfileCard from '@/components/common/PendingProfileCard';
 const PendingRequest = () => {
   const ProfileDatas = [
     {
+      id: 1,
       name: '제이크',
       job: '기획자',
       totalStudy: 8,
@@ -15,6 +16,7 @@ const PendingRequest = () => {
       registerDate: '2024년 06월 07일',
     },
     {
+      id: 2,
       name: '박가현',
       job: '디자이너',
       totalStudy: 1,
