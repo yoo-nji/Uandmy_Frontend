@@ -1,39 +1,41 @@
 'use client';
 import { useForm } from 'react-hook-form';
-
+import { useRouter } from 'next/navigation';
 import Input from '@/components/common/Input';
 import Image from 'next/image';
 import Button from '@/components/common/Button';
 
-interface FormDatas {
+interface SignUpDatas {
+  name: string;
   email: string;
   password: string;
-  saveId: boolean;
 }
-
-const Login = () => {
+const SignUp = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormDatas>({
+  } = useForm<SignUpDatas>({
     defaultValues: {
+      name: '',
       email: '',
       password: '',
-      saveId: false,
     },
   });
 
-  const onSubmit = (data: FormDatas) => {
+  const onSignUpSubmit = (data: SignUpDatas) => {
     console.log(data);
   };
 
-  const handleLoginClick = () => {};
+  const handleClick = (route: string) => {
+    router.push(route);
+  };
 
   return (
     <>
       <div className="flex justify-center items-center flex-col space-y-2">
-        <div className="flex items-start flex-col w-[21.438rem] ">
+        <div className="flex items-start flex-col w-[21.438rem]">
           <Image
             src="/images/Waving_hand.svg"
             alt="Waving Hand"
@@ -47,8 +49,16 @@ const Login = () => {
             유앤미에 오신 것을 환영해요!
           </div>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSignUpSubmit)}>
           <div className="flex justify-center flex-col space-y-[1rem]">
+            <Input
+              placeholder="이름"
+              type="text"
+              {...register('name', { required: '이름을 입력해주세요' })}
+            />
+            {errors.name && (
+              <span className="text-primary">{errors.name.message}</span>
+            )}
             <Input
               placeholder="이메일"
               type="email"
@@ -58,13 +68,13 @@ const Login = () => {
               <span className="text-primary">{errors.email.message}</span>
             )}
             <Input
-              placeholder="비밀번호"
+              placeholder="비밀번호(8자 이상)"
               type="password"
               {...register('password', {
                 required: '비밀번호를 입력해주세요',
                 minLength: {
                   value: 8,
-                  message: '비밀번호는 8자 이상이어야 합니다',
+                  message: '비밀번호는 최소 8자 이상이어야 합니다',
                 },
               })}
             />
@@ -72,63 +82,31 @@ const Login = () => {
               <span className="text-primary">{errors.password.message}</span>
             )}
           </div>
-          <div className="flex justify-start my-[1rem]">
-            <input
-              type="checkbox"
-              {...register('saveId')}
-              className="accent-[#9A81D9]"
-            />
-            <span className="ml-1.5 text-[#82829B] text-sm font-semibold ">
-              아이디 저장
-            </span>
-          </div>
-          <div className="flex justify-center">
+
+          <div className="flex justify-center mt-6">
             <Button
-              label="로그인"
+              label="회원가입"
               type="submit"
-              onClick={handleLoginClick}
+              onClick={() => handleClick('/signup-complete')}
               className="w-[21.438rem] h-[3.125rem] rounded-lg"
             />
           </div>
         </form>
       </div>
-
       <div className="flex justify-center items-center my-4 ">
         <hr className="w-[9.563rem]  border-t-1 border-[#9E9E9E] " />
         <span className="mx-4 text-[#9E9E9E] text-[0.75rem]">OR</span>
         <hr className="w-[9.563rem]  border-t-1 border-[#9E9E9E]" />
       </div>
-
-      <div className="flex justify-center items-center flex-row gap-[1.5rem] mb-5">
-        <Image
-          src="/images/naver-login-icon.png"
-          alt="naver"
-          width={46}
-          height={46}
-        />
-        <Image
-          src="/images/kakao-login-icon.png"
-          alt="kakao"
-          width={46}
-          height={46}
-        />
-        <Image
-          src="/images/google-login-icon.png"
-          alt="google"
-          width={46}
-          height={46}
-        />
-      </div>
-
-      <div className="flex justify-center items-center space-x-4 mt-[4rem] text-[#E0E0E0] text-[0.75rem] ">
-        <button className="hover:text-[#82829B]">회원가입하기</button>
-        <span>|</span>
-        <button className="hover:text-[#82829B]">아이디 찾기</button>
-        <span>|</span>
-        <button className="hover:text-[#82829B]">비밀번호 찾기</button>
+      <div className="flex justify-center items-center">
+        <p className="text-[1rem]">계정이 있으신가요?</p>
+        <button
+          onClick={() => handleClick('/login')}
+          className="text-[1rem] hover:text-grey">
+          로그인
+        </button>
       </div>
     </>
   );
 };
-
-export default Login;
+export default SignUp;
