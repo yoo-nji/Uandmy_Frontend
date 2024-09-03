@@ -1,7 +1,7 @@
 'use client';
 
 import Button from '@/components/common/Button';
-import ProfileCard from '@/components/common/ProfileCard';
+import PendingProfileCard from '@/components/common/PendingProfileCard';
 
 const PendingRequest = () => {
   const ProfileDatas = [
@@ -12,6 +12,7 @@ const PendingRequest = () => {
       attendance: 98,
       text: '안녕하세요. 개발 관련 글을 꾸준히 쓰고 싶은데 의지가 부족해 스터디 버디들을 구하고 싶습니다 화이팅',
       tags: ['손이 빠름', '열정적', '동기부여가 필요한'],
+      registerDate: '2024년 06월 07일',
     },
     {
       name: '박가현',
@@ -20,6 +21,7 @@ const PendingRequest = () => {
       attendance: 100,
       text: '안녕하세요! 올해 졸업하고 취업 준비 중 경력도 쌓고 싶고 비슷한 사람들과 정보도 공유하고 싶어요!',
       tags: ['취준생', '논리적인', '책임감 있는'],
+      registerDate: '2024년 06월 08일',
     },
   ];
   const handleLeftClick = () => {};
@@ -54,10 +56,12 @@ const PendingRequest = () => {
             </div>
             <hr className="w-[24.125rem] border-1 border-greyBorder mt-5 mb-5" />
           </div>
-          <ProfileCard
+
+          <PendingProfileCard
             ProfileDatas={ProfileDatas}
             handleAccept={handleAccept}
           />
+
           <div className="box-border flex flex-row gap-2 w-full ">
             <span>
               <p className="text-[#82829B]">수락가능인원</p>
