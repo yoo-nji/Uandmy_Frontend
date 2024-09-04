@@ -1,12 +1,14 @@
 'use client';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+
+import { Autoplay, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 import Button from '@/components/common/Button';
 
-export default function page() {
+const Page = () => {
   return (
     <>
       <div className="h-screen flex flex-col gap-[1.4375rem] items-center pt-[2.5rem] px-4 onboarding-bg">
@@ -101,4 +103,6 @@ export default function page() {
       </div>
     </>
   );
-}
+};
+
+export default Page;

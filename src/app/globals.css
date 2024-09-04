@@ -16,7 +16,7 @@
   }
 } */
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -25,10 +25,18 @@ body {
     )
     rgb(var(--background-start-rgb));
   height: 100vh;
-}
+} */
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .custom-pagination {
+    --swiper-theme-color: theme('colors.swiperTheme');
+  }
+
+  .onboarding-bg {
+    background: theme('backgroundImage.onboarding-gradient');
   }
 }
