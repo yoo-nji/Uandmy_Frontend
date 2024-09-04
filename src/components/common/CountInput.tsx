@@ -1,41 +1,57 @@
-import { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 interface CountInputProps {
-  maxCount?: number; // 최대 글자 수
-  placeholder?: string; // 플레이스홀더
+  maxCount?: number;
+  placeholder?: string;
   className?: string;
+  inputType?: 'input' | 'textarea';
+  rows?: number;
+  value?: string;
+  onChange?: (value: string) => void;
 }
 
 export default function CountInput({
   maxCount = 100,
   placeholder = '내용을 입력하세요',
   className = '',
+  inputType = 'input',
+  rows = 3,
+  value: externalValue,
+  onChange: externalOnChange,
 }: CountInputProps) {
-  // 글자 수 상태 관리
-  const [count, setCount] = useState<number>(0);
+  const [internalValue, setInternalValue] = useState<string>('');
+  const value = externalValue !== undefined ? externalValue : internalValue;
+  const count = value.length;
 
-  // 입력값이 변경될 때 호출되는 함수
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    setCount(inputValue.length); // 입력된 글자 수를 상태로 저장
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const newValue = e.target.value;
+    if (externalValue === undefined) {
+      setInternalValue(newValue);
+    }
+    externalOnChange?.(newValue);
+  };
+
+  const inputProps = {
+    className: 'w-full bg-transparent outline-none',
+    maxLength: maxCount,
+    placeholder: placeholder,
+    onChange: handleChange,
+    value: value,
   };
 
   return (
-    <>
-      <div
-        className={`flex justify-between px-[22px] py-[14px] items-center h-[50px] gap-3 rounded-lg text-[#82829B] text-[14px] border-[#CED4DA] border-solid border-2 placeholder-[#82829B] ${className}`}>
-        <input
-          className="w-full"
-          type="text"
-          maxLength={maxCount} // 최대 글자수 제한
-          placeholder={placeholder} // 플레이스홀더
-          onChange={handleInputChange} // 입력값이 변경될 때 호출
-        />
-        <div className="flex">
-          <span>{count}</span>/<span>{maxCount}</span>{' '}
-          {/* 현재 글자 수와 최대 글자 수 표시 */}
-        </div>
+    <div
+      className={`flex flex-col px-[22px] py-[14px] rounded-lg text-[#82829B] text-[14px] border-[#CED4DA] border-solid border-2 placeholder-[#82829B] ${className}`}>
+      {inputType === 'input' ? (
+        <input type="text" {...inputProps} />
+      ) : (
+        <textarea {...inputProps} rows={rows} />
+      )}
+      <div className="flex justify-end mt-2">
+        <span>{count}</span>/<span>{maxCount}</span>
       </div>
-    </>
+    </div>
   );
 }
