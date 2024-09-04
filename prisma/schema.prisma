@@ -9,9 +9,35 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  username  String   @unique
-  email     String   @unique
-  password  String
+  id           String         @id @default(uuid())
+  email        String         @unique
+  password     String
+  name         String
+  isOnboarding Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  auth         Authentication[]
+  onboarding   Onboarding?
+}
+
+model Authentication {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  type      String
+  token     String
   createdAt DateTime @default(now())
+}
+
+model Onboarding {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  completed Boolean  @default(false)
+  character String[]
+  job       String?
+  purpose   String?
+  period    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
