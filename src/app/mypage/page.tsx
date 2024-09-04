@@ -58,8 +58,8 @@ const Page = () => {
         <p className="font-medium text-lg">내 정보</p>
         <div className="w-full h-auto border-2 border-[#E0D8FF] bg-[#FDFBFF] rounded-lg ">
           <div className="flex flex-row justify-between">
-            <div className="flex-col items-center text-center">
-              <span className="w-[2.563rem] h-[2.563rem] items-center justify-center border border-[#E0D8FF] bg-[#FDFBFF]">
+            <div className="flex flex-col items-center text-center">
+              <span className="flex w-[2.563rem] h-[2.563rem] items-center justify-center border border-[#E0D8FF] bg-[#FDFBFF] rounded-full">
                 <img
                   src={'/images/Join.svg'}
                   alt="Join"
