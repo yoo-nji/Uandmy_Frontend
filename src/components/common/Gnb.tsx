@@ -1,24 +1,22 @@
 'use client';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const Gnb = () => {
-  const [activeMenu, setActiveMenu] = useState<string>('studyroom');
   const router = useRouter(); // useRouter 훅 사용
+  const pathname = usePathname();
+  const [activeMenu, setActiveMenu] = useState<string>(pathname);
 
   useEffect(() => {
-    if (activeMenu === 'studyroom') {
-      router.push('/studyroom');
-    }
-  }, [activeMenu, router]);
+    setActiveMenu(pathname); // 경로가 변경될 때마다 activeMenu를 업데이트
+  }, [pathname]);
 
   const handleMenuClick = (menuName: string, route: string) => {
-    setActiveMenu(menuName);
-    router.push(route); // 클릭 시 해당 경로로 라우팅
+    router.push(route);
   };
 
-  const setMenuColor = (iconName: string) => {
-    return activeMenu === iconName ? 'text-primary' : 'text-[#82829B]';
+  const setMenuColor = (nowPath: string) => {
+    return activeMenu === nowPath ? 'text-primary' : 'text-[#82829B]';
   };
 
   const menuItems = [
@@ -96,7 +94,7 @@ const Gnb = () => {
           </defs>
         </svg>
       ),
-      route: 'manage-studyroom',
+      route: '/manage-studyroom',
     },
     {
       name: 'mypage',
@@ -115,19 +113,19 @@ const Gnb = () => {
           />
         </svg>
       ),
-      route: 'mypage',
+      route: '/mypage',
     },
   ];
 
   return (
-    <div className="w-[23.4375rem] h-[3.875rem] grid grid-cols-4 gap-3 bg-white drop-shadow-upside fixed bottom-0">
+    <div className="w-full h-[3.875rem] grid grid-cols-4 gap-3 bg-white drop-shadow-upside fixed bottom-0">
       {menuItems.map((item, idx) => (
         <div
           className="flex flex-col justify-center items-center"
           onClick={() => handleMenuClick(item.name, item.route)}
           key={idx}>
-          <div className={setMenuColor(item.name)}>{item.icon}</div>
-          <p className={`text-xs ${setMenuColor(item.name)}`}>{item.label}</p>
+          <div className={setMenuColor(item.route)}>{item.icon}</div>
+          <p className={`text-xs ${setMenuColor(item.route)}`}>{item.label}</p>
         </div>
       ))}
     </div>

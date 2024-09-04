@@ -1,9 +1,10 @@
 'use client';
 import React, { useState } from 'react';
+
 import Calendar from '../../../public/images/event_available.svg';
 import View from '../../../public/images/Eye.svg';
-import TagBox from './TagBox';
 import Bookmark from './Bookmark';
+import TagBox from './TagBox';
 
 export interface StudyroomCardProps {
   position: string;
@@ -42,7 +43,7 @@ const StudyroomCard = ({
   };
 
   return (
-    <div className="w-[21.4375rem] h-[10.5625rem] px-[1rem] py-[1.125rem] rounded-lg border-[.0625rem] border-[#EAEAEA] bg-white drop-shadow-custom">
+    <div className="h-[10.5625rem] px-[1rem] py-[1.125rem] rounded-lg border-[.0625rem] border-[#EAEAEA] bg-white drop-shadow-custom">
       <div className="flex justify-between items-center mb-[.5rem]">
         <div className="text-[#555555] text-xs">{position}</div>
         <Bookmark onClick={handleBookmarkClick} filled={isBookmarked} />
