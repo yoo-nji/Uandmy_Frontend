@@ -1,7 +1,7 @@
 'use client';
 interface UserProfileCardProps {
   name: string;
-  role: string;
+  role: string | undefined;
   description: string;
   profileImage: string;
 }
