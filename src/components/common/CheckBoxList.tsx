@@ -1,35 +1,69 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
 import CheckBox from './CheckBox';
 
-const checkBoxDatas = [
-  '자기 개발',
-  '툴 능력 향상',
-  '해당 분야의 네트워킹 확장',
-  '취미',
-];
-
-const CheckBoxList = () => {
+interface CheckBoxListProps {
+  checkBoxDatas: string[];
+  selectedValue?: string | null;
+  onChange: (data: string[] | string | null) => void;
+  singleSelect?: boolean;
+}
+const CheckBoxList = ({
+  checkBoxDatas,
+  selectedValue,
+  onChange,
+  singleSelect = false,
+}: CheckBoxListProps) => {
   const [isCheckedList, setIsCheckedList] = useState<boolean[]>(
     new Array(checkBoxDatas.length).fill(false),
   );
+  useEffect(() => {
+    if (singleSelect) {
+      const updatedCheckedList = new Array(checkBoxDatas.length).fill(false);
+      if (selectedValue) {
+        const selectedIndex = checkBoxDatas.indexOf(selectedValue);
+        if (selectedIndex !== -1) {
+          updatedCheckedList[selectedIndex] = true;
+        }
+      }
+      setIsCheckedList(updatedCheckedList);
+    }
+  }, [selectedValue, singleSelect, checkBoxDatas]);
 
-  const handleCheckboxChange = (index: number) => {
-    setIsCheckedList((prevCheckedList) => {
-      const updatedCheckedList = [...prevCheckedList];
-      updatedCheckedList[index] = !updatedCheckedList[index];
-      return updatedCheckedList;
-    });
+  const handleCheckBox = (index: number) => {
+    let updatedCheckedList: boolean[];
+
+    //단일 선택 시
+    if (singleSelect) {
+      if (isCheckedList[index]) {
+        updatedCheckedList = new Array(checkBoxDatas.length).fill(false);
+        onChange(null);
+      } else {
+        updatedCheckedList = new Array(checkBoxDatas.length).fill(false);
+        updatedCheckedList[index] = true;
+        onChange(checkBoxDatas[index]);
+      }
+    } else {
+      //다중 선택 시
+      updatedCheckedList = isCheckedList.map((item, i) =>
+        i === index ? !item : item,
+      );
+      const selected = checkBoxDatas.filter((_, i) => updatedCheckedList[i]);
+      onChange(selected);
+    }
+
+    setIsCheckedList(updatedCheckedList);
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-4">
       {checkBoxDatas.map((label, index) => (
         <CheckBox
           key={index}
           label={label}
           checked={isCheckedList[index]}
-          onChange={() => handleCheckboxChange(index)}
+          onChange={() => handleCheckBox(index)}
         />
       ))}
     </div>
