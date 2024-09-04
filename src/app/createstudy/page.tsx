@@ -44,7 +44,7 @@ const CreateStudyPage = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
+    <div className="max-w-2xl mx-auto p-4 mb-20">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -63,7 +63,8 @@ const CreateStudyPage = () => {
           name="topic"
           control={control}
           rules={{ required: '주제를 입력하세요' }}
-          render={({ field }) => (
+          defaultValue=""
+          render={({ field: { ref, ...restField } }) => (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 주제
@@ -72,7 +73,8 @@ const CreateStudyPage = () => {
                 inputType="input"
                 placeholder="주제를 입력하세요"
                 maxCount={20}
-                {...field}
+                {...restField}
+                ref={ref}
               />
               {errors.topic && (
                 <p className="text-red-500 text-sm mt-1">
@@ -87,7 +89,8 @@ const CreateStudyPage = () => {
           name="goal"
           control={control}
           rules={{ required: '목표를 입력하세요' }}
-          render={({ field }) => (
+          defaultValue=""
+          render={({ field: { ref, ...restField } }) => (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 목표
@@ -96,7 +99,8 @@ const CreateStudyPage = () => {
                 inputType="input"
                 placeholder="목표를 입력하세요"
                 maxCount={20}
-                {...field}
+                {...restField}
+                ref={ref}
               />
               {errors.goal && (
                 <p className="text-red-500 text-sm mt-1">
@@ -110,7 +114,8 @@ const CreateStudyPage = () => {
         <Controller
           name="introduction"
           control={control}
-          render={({ field }) => (
+          defaultValue=""
+          render={({ field: { ref, ...restField } }) => (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 소개
@@ -120,7 +125,8 @@ const CreateStudyPage = () => {
                 placeholder="소개 내용을 입력하세요"
                 maxCount={200}
                 rows={4}
-                {...field}
+                {...restField}
+                ref={ref}
               />
             </div>
           )}
@@ -129,7 +135,8 @@ const CreateStudyPage = () => {
         <Controller
           name="methodAndCurriculum"
           control={control}
-          render={({ field }) => (
+          defaultValue=""
+          render={({ field: { ref, ...restField } }) => (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 진행방식과 커리큘럼
@@ -139,16 +146,18 @@ const CreateStudyPage = () => {
                 placeholder="스터디를 설명해주세요"
                 maxCount={500}
                 rows={6}
-                {...field}
+                {...restField}
+                ref={ref}
               />
             </div>
           )}
         />
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="flex">
           <Controller
             name="startDate"
             control={control}
+            defaultValue=""
             render={({ field }) => (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -162,6 +171,7 @@ const CreateStudyPage = () => {
           <Controller
             name="endDate"
             control={control}
+            defaultValue=""
             render={({ field }) => (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -176,6 +186,7 @@ const CreateStudyPage = () => {
         <Controller
           name="regularMeeting"
           control={control}
+          defaultValue=""
           render={({ field }) => (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -193,12 +204,13 @@ const CreateStudyPage = () => {
         <Controller
           name="studyRecruitmentNumber"
           control={control}
+          defaultValue={1}
           render={({ field }) => (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 스터디 모집 인원
               </label>
-              <Input type="number" defaultValue={1} {...field} />
+              <Input type="number" {...field} />
             </div>
           )}
         />
@@ -206,6 +218,7 @@ const CreateStudyPage = () => {
         <Controller
           name="tags"
           control={control}
+          defaultValue=""
           render={({ field }) => (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
