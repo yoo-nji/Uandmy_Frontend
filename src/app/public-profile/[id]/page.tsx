@@ -7,10 +7,37 @@ import Button from '@/components/common/Button';
 import StudyExperienceCard from '@/components/common/StudyExperienceCard';
 import TagList from '@/components/common/TagList';
 
+interface StudyExperienceDatas {
+  title: string;
+  score: number;
+  attendance: number;
+}
+interface StudyPurposeDatas {
+  purpose: string;
+}
+interface StudyStyleDatas {
+  style: string;
+}
+interface StudyPeriodDatas {
+  period: string;
+}
+
+interface ProfileProps {
+  name: string;
+  job: string;
+  totalStudy: number;
+  attendance: number;
+  text: string;
+  StudyExperienceDatas: StudyExperienceDatas[];
+  StudyPurposeDatas: StudyPurposeDatas[];
+  StudyStyleDatas: StudyStyleDatas[];
+  StudyPeriodDatas: StudyPeriodDatas[];
+}
+
 const PublicProfile = () => {
   const { id } = useParams<{ id: string }>();
 
-  const profiles: Record<string, any> = {
+  const profiles: Record<string, ProfileProps> = {
     '1': {
       name: '제이크',
       job: '기획자',
@@ -41,7 +68,6 @@ const PublicProfile = () => {
       StudyPeriodDatas: [{ period: '1개월 ~ 3개월' }],
     },
   };
-  // const profile = profiles[id as keyof typeof profiles];
 
   const handleLeftClick = () => {};
   const handleAccept = () => {};
