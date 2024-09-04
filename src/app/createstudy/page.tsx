@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Input } from '@/components/common/Input';
+import MultiSelect from '@/components/common/MultiSelect';
 
 interface FormDatas {
   jobPosition: string;
@@ -24,6 +26,18 @@ const CreateStudyPage = () => {
     formState: { errors },
   } = useForm<FormDatas>();
 
+  const [selectedJobIds, setSelectedJobIds] = useState<string[]>([]);
+  const jobItems = [
+    { id: 'dev', label: '개발자' },
+    { id: 'design', label: '디자이너' },
+    { id: 'plan', label: '기획자' },
+    { id: 'marketing', label: '마케터' },
+  ];
+
+  const handleJobsChange = (jobIds: string[]) => {
+    setSelectedJobIds(jobIds);
+  };
+
   const onSubmit = (data: FormDatas) => {
     console.log(data);
   };
@@ -36,13 +50,13 @@ const CreateStudyPage = () => {
             <label className="block text-sm font-medium text-gray-700">
               모집 직군
             </label>
-            <select
-              className="w-[25rem] h-[3rem] border-solid border-2 border-[#CED4DA] rounded-lg placeholder-[#82829B] p-[0.625rem]"
-              {...register('jobPosition')}>
-              <option value="기획자">기획자</option>
-              <option value="디자이너">디자이너</option>
-              <option value="개발자">개발자</option>
-            </select>
+            <MultiSelect
+              items={jobItems}
+              selectedIds={selectedJobIds}
+              onSelectionChange={handleJobsChange}
+              placeholder="직군 선택"
+              title="모집 직군 선택"
+            />
           </div>
 
           <div>
