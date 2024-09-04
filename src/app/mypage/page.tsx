@@ -50,6 +50,11 @@ const Page = () => {
             </div>
           </div>
         </div>
+        <div className="w-full h-auto border-2 border-[#EEEAFF] bg-[#FDFBFF] rounded-lg ">
+          <span className="text-[#7F6CAF]">피그마 팔로업 회의</span>
+          <span className="text-[#E0D8FF]">|</span>
+          <span className="text-[#645294]">오늘 오후 8:30</span>
+        </div>
         <p className="font-medium text-lg">내 정보</p>
         <div className="w-full h-auto border-2 border-[#E0D8FF] bg-[#FDFBFF] rounded-lg ">
           <div className="flex flex-row justify-between">
