@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 
 import Button from '@/components/common/Button';
-import Input from '@/components/common/Input';
+import { Input } from '@/components/common/Input';
 
 interface FormDatas {
   email: string;

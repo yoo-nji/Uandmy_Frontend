@@ -1,41 +1,70 @@
-import { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, forwardRef } from 'react';
 
 interface CountInputProps {
-  maxCount?: number; // 최대 글자 수
-  placeholder?: string; // 플레이스홀더
+  value: string;
+  onChange: (value: string) => void;
+  maxCount?: number;
+  placeholder?: string;
   className?: string;
+  inputType?: 'input' | 'textarea';
+  rows?: number;
 }
 
-export default function CountInput({
-  maxCount = 100,
-  placeholder = '내용을 입력하세요',
-  className = '',
-}: CountInputProps) {
-  // 글자 수 상태 관리
-  const [count, setCount] = useState<number>(0);
+const CountInput = forwardRef<
+  HTMLInputElement | HTMLTextAreaElement,
+  CountInputProps
+>(
+  (
+    {
+      value,
+      onChange,
+      maxCount = 100,
+      placeholder = '내용을 입력하세요',
+      className = '',
+      inputType = 'input',
+      rows = 3,
+    },
+    ref,
+  ) => {
+    const handleChange = (
+      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => {
+      onChange(e.target.value);
+    };
 
-  // 입력값이 변경될 때 호출되는 함수
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    setCount(inputValue.length); // 입력된 글자 수를 상태로 저장
-  };
+    const count = value?.length || 0;
 
-  return (
-    <>
-      <div
-        className={`flex justify-between px-[22px] py-[14px] items-center h-[50px] gap-3 rounded-lg text-[#82829B] text-[14px] border-[#CED4DA] border-solid border-2 placeholder-[#82829B] ${className}`}>
-        <input
-          className="w-full"
-          type="text"
-          maxLength={maxCount} // 최대 글자수 제한
-          placeholder={placeholder} // 플레이스홀더
-          onChange={handleInputChange} // 입력값이 변경될 때 호출
-        />
-        <div className="flex">
-          <span>{count}</span>/<span>{maxCount}</span>{' '}
-          {/* 현재 글자 수와 최대 글자 수 표시 */}
+    const commonProps = {
+      className: `w-full bg-transparent outline-none ${className}`,
+      maxLength: maxCount,
+      placeholder: placeholder,
+      onChange: handleChange,
+      value: value || '',
+    };
+
+    return (
+      <div className="flex flex-col px-[22px] py-[14px] rounded-lg text-[#82829B] text-[14px] border-[#CED4DA] border-solid border-2 placeholder-[#82829B]">
+        {inputType === 'input' ? (
+          <input
+            type="text"
+            ref={ref as React.Ref<HTMLInputElement>}
+            {...commonProps}
+          />
+        ) : (
+          <textarea
+            ref={ref as React.Ref<HTMLTextAreaElement>}
+            rows={rows}
+            {...commonProps}
+          />
+        )}
+        <div className="flex justify-end mt-2">
+          <span>{count}</span>/<span>{maxCount}</span>
         </div>
       </div>
-    </>
-  );
-}
+    );
+  },
+);
+
+CountInput.displayName = 'CountInput';
+
+export default CountInput;
