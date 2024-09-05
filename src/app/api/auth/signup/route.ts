@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   try {
     const { email, password, name } = await req.json();
 
-    // Check if user already exists
+    // 유저가 이미 존재하는지 확인
     const existingUser = await prisma.user.findUnique({
       where: { email },
     });
@@ -20,10 +20,10 @@ export async function POST(req: Request) {
       );
     }
 
-    // Hash the password
+    // 비밀번호 해싱
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create user in Supabase
+    // Supabase에 user를 생성
     const { data: supabaseUser, error: supabaseError } =
       await supabase.auth.signUp({
         email,

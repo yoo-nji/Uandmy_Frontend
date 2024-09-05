@@ -9,13 +9,13 @@ datasource db {
 }
 
 model User {
-  id           String         @id @default(uuid())
-  email        String         @unique
+  id           String           @id @default(uuid())
+  email        String           @unique
   password     String
+  createdAt    DateTime         @default(now())
+  isOnboarding Boolean          @default(true)
   name         String
-  isOnboarding Boolean        @default(true)
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
+  updatedAt    DateTime         @updatedAt
   auth         Authentication[]
   onboarding   Onboarding?
 }
@@ -23,16 +23,15 @@ model User {
 model Authentication {
   id        String   @id @default(uuid())
   userId    String
-  user      User     @relation(fields: [userId], references: [id])
   type      String
-  token     String
+  token     String   @unique
   createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model Onboarding {
   id        String   @id @default(uuid())
   userId    String   @unique
-  user      User     @relation(fields: [userId], references: [id])
   completed Boolean  @default(false)
   character String[]
   job       String?
@@ -40,4 +39,5 @@ model Onboarding {
   period    String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
 }
