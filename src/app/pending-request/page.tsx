@@ -6,7 +6,7 @@ import Button from '@/components/common/Button';
 import PendingProfileCard from '@/components/common/PendingProfileCard';
 
 interface ProfileDatas {
-  id: number;
+  id: string;
   name: string;
   job: string;
   totalStudy: number;
@@ -17,10 +17,9 @@ interface ProfileDatas {
 }
 
 const PendingRequest = () => {
-  const [profileData, setProfileData] = useState<ProfileDatas[]>([]);
-  const ProfileDatas = [
+  const [profileData, setProfileData] = useState<ProfileDatas[]>([
     {
-      id: 1,
+      id: '1',
       name: '제이크',
       job: '기획자',
       totalStudy: 8,
@@ -30,7 +29,7 @@ const PendingRequest = () => {
       registerDate: '2024년 06월 07일',
     },
     {
-      id: 2,
+      id: '2',
       name: '박가현',
       job: '디자이너',
       totalStudy: 1,
@@ -39,14 +38,13 @@ const PendingRequest = () => {
       tags: ['취준생', '논리적인', '책임감 있는'],
       registerDate: '2024년 06월 08일',
     },
-  ];
+  ]);
+
   const handleLeftClick = () => {};
-  const handleReject = (id: number) => {
+  const handleReject = (id: string) => {
     //해당 참여요청 거절버튼 클릭
     setProfileData((profiles) =>
-      profiles
-        ? profiles.filter((profile: { id: number }) => profile.id !== id)
-        : [],
+      profiles.filter((profile) => profile.id !== id),
     );
   };
   const handleAccept = () => {
@@ -87,7 +85,7 @@ const PendingRequest = () => {
           </div>
 
           <PendingProfileCard
-            ProfileDatas={ProfileDatas}
+            ProfileData={profileData}
             handleReject={handleReject}
             handleAccept={handleAccept}
           />

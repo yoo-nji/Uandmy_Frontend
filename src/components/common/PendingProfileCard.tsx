@@ -7,8 +7,8 @@ import Button from './Button';
 import TagBox from './TagBox';
 
 interface ProfileCardProps {
-  ProfileDatas: {
-    id: number;
+  ProfileData: {
+    id: string;
     name: string;
     job: string;
     totalStudy: number;
@@ -17,18 +17,18 @@ interface ProfileCardProps {
     tags: string[];
     registerDate: string;
   }[];
-  handleReject: (id: number) => void;
-  handleAccept: (id: number) => void;
+  handleReject: (id: string) => void;
+  handleAccept: (id: string) => void;
 }
 
 const PendingProfileCard = ({
-  ProfileDatas,
+  ProfileData,
   handleReject,
   handleAccept,
 }: ProfileCardProps) => {
   const router = useRouter();
 
-  const handleClick = (id: number) => {
+  const handleClick = (id: string) => {
     //해당 공개프로필 상세 페이지로 이동
     router.push(`/public-profile/${id}`);
   };
@@ -36,7 +36,7 @@ const PendingProfileCard = ({
   return (
     <>
       <div className="flex flex-col gap-2">
-        {ProfileDatas.map((profile, index) => (
+        {ProfileData.map((profile, index) => (
           <div key={index} onClick={() => handleClick(profile.id)}>
             <div className="mb-2 text-sm font-medium">
               {profile.registerDate}
