@@ -70,10 +70,13 @@ const Page = () => {
             </div>
           </div>
         </div>
-        <div className="w-full h-auto border-2 border-[#EEEAFF] bg-[#FDFBFF] rounded-lg ">
-          <span className="text-[#7F6CAF]">피그마 팔로업 회의</span>
+        <div className="flex flex-row justify-between px-5 w-full h-auto border-2 border-[#EEEAFF] bg-[#FDFBFF] rounded-md ">
+          <span className="text-[#7F6CAF] ">피그마 팔로업 회의</span>
           <span className="text-[#E0D8FF]">|</span>
-          <span className="text-[#645294]">오늘 오후 8:30</span>
+          <span className="flex flex-row">
+            <img src={'images/Alarm.svg'} alt="알람" />
+            <span className="text-[#645294]">오늘 오후 8:30</span>
+          </span>
         </div>
         <p className="font-medium text-lg">내 정보</p>
         <div className="w-full h-auto border-2 border-[#E0D8FF] bg-[#FDFBFF] rounded-lg p-3 ">
@@ -104,15 +107,44 @@ const Page = () => {
         <div className="flex flex-col gap-3">
           <div className="font-medium">
             <div className=" text-lg mb-2">내 스터디</div>
-            <div>참여 중인 스터디</div>
-            <div>지난 스터디</div>
+
+            <div className="flex justify-between">
+              <div className="flex flex-row gap-2">
+                <img src={'/images/Joining.svg'} alt={'참여 중인 스터디'} />
+                참여 중인 스터디
+              </div>
+
+              <img src={'/images/Navigate.svg'} alt={'참여 중인 스터디 이동'} />
+            </div>
+            <div className="flex justify-between">
+              <div className="flex flex-row gap-2">
+                <img src={'/images/Before.svg'} alt={'지난 스터디'} />
+                지난 스터디
+              </div>
+
+              <img src={'/images/Navigate.svg'} alt={'지난 스터디 이동'} />
+            </div>
           </div>
 
           <hr className="w-[95%] mx-auto border-t-1 border-[#EEEAFF]" />
           <div className="font-medium">
             <div className=" text-lg mb-2">관심 보인 스터디</div>
-            <div>최근 방문</div>
-            <div>관심 스터디</div>
+            <div className="flex justify-between">
+              <div className="flex flex-row gap-2">
+                <img src={'/images/Checking.svg'} alt={'최근 방문'} />
+                최근 방문
+              </div>
+
+              <img src={'/images/Navigate.svg'} alt={'최근 방문 이동'} />
+            </div>
+            <div className="flex justify-between">
+              <div className="flex flex-row gap-2">
+                <img src={'/images/Bookmark2.svg'} alt={'관심 스터디'} />
+                관심 스터디
+              </div>
+
+              <img src={'/images/Navigate.svg'} alt={'관심 스터디 이동'} />
+            </div>
           </div>
           <div className="w-full h-[0.5rem] box-border bg-[#F1F2F6] mt-5 mb-5"></div>
           <div className="font-medium">
