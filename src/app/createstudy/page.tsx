@@ -45,9 +45,9 @@ const CreateStudyPage = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4 mb-20">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <div>
+    <div className="max-w-2xl mx-auto py-4">
+      <form onSubmit={handleSubmit(onSubmit)} className=" space-y-6">
+        <div className="px-4">
           <label className="text-sm font-medium text-gray-700 mb-1">
             모집 직군
           </label>
@@ -66,7 +66,7 @@ const CreateStudyPage = () => {
           rules={{ required: '주제를 입력하세요' }}
           defaultValue=""
           render={({ field: { ref, ...restField } }) => (
-            <div>
+            <div className="px-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 주제
               </label>
@@ -92,7 +92,7 @@ const CreateStudyPage = () => {
           rules={{ required: '목표를 입력하세요' }}
           defaultValue=""
           render={({ field: { ref, ...restField } }) => (
-            <div>
+            <div className="px-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 목표
               </label>
@@ -117,7 +117,7 @@ const CreateStudyPage = () => {
           control={control}
           defaultValue=""
           render={({ field: { ref, ...restField } }) => (
-            <div>
+            <div className="px-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 소개
               </label>
@@ -139,7 +139,7 @@ const CreateStudyPage = () => {
           control={control}
           defaultValue=""
           render={({ field: { ref, ...restField } }) => (
-            <div>
+            <div className="px-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 진행방식과 커리큘럼
               </label>
@@ -156,7 +156,7 @@ const CreateStudyPage = () => {
           )}
         />
 
-        <div className="flex gap-[12px]">
+        <div className="flex gap-[12px] px-4">
           <Controller
             name="startDate"
             control={control}
@@ -176,7 +176,7 @@ const CreateStudyPage = () => {
             control={control}
             defaultValue=""
             render={({ field }) => (
-              <div className="flex flex-col flex-auto">
+              <div className="flex flex-col flex-auto ">
                 <label className="text-sm font-medium text-gray-700 mb-1">
                   종료일
                 </label>
@@ -191,7 +191,7 @@ const CreateStudyPage = () => {
           control={control}
           defaultValue=""
           render={({ field }) => (
-            <div>
+            <div className="px-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 정기적 모임
               </label>
@@ -210,7 +210,7 @@ const CreateStudyPage = () => {
           control={control}
           defaultValue={1}
           render={({ field }) => (
-            <div>
+            <div className="px-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 스터디 모집 인원
               </label>
@@ -224,7 +224,7 @@ const CreateStudyPage = () => {
           control={control}
           defaultValue=""
           render={({ field }) => (
-            <div>
+            <div className="px-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 관련 태그
               </label>
