@@ -107,7 +107,7 @@ const PendingRequest = () => {
             handleAccept={handleAccept}
           />
 
-          <div className="box-border flex flex-row gap-2 w-full ">
+          <div className="box-border flex flex-row gap-2 w-full fixed bottom-20 right-0 left-0 p-10 ">
             <span>
               <p className="text-[#82829B]">수락가능인원</p>
               <div className="flex">
