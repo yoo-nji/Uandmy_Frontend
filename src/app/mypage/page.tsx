@@ -71,9 +71,12 @@ const Page = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-row justify-between px-5 w-full h-auto border-2 border-[#EEEAFF] bg-[#FDFBFF] rounded-md ">
-            <span className="text-[#7F6CAF] ">피그마 팔로업 회의</span>
-            <span className="text-[#E0D8FF]">|</span>
+          <div className="flex flex-row justify-between p-5 w-full h-auto border-2 border-[#EEEAFF] bg-[#F9F9F9] rounded-md ">
+            <div className="flex gap-5">
+              <span className="text-[#7F6CAF] ">피그마 팔로업 회의</span>
+              <span className="text-[#E0D8FF]">|</span>
+            </div>
+
             <span className="flex flex-row">
               <img src={'images/Alarm.svg'} alt="알람" />
               <span className="text-[#645294] ml-2">오늘 오후 8:30</span>
@@ -92,7 +95,10 @@ const Page = () => {
               <div className="flex justify-between">
                 <div className="flex flex-row gap-2">
                   <img src={'/images/Joining.svg'} alt={'참여 중인 스터디'} />
-                  참여 중인 스터디<span>2</span>
+                  참여 중인 스터디
+                  <span className="flex justify-center items-center text-center  w-[1.25rem] h-[1.25rem] bg-[#EDF1FF] text-[#6224FD] rounded-full">
+                    2
+                  </span>
                 </div>
 
                 <img
