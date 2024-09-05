@@ -49,8 +49,8 @@ const MultiSelect = ({
       </div>
 
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-end z-50">
-          <div className="w-full max-w-md bg-white rounded-t-lg p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="w-[90%] max-w-md bg-white rounded-lg p-4">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-semibold">{title}</h2>
               <button onClick={toggleBottomSheet} className="text-red-500">
