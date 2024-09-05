@@ -10,6 +10,27 @@ const Page = () => {
   const router = useRouter();
   const [profileUpload, setProfileUpload] = useState<File | null>(null);
 
+  const boxDatas = [
+    {
+      img: '/images/Join.svg',
+      alt: '참여중',
+      label: '참여중',
+      count: 2,
+    },
+    {
+      img: '/images/Bookmark.svg',
+      alt: '북마크',
+      label: '북마크',
+      count: 9,
+    },
+    {
+      img: '/images/Waiting.svg',
+      alt: '대기중',
+      label: '대기중',
+      count: 13,
+    },
+  ];
+
   const handlePublicProfileClick = () => {
     router.push('/public-profile');
   };
@@ -19,7 +40,6 @@ const Page = () => {
 
   return (
     <div className="min-h-screen ">
-      {/* Gnb 라우팅 테스트 위해 임의로 넣어놓은 컨텐츠입니다. */}
       <div className="w-full px-[.9375rem] pt-11 pb-20">
         <header className="h-10 flex items-center mb-[.6875rem]">
           <p className="text-lg text-[#212529] font-bold">마이페이지</p>
@@ -56,43 +76,28 @@ const Page = () => {
           <span className="text-[#645294]">오늘 오후 8:30</span>
         </div>
         <p className="font-medium text-lg">내 정보</p>
-        <div className="w-full h-auto border-2 border-[#E0D8FF] bg-[#FDFBFF] rounded-lg ">
-          <div className="flex flex-row justify-between">
-            <div className="flex flex-col items-center text-center">
-              <span className="flex w-[2.563rem] h-[2.563rem] items-center justify-center border border-[#E0D8FF] bg-[#FDFBFF] rounded-full">
-                <img
-                  src={'/images/Join.svg'}
-                  alt="Join"
-                  className="w-[1rem] h-[1rem]"
-                />
-              </span>
-              <span>참여중</span>
-              <p>2</p>
-            </div>
-
-            <div className="flex-col">
-              <span className="w-[2.563rem] h-[2.563rem] items-center justify-center border border-[#E0D8FF] bg-[#FDFBFF] rounded-full">
-                <img
-                  src={'/images/Join.svg'}
-                  alt="Join"
-                  className="w-[1rem] h-[1rem]"
-                />
-              </span>
-              <span>북마크</span>
-              <p>9</p>
-            </div>
-
-            <div className="flex-col">
-              <span className="w-[2.563rem] h-[2.563rem] items-center justify-center border border-[#E0D8FF] bg-[#FDFBFF] rounded-full">
-                <img
-                  src={'/images/Join.svg'}
-                  alt="Join"
-                  className="w-[1rem] h-[1rem]"
-                />
-              </span>
-              <span>대기중</span>
-              <p>13</p>
-            </div>
+        <div className="w-full h-auto border-2 border-[#E0D8FF] bg-[#FDFBFF] rounded-lg p-3 ">
+          <div className="flex flex-row items-center justify-between mx-3">
+            {boxDatas.map((data, index) => (
+              <div key={index} className="flex items-center  ">
+                <div className="flex flex-col items-center text-center ">
+                  <span className="flex w-[2.563rem] h-[2.563rem] items-center justify-center border border-[#E0D8FF] bg-[#FDFBFF] rounded-full">
+                    <img
+                      src={data.img}
+                      alt={data.alt}
+                      className="w-[1rem] h-[1rem]"
+                    />
+                  </span>
+                  <span>{data.label}</span>
+                  <p>{data.count}</p>
+                </div>
+                <div>
+                  {index < boxDatas.length - 1 && (
+                    <span className="ml-12 text-[#EEEAFF]">|</span>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
         <div className="w-full h-[0.5rem] box-border bg-[#F1F2F6] mt-5 mb-5"></div>
