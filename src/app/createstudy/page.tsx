@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
+import Button from '@/components/common/Button';
 import CountInput from '@/components/common/CountInput';
 import { Input } from '@/components/common/Input';
 import MultiSelect from '@/components/common/MultiSelect';
@@ -47,7 +48,7 @@ const CreateStudyPage = () => {
     <div className="max-w-2xl mx-auto p-4 mb-20">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="text-sm font-medium text-gray-700 mb-1">
             모집 직군
           </label>
           <MultiSelect
@@ -122,6 +123,7 @@ const CreateStudyPage = () => {
               </label>
               <CountInput
                 inputType="textarea"
+                className="resize-none"
                 placeholder="소개 내용을 입력하세요"
                 maxCount={200}
                 rows={4}
@@ -143,6 +145,7 @@ const CreateStudyPage = () => {
               </label>
               <CountInput
                 inputType="textarea"
+                className="resize-none"
                 placeholder="스터디를 설명해주세요"
                 maxCount={500}
                 rows={6}
@@ -153,17 +156,17 @@ const CreateStudyPage = () => {
           )}
         />
 
-        <div className="flex">
+        <div className="flex gap-[12px]">
           <Controller
             name="startDate"
             control={control}
             defaultValue=""
             render={({ field }) => (
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+              <div className="flex flex-col flex-auto">
+                <label className="text-sm font-medium text-gray-700 mb-1">
                   시작일
                 </label>
-                <Input type="date" {...field} />
+                <Input className="w-full" type="date" {...field} />
               </div>
             )}
           />
@@ -173,11 +176,11 @@ const CreateStudyPage = () => {
             control={control}
             defaultValue=""
             render={({ field }) => (
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+              <div className="flex flex-col flex-auto">
+                <label className="text-sm font-medium text-gray-700 mb-1">
                   종료일
                 </label>
-                <Input type="date" {...field} />
+                <Input className="w-full" type="date" {...field} />
               </div>
             )}
           />
@@ -193,6 +196,7 @@ const CreateStudyPage = () => {
                 정기적 모임
               </label>
               <Input
+                className="w-full"
                 type="text"
                 placeholder="예: 매주 수요일 20시"
                 {...field}
@@ -210,7 +214,7 @@ const CreateStudyPage = () => {
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 스터디 모집 인원
               </label>
-              <Input type="number" {...field} />
+              <Input className="w-full" type="number" {...field} />
             </div>
           )}
         />
@@ -224,22 +228,30 @@ const CreateStudyPage = () => {
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 관련 태그
               </label>
-              <Input type="text" placeholder="태그를 입력하세요" {...field} />
+              <Input
+                className="w-full"
+                type="text"
+                placeholder="태그를 입력하세요"
+                {...field}
+              />
             </div>
           )}
         />
+        <div className="flex gap-[13px] sticky bottom-[62px] left-1/2 w-full max-w-2xl bg-white/10 backdrop-blur-sm p-4 border-t border-[#CCCEF0]">
+          <Button
+            label="이전"
+            bgColor="bg-white"
+            textColor="text-[#CED4DA]"
+            className="w-1/3 h-[3.063rem] border-2
+          "
+            onClick={() => console.log('이전 버튼 클릭됨')}
+          />
 
-        <div className="flex justify-between">
-          <button
-            type="button"
-            className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-            이전
-          </button>
-          <button
-            type="submit"
-            className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-            내용작성 완료
-          </button>
+          <Button
+            label="작성완료"
+            onClick={() => console.log('다음 버튼 클릭됨')}
+            className="w-2/3 h-[3.063rem]"
+          />
         </div>
       </form>
     </div>
