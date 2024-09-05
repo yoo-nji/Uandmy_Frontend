@@ -1,9 +1,23 @@
 'use client';
 
+import { useState } from 'react';
+
 import Button from '@/components/common/Button';
 import PendingProfileCard from '@/components/common/PendingProfileCard';
 
+interface ProfileDatas {
+  id: number;
+  name: string;
+  job: string;
+  totalStudy: number;
+  attendance: number;
+  text: string;
+  tags: string[];
+  registerDate: string;
+}
+
 const PendingRequest = () => {
+  const [profileData, setProfileData] = useState<ProfileDatas[]>([]);
   const ProfileDatas = [
     {
       id: 1,
@@ -27,7 +41,20 @@ const PendingRequest = () => {
     },
   ];
   const handleLeftClick = () => {};
-  const handleAccept = () => {};
+  const handleReject = (id: number) => {
+    //해당 참여요청 거절버튼 클릭
+    setProfileData((profiles) =>
+      profiles
+        ? profiles.filter((profile: { id: number }) => profile.id !== id)
+        : [],
+    );
+  };
+  const handleAccept = () => {
+    //해당 참여요청  수락버튼 클릭
+  };
+  const handleTotalAccept = () => {
+    //전체 참여요청 수락버튼 클릭
+  };
 
   return (
     <>
@@ -61,6 +88,7 @@ const PendingRequest = () => {
 
           <PendingProfileCard
             ProfileDatas={ProfileDatas}
+            handleReject={handleReject}
             handleAccept={handleAccept}
           />
 
@@ -75,7 +103,7 @@ const PendingRequest = () => {
 
             <Button
               label="전체 수락하기"
-              onClick={handleAccept}
+              onClick={handleTotalAccept}
               bgColor="bg-[#804CFF]"
               className="w-[15rem] h-[3.063rem]"
             />

@@ -17,11 +17,13 @@ interface ProfileCardProps {
     tags: string[];
     registerDate: string;
   }[];
-  handleAccept: () => void;
+  handleReject: (id: number) => void;
+  handleAccept: (id: number) => void;
 }
 
 const PendingProfileCard = ({
   ProfileDatas,
+  handleReject,
   handleAccept,
 }: ProfileCardProps) => {
   const router = useRouter();
@@ -61,7 +63,10 @@ const PendingProfileCard = ({
                 <div className="flex gap-1">
                   <Button
                     label={'거절'}
-                    onClick={handleAccept}
+                    onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                      e.stopPropagation(); //프로필 상세 페이지로 이동 금지
+                      handleReject(profile.id);
+                    }}
                     bgColor="bg-[#F1F1F1]"
                     textColor="text-black"
                     rounded="rounded-full"
@@ -69,7 +74,7 @@ const PendingProfileCard = ({
                   />
                   <Button
                     label={'수락'}
-                    onClick={handleAccept}
+                    onClick={() => handleAccept(profile.id)}
                     rounded="rounded-full"
                     className="w-[3.5rem] h-[2.063rem] text-xs"
                   />
