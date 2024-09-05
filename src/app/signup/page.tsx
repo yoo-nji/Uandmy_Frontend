@@ -1,9 +1,11 @@
 'use client';
-import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
-import Input from '@/components/common/Input';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useForm } from 'react-hook-form';
+
 import Button from '@/components/common/Button';
+import Input from '@/components/common/Input';
 
 interface SignUpDatas {
   name: string;
@@ -35,7 +37,7 @@ const SignUp = () => {
   return (
     <>
       <div className="flex justify-center items-center flex-col space-y-2">
-        <div className="flex items-start flex-col w-[21.438rem]">
+        <div className="flex items-start flex-col">
           <Image
             src="/images/Waving_hand.svg"
             alt="Waving Hand"
@@ -100,11 +102,9 @@ const SignUp = () => {
       </div>
       <div className="flex justify-center items-center">
         <p className="text-[1rem]">계정이 있으신가요?</p>
-        <button
-          onClick={() => handleClick('/login')}
-          className="text-[1rem] hover:text-grey">
+        <Link href="/login" className="text-[1rem] hover:text-grey">
           로그인
-        </button>
+        </Link>
       </div>
     </>
   );

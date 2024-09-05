@@ -84,7 +84,7 @@ const PendingProfileCard = ({
               <p>{profile.text}</p>
               <div className="flex flex-row gap-2">
                 {profile.tags.map((tag, index) => (
-                  <TagBox key={index} label={tag} />
+                  <TagBox key={index}>{tag}</TagBox>
                 ))}
               </div>
             </div>
