@@ -17,6 +17,7 @@ interface ProfileDatas {
 }
 
 const PendingRequest = () => {
+  //대기중인 프로필
   const [profileData, setProfileData] = useState<ProfileDatas[]>([
     {
       id: '1',
@@ -40,6 +41,8 @@ const PendingRequest = () => {
     },
   ]);
 
+  const [acceptedCount, setAcceptedCount] = useState(0);
+
   const handleLeftClick = () => {};
   const handleReject = (id: string) => {
     //해당 참여요청 거절버튼 클릭
@@ -47,11 +50,25 @@ const PendingRequest = () => {
       profiles.filter((profile) => profile.id !== id),
     );
   };
-  const handleAccept = () => {
+  const handleAccept = (id: string) => {
     //해당 참여요청  수락버튼 클릭
+    setAcceptedCount((count) => count + 1);
+    //프로필 배열에서 제거
+    setProfileData((profiles) =>
+      profiles.filter((profile) => profile.id !== id),
+    );
+    //서버로 수락된 프로필 전달
   };
   const handleTotalAccept = () => {
     //전체 참여요청 수락버튼 클릭
+    const totalProfile = [...profileData];
+    if (totalProfile.length === 0) return;
+
+    setAcceptedCount((count) => count + totalProfile.length);
+
+    //서버로 수락된 프로필 전달 로직 필요
+
+    setProfileData([]);
   };
 
   return (
@@ -94,7 +111,7 @@ const PendingRequest = () => {
             <span>
               <p className="text-[#82829B]">수락가능인원</p>
               <div className="flex">
-                <p className="text-primary">2명</p>
+                <p className="text-primary">{acceptedCount}명</p>
                 <p>/ 4명</p>
               </div>
             </span>

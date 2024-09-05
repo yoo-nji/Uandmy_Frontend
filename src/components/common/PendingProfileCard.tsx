@@ -74,7 +74,10 @@ const PendingProfileCard = ({
                   />
                   <Button
                     label={'수락'}
-                    onClick={() => handleAccept(profile.id)}
+                    onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                      e.stopPropagation(); //프로필 상세 페이지로 이동 금지
+                      handleAccept(profile.id);
+                    }}
                     rounded="rounded-full"
                     className="w-[3.5rem] h-[2.063rem] text-xs"
                   />
