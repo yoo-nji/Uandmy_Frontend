@@ -37,7 +37,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Create user in Prisma
     const user = await prisma.user.create({
       data: {
         email,
@@ -55,7 +54,6 @@ export async function POST(req: Request) {
       },
     });
 
-    // Create an authentication record
     await prisma.authentication.create({
       data: {
         userId: user.id,
@@ -64,7 +62,6 @@ export async function POST(req: Request) {
       },
     });
 
-    // Prepare the response
     const responseData = {
       user: {
         id: user.id,

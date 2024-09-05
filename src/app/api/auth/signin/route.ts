@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   try {
     const { email, password } = await req.json();
 
-    // Find user by email
+    // 이메일로 유저 찾기
     const user = await prisma.user.findUnique({
       where: { email },
       include: { onboarding: true },
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // Compare passwords
+    // 비밀번호 비교
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // Create a session using Supabase
+    // subabase에 로그인
     const { data, error } = await supabase.auth.signInWithPassword({
       email: user.email,
       password: password,
@@ -41,7 +41,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
-    // Create an authentication record
     await prisma.authentication.create({
       data: {
         userId: user.id,
@@ -50,7 +49,6 @@ export async function POST(req: Request) {
       },
     });
 
-    // Prepare the response
     const responseData = {
       user: {
         id: user.id,
