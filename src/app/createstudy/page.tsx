@@ -46,7 +46,7 @@ const CreateStudyPage = () => {
 
   return (
     <div className="max-w-2xl mx-auto py-4">
-      <form onSubmit={handleSubmit(onSubmit)} className=" space-y-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="px-4">
           <label className="text-sm font-medium text-gray-700 mb-1">
             모집 직군
@@ -156,7 +156,7 @@ const CreateStudyPage = () => {
           )}
         />
 
-        <div className="flex gap-[12px] px-4">
+        <div className="flex gap-3 px-4">
           <Controller
             name="startDate"
             control={control}
@@ -176,7 +176,7 @@ const CreateStudyPage = () => {
             control={control}
             defaultValue=""
             render={({ field }) => (
-              <div className="flex flex-col flex-auto ">
+              <div className="flex flex-col flex-auto">
                 <label className="text-sm font-medium text-gray-700 mb-1">
                   종료일
                 </label>
@@ -237,20 +237,19 @@ const CreateStudyPage = () => {
             </div>
           )}
         />
-        <div className="flex gap-[13px] sticky bottom-[62px] left-1/2 w-full max-w-2xl bg-white/10 backdrop-blur-sm p-4 border-t border-[#CCCEF0]">
+        <div className="flex gap-3 sticky bottom-[62px] left-1/2 w-full max-w-2xl bg-white/10 backdrop-blur-sm p-4 border-t border-[#CCCEF0]">
           <Button
             label="이전"
             bgColor="bg-white"
             textColor="text-[#CED4DA]"
-            className="w-1/3 h-[3.063rem] border-2
-          "
+            className="w-1/3 h-12 border-2"
             onClick={() => console.log('이전 버튼 클릭됨')}
           />
 
           <Button
             label="작성완료"
             onClick={() => console.log('다음 버튼 클릭됨')}
-            className="w-2/3 h-[3.063rem]"
+            className="w-2/3 h-12"
           />
         </div>
       </form>
