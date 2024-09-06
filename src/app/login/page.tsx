@@ -1,18 +1,9 @@
 'use client';
-<<<<<<< HEAD
 
-import { useForm } from 'react-hook-form';
-
-import Input from '@/components/common/Input';
-import Image from 'next/image';
-
-=======
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { useForm } from 'react-hook-form';
 
->>>>>>> 7b75d1ccc30da3fd1d423ba0455bb4ba81f51d27
 import Button from '@/components/common/Button';
 import { Input } from '@/components/common/Input';
 
