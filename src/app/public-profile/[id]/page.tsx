@@ -3,9 +3,9 @@
 import { useParams } from 'next/navigation';
 
 import Avartar from '@/components/common/Avatar';
-import Button from '@/components/common/Button';
 import StudyExperienceCard from '@/components/common/StudyExperienceCard';
 import TagList from '@/components/common/TagList';
+import BottomButton from '@/components/common/BottomButton';
 
 interface StudyExperienceDatas {
   title: string;
@@ -73,7 +73,7 @@ const PublicProfile = () => {
   const handleAccept = () => {};
   return (
     <>
-      <div className="flex justify-center items-center h-auto ">
+      <div className="flex justify-center min-h-screen pb-32 ">
         <div className="flex items-center flex-col w-[21.438rem] space-y-5">
           <div className="relative text-center space-y-5 ">
             <div className="sticky top-0 flex items-center justify-center">
@@ -159,21 +159,8 @@ const PublicProfile = () => {
             </div>
           </div>
 
-          <div className="box-border flex flex-row gap-2 w-full ">
-            <span>
-              <p className="text-[#82829B]">수락가능인원</p>
-              <div className="flex">
-                <p className="text-primary">2명</p>
-                <p>/ 4명</p>
-              </div>
-            </span>
-
-            <Button
-              label="수락하기"
-              onClick={handleAccept}
-              bgColor="bg-[#804CFF]"
-              className="w-[15rem] h-[3.063rem]"
-            />
+          <div className="flxed bottom-20 left-0 right-0 ">
+            <BottomButton label="수락하기" onClick={handleAccept} />
           </div>
         </div>
       </div>

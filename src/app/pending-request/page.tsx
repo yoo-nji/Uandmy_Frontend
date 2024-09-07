@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import Button from '@/components/common/Button';
 import PendingProfileCard from '@/components/common/PendingProfileCard';
 import BottomButton from '@/components/common/BottomButton';
 
@@ -43,6 +42,7 @@ const PendingRequest = () => {
   ]);
 
   const [acceptedCount, setAcceptedCount] = useState(0);
+  const [totalCount, setTotalCount] = useState(4);
 
   const handleLeftClick = () => {};
   const handleReject = (id: string) => {
@@ -50,6 +50,9 @@ const PendingRequest = () => {
     setProfileData((profiles) =>
       profiles.filter((profile) => profile.id !== id),
     );
+  };
+  const handleTotalCount = () => {
+    setTotalCount(totalCount);
   };
   const handleAccept = (id: string) => {
     //해당 참여요청  수락버튼 클릭
@@ -107,10 +110,12 @@ const PendingRequest = () => {
             handleReject={handleReject}
             handleAccept={handleAccept}
           />
-          <div>
+          <div className="flxed bottom-0 w-full ">
             <BottomButton
+              label="전체 수락하기"
               acceptedCount={acceptedCount}
-              handleTotalAccept={handleTotalAccept}
+              totalCount={totalCount}
+              onClick={handleTotalAccept}
             />
           </div>
         </div>

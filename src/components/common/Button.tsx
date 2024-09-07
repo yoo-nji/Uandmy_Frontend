@@ -2,7 +2,7 @@
 
 interface ButtonProps {
   label: string;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   bgColor?: string;
   textColor?: string;
   padding?: string; // 여백
