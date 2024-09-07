@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import PendingProfileCard from '@/components/common/PendingProfileCard';
 import BottomButton from '@/components/common/BottomButton';
+import { useRouter } from 'next/navigation';
 
 interface ProfileDatas {
   id: string;
@@ -17,6 +18,7 @@ interface ProfileDatas {
 }
 
 const PendingRequest = () => {
+  const router = useRouter();
   //대기중인 프로필
   const [profileData, setProfileData] = useState<ProfileDatas[]>([
     {
@@ -44,7 +46,9 @@ const PendingRequest = () => {
   const [acceptedCount, setAcceptedCount] = useState(0);
   const [totalCount, setTotalCount] = useState(4);
 
-  const handleLeftClick = () => {};
+  const handleLeftClick = () => {
+    router.back();
+  };
   const handleReject = (id: string) => {
     //해당 참여요청 거절버튼 클릭
     setProfileData((profiles) =>
@@ -110,7 +114,7 @@ const PendingRequest = () => {
             handleReject={handleReject}
             handleAccept={handleAccept}
           />
-          <div className="flxed bottom-0 w-full ">
+          <div className="w-full right-0 left-0">
             <BottomButton
               label="전체 수락하기"
               acceptedCount={acceptedCount}

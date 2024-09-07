@@ -1,11 +1,12 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 import Avartar from '@/components/common/Avatar';
 import StudyExperienceCard from '@/components/common/StudyExperienceCard';
 import TagList from '@/components/common/TagList';
 import BottomButton from '@/components/common/BottomButton';
+import { useState } from 'react';
 
 interface StudyExperienceDatas {
   title: string;
@@ -36,6 +37,9 @@ interface ProfileProps {
 
 const PublicProfile = () => {
   const { id } = useParams<{ id: string }>();
+  const router = useRouter();
+  const [acceptedCount, setAcceptedCount] = useState(0);
+  const [totalCount, setTotalCount] = useState(4);
 
   const profiles: Record<string, ProfileProps> = {
     '1': {
@@ -69,8 +73,12 @@ const PublicProfile = () => {
     },
   };
 
-  const handleLeftClick = () => {};
-  const handleAccept = () => {};
+  const handleLeftClick = () => {
+    router.back();
+  };
+  const handleAccept = () => {
+    setAcceptedCount(acceptedCount + 1);
+  };
   return (
     <>
       <div className="flex justify-center min-h-screen pb-32 ">
@@ -158,9 +166,13 @@ const PublicProfile = () => {
               </div>
             </div>
           </div>
-
           <div className="flxed bottom-20 left-0 right-0 ">
-            <BottomButton label="수락하기" onClick={handleAccept} />
+            <BottomButton
+              label="수락하기"
+              acceptedCount={acceptedCount}
+              totalCount={totalCount}
+              onClick={handleAccept}
+            />
           </div>
         </div>
       </div>

@@ -74,7 +74,7 @@ const PostDetailPage = () => {
         <p className="text-gray-600">2024.06.19 (토) - 07.19(토)</p>
         <p className="text-gray-600">매주 토요일 오후 1시 - 3시</p>
       </div>
-      <div className="flxed bottom-0 w-full ">
+      <div className="flex flxed bottom-0 w-full justify-center items-center ">
         <BottomButton
           label="대기 중인 요청 확인하기"
           acceptedCount={acceptedCount}
