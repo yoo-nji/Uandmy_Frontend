@@ -6,6 +6,7 @@ import Button from '@/components/common/Button';
 import ImageUploader from '@/components/common/ImageUploader';
 import ToggleSwitch from '@/components/common/ToggleSwitch';
 import UserStatusSummary from '@/components/common/UserStatusSummary';
+import CommonHeader from '@/components/common/CommonHeader';
 
 const Page = () => {
   const router = useRouter();
@@ -42,9 +43,7 @@ const Page = () => {
   return (
     <div className="min-h-screen ">
       <div className="w-full px-[.9375rem] pt-11 pb-20">
-        <header className="h-10 flex items-center mb-[.6875rem]">
-          <p className="text-lg text-[#212529] font-bold">마이페이지</p>
-        </header>
+        <CommonHeader title="마이페이지" />
         <div className="flex flex-col gap-5">
           <div className="flex flex-row gap-5">
             <button>

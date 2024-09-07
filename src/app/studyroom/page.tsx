@@ -9,6 +9,7 @@ import StudyroomCard, {
 import WavingHand from '../../../public/images//Waving_hand.svg';
 import Question from '../../../public/images/Question.svg';
 import ThinkingFace from '../../../public/images/Thinking_face.svg';
+import CommonHeader from '@/components/common/CommonHeader';
 
 const StudyroomCardItems: StudyroomCardProps[] = [
   {
@@ -60,16 +61,11 @@ const Page = () => {
 
   return (
     <div className="min-h-screen bg-[#F6F6F6] w-full px-[.9375rem] pt-11 pb-20">
-      <header className="h-10 flex items-center mb-[.6875rem]">
-        <div className="w-1/2">
-          <p className="text-lg text-[#212529] font-bold">스터디룸</p>
-        </div>
-        <div className="w-1/2 flex justify-end">
-          {/* TODO) 참여 스터디룸 존재 여부에 따라 아이콘 조건부 렌더링 구현 (없으면 ?, 있으면 +) */}
-          <Question />
-        </div>
-      </header>
-
+      <div className="flex flex-row justify-between">
+        <CommonHeader title="스터디룸" />
+        {/* TODO) 참여 스터디룸 존재 여부에 따라 아이콘 조건부 렌더링 구현 (없으면 ?, 있으면 +) */}
+        <img src="/images/Question.svg" alt="question" />
+      </div>
       {/* TODO) 참여 스터디룸 존재시 아래 요소 전체 렌더링 X */}
       <div>
         <p className="text-lg text-[#212529] font-bold mb-2">
