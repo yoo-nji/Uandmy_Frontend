@@ -9,6 +9,8 @@ interface ConfirmModalProps {
   onReject: () => void;
   onCancel: () => void;
   message: string;
+  confirmLabel?: string;
+  rejectLabel?: string;
 }
 
 const ConfirmModal = ({
@@ -17,8 +19,26 @@ const ConfirmModal = ({
   onReject,
   onCancel = () => {},
   message = '정말 수락하시겠습니까?',
+  confirmLabel = '예',
+  rejectLabel = '아니오',
 }: ConfirmModalProps) => {
   if (!isOpen) return null;
+
+  const handleConfirmClick = () => {
+    if (confirmLabel === '예') {
+      onConfirm();
+    } else {
+      onReject();
+    }
+  };
+
+  const handleRejectClick = () => {
+    if (confirmLabel === '예') {
+      onReject();
+    } else {
+      onConfirm();
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -30,16 +50,16 @@ const ConfirmModal = ({
 
         <div className="flex justify-center w-full gap-6">
           <Button
-            label={'거절'}
-            onClick={onReject}
+            label={confirmLabel}
+            onClick={handleConfirmClick}
             bgColor="bg-[#F1F1F1]"
             textColor="text-black"
             rounded="rounded-full"
             className="w-[4.5rem] h-[2.063rem] text-xs "
           />
           <Button
-            label={'수락'}
-            onClick={onConfirm}
+            label={'아니오'}
+            onClick={handleRejectClick}
             rounded="rounded-full"
             className="w-[4.5rem] h-[2.063rem] text-xs"
           />

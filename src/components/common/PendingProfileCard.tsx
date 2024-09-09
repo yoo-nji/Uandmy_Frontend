@@ -50,17 +50,14 @@ const PendingProfileCard = ({
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setSelectedProfileId(null);
+    setModalAction(null);
   };
 
   const handleModalConfirm = () => {
     if (selectedProfileId && modalAction === 'accept') {
       handleAccept(selectedProfileId);
-    }
-    closeModal();
-  };
-
-  const handleModalReject = () => {
-    if (selectedProfileId && modalAction === 'reject') {
+    } else if (selectedProfileId && modalAction === 'reject') {
       handleReject(selectedProfileId);
     }
     closeModal();
@@ -138,13 +135,15 @@ const PendingProfileCard = ({
       <ConfirmModal
         isOpen={isModalOpen}
         onConfirm={handleModalConfirm}
-        onReject={handleModalReject}
+        onReject={closeModal}
         onCancel={closeModal}
         message={
           modalAction === 'reject'
             ? '정말 거절하시겠습니까?'
             : '정말 수락하시겠습니까?'
         }
+        confirmLabel="예"
+        rejectLabel="아니오"
       />
     </>
   );
