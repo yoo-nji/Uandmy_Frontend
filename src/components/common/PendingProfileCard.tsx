@@ -29,7 +29,7 @@ const PendingProfileCard = ({
   const router = useRouter();
 
   const handleClick = (id: string) => {
-    //해당 공개프로필 상세 페이지로 이동
+    // 해당 공개프로필 상세 페이지로 이동
     router.push(`/public-profile/${id}`);
   };
 
@@ -41,46 +41,53 @@ const PendingProfileCard = ({
             <div className="mb-2 text-sm font-medium">
               {profile.registerDate}
             </div>
-            <div className="w-full h-auto p-3 border-2 border-[#E9E9E9] rounded-lg space-y-2">
+            <div className="w-full h-auto p-3 border-2 border-[#E9E9E9] bg-white rounded-lg space-y-2">
               <div className="flex flex-row gap-2">
                 <Avartar size={56} />
-                <div>
-                  <p className="font-semibold text-base">{profile.name}</p>
-                  <p className="text-[0.813rem] text-[#65657E]">
-                    {profile.job}
-                  </p>
-                  <div className="flex flex-row gap-1 text-[0.688rem] text-[#767688]">
-                    <p className="">스터디 </p>
-                    <p className="text-[#7876E3]">{profile.totalStudy}</p>
-                    <p className="text-[#7876E3]">회</p>
-                    <p>|</p>
-                    <p>출석률</p>
-                    <p className="text-[#7876E3]">{profile.attendance}</p>
-                    <p className="text-[#7876E3]">%</p>
-                  </div>
-                </div>
+                <div className="flex justify-between w-full">
+                  <div>
+                    <p className="font-semibold text-base">{profile.name}</p>
+                    <p className="text-[0.813rem] text-[#65657E]">
+                      {profile.job}
+                    </p>
+                    <div className="flex flex-row gap-1 text-[0.688rem] text-[#767688]">
+                      <p>스터디 </p>
+                      <span className="flex">
+                        <p className="text-[#7876E3]">{profile.totalStudy}</p>
+                        <p className="text-[#7876E3]">회</p>
+                      </span>
 
-                <div className="flex gap-1">
-                  <Button
-                    label={'거절'}
-                    onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                      e.stopPropagation(); //프로필 상세 페이지로 이동 금지
-                      handleReject(profile.id);
-                    }}
-                    bgColor="bg-[#F1F1F1]"
-                    textColor="text-black"
-                    rounded="rounded-full"
-                    className="w-[3.5rem] h-[2.063rem] text-xs "
-                  />
-                  <Button
-                    label={'수락'}
-                    onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                      e.stopPropagation(); //프로필 상세 페이지로 이동 금지
-                      handleAccept(profile.id);
-                    }}
-                    rounded="rounded-full"
-                    className="w-[3.5rem] h-[2.063rem] text-xs"
-                  />
+                      <p>|</p>
+                      <p>출석률</p>
+                      <span className="flex">
+                        <p className="text-[#7876E3]">{profile.attendance}</p>
+                        <p className="text-[#7876E3]">%</p>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-3 justify-end items-center">
+                    <Button
+                      label={'거절'}
+                      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                        e.stopPropagation(); // 프로필 상세 페이지로 이동 금지
+                        handleReject(profile.id);
+                      }}
+                      bgColor="bg-[#F1F1F1]"
+                      textColor="text-black"
+                      rounded="rounded-full"
+                      className="w-[3.5rem] h-[2.063rem] text-xs"
+                    />
+                    <Button
+                      label={'수락'}
+                      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                        e.stopPropagation(); // 프로필 상세 페이지로 이동 금지
+                        handleAccept(profile.id);
+                      }}
+                      rounded="rounded-full"
+                      className="w-[3.5rem] h-[2.063rem] text-xs"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -97,4 +104,5 @@ const PendingProfileCard = ({
     </>
   );
 };
+
 export default PendingProfileCard;
