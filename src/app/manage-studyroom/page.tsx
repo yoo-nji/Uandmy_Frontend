@@ -22,22 +22,6 @@ interface ProfileDatas {
 const Page = () => {
   const [selectedMenu, setSelectedMenu] = useState('my application'); // 초기값은 'my application'으로 설정
   const [showAccordion, setShowAccordion] = useState<string | null>(null);
-  const menus = [
-    { id: 'my application', label: '내 신청 내역' },
-    { id: 'applicant management', label: '신청자 관리' },
-  ];
-
-  const studyStatus: StudyStatusProps[] = [
-    {
-      id: 'uiux-study',
-      title: 'UI/UX 스터디',
-    },
-    {
-      id: 'javascript-study',
-      title: '자바스크립트 스터디',
-    },
-  ];
-
   const [profileData, setProfileData] = useState<ProfileDatas[]>([
     {
       id: '1',
@@ -60,6 +44,21 @@ const Page = () => {
       registerDate: '2024년 06월 08일',
     },
   ]);
+  const menus = [
+    { id: 'my application', label: '내 신청 내역' },
+    { id: 'applicant management', label: '신청자 관리' },
+  ];
+
+  const studyStatus: StudyStatusProps[] = [
+    {
+      id: 'uiux-study',
+      title: 'UI/UX 스터디',
+    },
+    {
+      id: 'javascript-study',
+      title: '자바스크립트 스터디',
+    },
+  ];
 
   const handleMenuClick = (menu: string) => {
     setSelectedMenu(menu);
@@ -70,6 +69,7 @@ const Page = () => {
   };
   const handleReject = (id: string) => {
     //해당 참여요청 거절버튼 클릭
+    //프로필 배열에서 제거
     setProfileData((profiles) =>
       profiles.filter((profile) => profile.id !== id),
     );

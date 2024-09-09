@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import Avartar from './Avatar';
 import Button from './Button';
 import TagBox from './TagBox';
+import { useState } from 'react';
+import ConfirmModal from './ConfirmModal';
 
 interface ProfileCardProps {
   ProfileData: {
@@ -27,10 +29,41 @@ const PendingProfileCard = ({
   handleAccept,
 }: ProfileCardProps) => {
   const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false); //확인 모달
+  const [selectedProfileId, setSelectedProfileId] = useState<string | null>(
+    null,
+  );
+  const [modalAction, setModalAction] = useState<'accept' | 'reject' | null>(
+    null,
+  );
 
   const handleClick = (id: string) => {
     // 해당 공개프로필 상세 페이지로 이동
     router.push(`/public-profile/${id}`);
+  };
+
+  const openModal = (action: 'accept' | 'reject', id: string) => {
+    setSelectedProfileId(id); // 선택된 프로필 ID 저장
+    setModalAction(action); //수락 또는 거절
+    setIsModalOpen(true); // 모달 열기
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleModalConfirm = () => {
+    if (selectedProfileId && modalAction === 'accept') {
+      handleAccept(selectedProfileId);
+    }
+    closeModal();
+  };
+
+  const handleModalReject = () => {
+    if (selectedProfileId && modalAction === 'reject') {
+      handleReject(selectedProfileId);
+    }
+    closeModal();
   };
 
   return (
@@ -71,18 +104,19 @@ const PendingProfileCard = ({
                       label={'거절'}
                       onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                         e.stopPropagation(); // 프로필 상세 페이지로 이동 금지
-                        handleReject(profile.id);
+                        openModal('reject', profile.id);
                       }}
                       bgColor="bg-[#F1F1F1]"
                       textColor="text-black"
                       rounded="rounded-full"
                       className="w-[3.5rem] h-[2.063rem] text-xs"
                     />
+
                     <Button
                       label={'수락'}
                       onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                         e.stopPropagation(); // 프로필 상세 페이지로 이동 금지
-                        handleAccept(profile.id);
+                        openModal('accept', profile.id);
                       }}
                       rounded="rounded-full"
                       className="w-[3.5rem] h-[2.063rem] text-xs"
@@ -101,6 +135,17 @@ const PendingProfileCard = ({
           </div>
         ))}
       </div>
+      <ConfirmModal
+        isOpen={isModalOpen}
+        onConfirm={handleModalConfirm}
+        onReject={handleModalReject}
+        onCancel={closeModal}
+        message={
+          modalAction === 'reject'
+            ? '정말 거절하시겠습니까?'
+            : '정말 수락하시겠습니까?'
+        }
+      />
     </>
   );
 };
