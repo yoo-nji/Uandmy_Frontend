@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import AccordionDown from '../../../public/images/AccordionDown.svg';
 import AccordionUp from '../../../public/images/AccordionUp.svg';
 import PendingProfileCard from '@/components/common/PendingProfileCard';
+import StudyroomCard, {
+  StudyroomCardProps,
+} from '@/components/common/StudyroomCard';
 
 interface StudyStatusProps {
   id: string;
@@ -59,6 +62,32 @@ const Page = () => {
       title: '자바스크립트 스터디',
     },
   ];
+  const myApplicationDatas: StudyroomCardProps[] = [
+    {
+      position: '개발',
+      title: '자바 중급 스터디 모집',
+      tags: ['북 스터디', 'Java', '백엔드 개발자'],
+      startDate: '2024/05/29',
+      endDate: '2024/06/29',
+      views: 8123456,
+    },
+    {
+      position: '디자이너 | UXUI 디자인',
+      title: '피그마 고급 스킬 스터디 모집 🥰',
+      tags: ['오토레이아웃', '과제인증 필수'],
+      startDate: '2024/09/16',
+      endDate: '2024/10/10',
+      views: 1203,
+    },
+    {
+      position: '디자이너 | 그래픽 디자인',
+      title: '하반기 영상 공모전 대비 스터디',
+      tags: ['C4D', '블렌더', '3D 디자인'],
+      startDate: '2024/09/20',
+      endDate: '2024/10/20',
+      views: 823,
+    },
+  ];
 
   const handleMenuClick = (menu: string) => {
     setSelectedMenu(menu);
@@ -110,7 +139,7 @@ const Page = () => {
         </div>
 
         {/* 신청자 관리 화면 */}
-        {selectedMenu === 'applicant management' && (
+        {selectedMenu === 'applicant management' ? (
           <div className="mt-5">
             {studyStatus.map((study) => (
               <div key={study.id} className="mb-4">
@@ -138,6 +167,21 @@ const Page = () => {
                   </div>
                 )}
               </div>
+            ))}
+          </div>
+        ) : (
+          // 내 신청 내역 화면
+          <div className="flex flex-col gap-5 p-3 mt-5">
+            {myApplicationDatas.map((cardItem, idx) => (
+              <StudyroomCard
+                key={idx}
+                position={cardItem.position}
+                title={cardItem.title}
+                tags={cardItem.tags}
+                startDate={cardItem.startDate}
+                endDate={cardItem.endDate}
+                views={cardItem.views}
+              />
             ))}
           </div>
         )}
