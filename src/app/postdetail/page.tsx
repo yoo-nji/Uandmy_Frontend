@@ -1,9 +1,18 @@
+'use client';
 import Avatar from '@/components/common/Avatar';
+import BottomButton from '@/components/common/BottomButton';
 import TagBox from '@/components/common/TagBox';
 import { View } from '@/components/icons/View';
+import { useRouter } from 'next/navigation';
+
+import { useState } from 'react';
 
 const PostDetailPage = () => {
+  const router = useRouter();
+  const [acceptedCount, setAcceptedCount] = useState(0);
+  const [totalCount, setTotalCount] = useState(4);
   const tagData = ['Figma', 'UI/UX', '디자이너', '온라인 강의'];
+
   return (
     <div className="flex flex-col gap-5 px-3 py-3">
       <div className="flex items-center gap-4">
@@ -64,6 +73,16 @@ const PostDetailPage = () => {
         <h2 className="font-semibold text-gray-800">스터디 기간</h2>
         <p className="text-gray-600">2024.06.19 (토) - 07.19(토)</p>
         <p className="text-gray-600">매주 토요일 오후 1시 - 3시</p>
+      </div>
+      <div className="flex flxed bottom-0 w-full justify-center items-center ">
+        <BottomButton
+          label="대기 중인 요청 확인하기"
+          acceptedCount={acceptedCount}
+          totalCount={totalCount}
+          onClick={() => {
+            router.push('/pending-request');
+          }}
+        />
       </div>
     </div>
   );
