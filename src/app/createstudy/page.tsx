@@ -50,7 +50,7 @@ const CreateStudyPage = () => {
     setTimeout(() => {
       setIsLoading(false);
       router.push('postdetail');
-    }, 1000);
+    }, 2500);
   };
 
   return (
