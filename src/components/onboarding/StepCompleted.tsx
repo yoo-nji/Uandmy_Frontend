@@ -30,7 +30,7 @@ const StepComplete = ({ role, description }: StepCompleteProps) => {
       {isLoading ? (
         <LoadingSpinner message="유앤미" />
       ) : (
-        <div>
+        <div className="flex flex-col justify-center items-center">
           <div className="flex justify-start flex-col w-full mt-[1.313rem]">
             <div className="flex flex-col pt-[0.938rem] px-[1.938rem] gap-y-4">
               <span className="text-black font-semibold text-2xl">

@@ -101,7 +101,7 @@ const Character = ({ onNext, onBack }: SelectedCharacterProps) => {
           <p className="text-[#ADB5BD] text-[0.75rem] text-center mb-2">
             내용은 다시 수정할 수 있어요!
           </p>
-          <div className="flex justify-between  ">
+          <div className="flex justify-center items-center space-x-[0.813rem] ">
             <Button
               label="이전"
               bgColor="bg-white"
