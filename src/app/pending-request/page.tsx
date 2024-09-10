@@ -77,6 +77,7 @@ const PendingRequest = () => {
     //서버로 수락된 프로필 전달 로직 필요
 
     setProfileData([]);
+    router.push('/studyroomcreated');
   };
 
   return (
