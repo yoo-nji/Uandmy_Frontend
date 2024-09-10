@@ -9,6 +9,7 @@ import ToggleSwitch from '@/components/common/ToggleSwitch';
 
 import Filter from '../../../public/images/Filter.svg';
 import MagnifyingGlass from '../../../public/images/MagnifyingGlass.svg';
+import CommonHeader from '@/components/common/CommonHeader';
 
 const searchResults: StudyroomCardProps[] = [
   {
@@ -119,9 +120,7 @@ const Page = () => {
     <div className="w-full min-h-screen bg-[#F6F6F6]">
       <div className="w-full px-[.9375rem] pt-11 pb-6 bg-white">
         {/* Contents */}
-        <header className="h-10 flex items-center mb-[.6875rem] text-lg text-[#212529] font-bold">
-          탐색하기
-        </header>
+        <CommonHeader title="탐색하기" />
 
         <div className="relative">
           <span className="absolute inset-y-0 left-0 flex items-center pl-[14px]">
