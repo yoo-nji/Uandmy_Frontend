@@ -98,7 +98,7 @@ const Page = () => {
 
         <div
           className="w-full h-[5.1875rem] px-[1.5625rem] py-[1.375rem] bg-[#E3E3FA] rounded-lg flex justify-between items-center cursor-pointer"
-          onClick={() => handleClick('/studyroom-create')}>
+          onClick={() => handleClick('/createstudy')}>
           <div>
             <p className="text-[#786A82] text-[.8125rem]">
               찾으시는 스터디룸이 없나요?
