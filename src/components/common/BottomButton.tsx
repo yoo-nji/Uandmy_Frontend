@@ -15,7 +15,7 @@ const BottomButton = ({
 }: BottomButtonProps) => {
   return (
     <div
-      className="fixed bottom-20 border-t border-[#DDDDDD] pt-5 flex flex-row
+      className="fixed bottom-0 border-t bg-white border-[#DDDDDD] pt-5 flex flex-row
      w-full mx-auto right-0 left-0 justify-center items-center ">
       <div className="flex justify-center items-center gap-4">
         <span>

@@ -1,12 +1,15 @@
 'use client';
 import React, { useState } from 'react';
-import AccordionDown from '../../../public/images/AccordionDown.svg';
-import AccordionUp from '../../../public/images/AccordionUp.svg';
+
+import CommonHeader from '@/components/common/CommonHeader';
+import Gnb from '@/components/common/Gnb';
 import PendingProfileCard from '@/components/common/PendingProfileCard';
 import StudyroomCard, {
   StudyroomCardProps,
 } from '@/components/common/StudyroomCard';
-import CommonHeader from '@/components/common/CommonHeader';
+
+import AccordionDown from '../../../public/images/AccordionDown.svg';
+import AccordionUp from '../../../public/images/AccordionUp.svg';
 
 interface StudyStatusProps {
   id: string;
@@ -115,78 +118,81 @@ const Page = () => {
   };
 
   return (
-    <div className="w-full min-h-screen">
-      <div className="w-full  pt-11 pb-20 min-h-screen bg-[#F6F6F6]">
-        <div className="px-[.9375rem]">
-          <CommonHeader title="스터디룸 관리" />
-        </div>
-
-        <div className="w-full ">
-          {/* 슬라이드 메뉴 (내 신청 내역 | 신청자 관리) */}
-          <div className="bg-white h-[2.875rem] flex">
-            {menus.map((menu) => (
-              <div
-                key={menu.id}
-                onClick={() => handleMenuClick(menu.id)}
-                className={`w-1/2 flex justify-center items-center cursor-pointer ${
-                  selectedMenu === menu.id
-                    ? 'border-b-2 border-primary text-black font-semibold'
-                    : 'border-b-[1px] border-[#EFEFEF] text-[#82829B]'
-                }`}>
-                <p>{menu.label}</p>
-              </div>
-            ))}
+    <div>
+      <div className="w-full min-h-screen">
+        <div className="w-full  pt-11 pb-20 min-h-screen bg-[#F6F6F6]">
+          <div className="px-[.9375rem]">
+            <CommonHeader title="스터디룸 관리" />
           </div>
 
-          {/* 내 신청 내역 화면 */}
-          {selectedMenu === 'my application' ? (
-            <div className="flex flex-col gap-5 p-3 mt-5">
-              {myApplicationDatas.map((cardItem, idx) => (
-                <StudyroomCard
-                  key={idx}
-                  position={cardItem.position}
-                  title={cardItem.title}
-                  tags={cardItem.tags}
-                  startDate={cardItem.startDate}
-                  endDate={cardItem.endDate}
-                  views={cardItem.views}
-                />
-              ))}
-            </div>
-          ) : (
-            //신청자 관리 화면
-            <div className="bg-white">
-              {studyStatus.map((study) => (
-                <div key={study.id} className="mb-4">
-                  <div
-                    onClick={() => handleAccordionClick(study.id)}
-                    className=" cursor-pointer p-3 flex justify-between items-center border-b border-[#F6F6F6]">
-                    <p className="font-semibold">{study.title}</p>
-                    <span>
-                      {showAccordion === study.id ? (
-                        <AccordionUp />
-                      ) : (
-                        <AccordionDown />
-                      )}
-                    </span>
-                  </div>
-                  {showAccordion === study.id && (
-                    <div className="bg-[#F5F5FF]">
-                      <div className=" ml-4 p-3 rounded-md ">
-                        <PendingProfileCard
-                          ProfileData={profileData}
-                          handleReject={handleReject}
-                          handleAccept={handleAccept}
-                        />
-                      </div>
-                    </div>
-                  )}
+          <div className="w-full ">
+            {/* 슬라이드 메뉴 (내 신청 내역 | 신청자 관리) */}
+            <div className="bg-white h-[2.875rem] flex">
+              {menus.map((menu) => (
+                <div
+                  key={menu.id}
+                  onClick={() => handleMenuClick(menu.id)}
+                  className={`w-1/2 flex justify-center items-center cursor-pointer ${
+                    selectedMenu === menu.id
+                      ? 'border-b-2 border-primary text-black font-semibold'
+                      : 'border-b-[1px] border-[#EFEFEF] text-[#82829B]'
+                  }`}>
+                  <p>{menu.label}</p>
                 </div>
               ))}
             </div>
-          )}
+
+            {/* 내 신청 내역 화면 */}
+            {selectedMenu === 'my application' ? (
+              <div className="flex flex-col gap-5 p-3 mt-5">
+                {myApplicationDatas.map((cardItem, idx) => (
+                  <StudyroomCard
+                    key={idx}
+                    position={cardItem.position}
+                    title={cardItem.title}
+                    tags={cardItem.tags}
+                    startDate={cardItem.startDate}
+                    endDate={cardItem.endDate}
+                    views={cardItem.views}
+                  />
+                ))}
+              </div>
+            ) : (
+              //신청자 관리 화면
+              <div className="bg-white">
+                {studyStatus.map((study) => (
+                  <div key={study.id} className="mb-4">
+                    <div
+                      onClick={() => handleAccordionClick(study.id)}
+                      className=" cursor-pointer p-3 flex justify-between items-center border-b border-[#F6F6F6]">
+                      <p className="font-semibold">{study.title}</p>
+                      <span>
+                        {showAccordion === study.id ? (
+                          <AccordionUp />
+                        ) : (
+                          <AccordionDown />
+                        )}
+                      </span>
+                    </div>
+                    {showAccordion === study.id && (
+                      <div className="bg-[#F5F5FF]">
+                        <div className=" ml-4 p-3 rounded-md ">
+                          <PendingProfileCard
+                            ProfileData={profileData}
+                            handleReject={handleReject}
+                            handleAccept={handleAccept}
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
+      <Gnb />
     </div>
   );
 };
