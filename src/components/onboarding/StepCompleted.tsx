@@ -4,20 +4,24 @@ import Image from 'next/image';
 import Button from '@/components/common/Button';
 
 import UserProfileCard from '../common/UserProfileCard';
+import { useRouter } from 'next/navigation';
 
 interface StepCompleteProps {
   role?: string;
   description?: string[];
 }
-const handleConfirmClick = () => {};
 
 const StepComplete = ({ role, description }: StepCompleteProps) => {
+  const router = useRouter();
   const descriptionString = description ? description.join('. ') : '';
+  const handleConfirmClick = () => {
+    router.push('/studyroom');
+  };
   return (
     <>
-      <div className="flex justify-center items-center w-[23.438rem] flex-col gap-y-4">
+      <div className="w-full mt-10 flex justify-center items-center flex-col gap-y-4">
         <div className="flex justify-start flex-col w-full mt-[1.313rem]">
-          <div className="flex flex-col p-[0.938rem] gap-y-4">
+          <div className="flex flex-col pt-[0.938rem] px-[1.938rem] gap-y-4">
             <span className="text-black font-semibold text-2xl">
               김서희님의
             </span>

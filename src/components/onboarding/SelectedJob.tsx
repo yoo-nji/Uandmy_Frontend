@@ -43,10 +43,10 @@ const SelectedJob = ({ onNext }: SelectedJobProps) => {
   };
   return (
     <>
-      <div className="flex justify-center items-center w-[23.438rem] flex-col space-y-4">
+      <div className="w-full flex justify-center items-center flex-col space-y-4">
         <ProgressBar progress={25} page={1} />
         <div className="p-[0.938rem]">
-          <div className="flex justify-start flex-col gap-4 w-full">
+          <div className="flex justify-start flex-col gap-4 ">
             <span className="text-black text-2xl font-semibold">
               김서희님이 관심있는
             </span>
@@ -74,7 +74,7 @@ const SelectedJob = ({ onNext }: SelectedJobProps) => {
               })}
             </div>
           </div>
-          <p className="text-[#ADB5BD] text-[0.75rem] text-center mb-2">
+          <p className="text-[#ADB5BD] text-[0.75rem] text-center mb-10">
             내용은 다시 수정할 수 있어요!
           </p>
           <div className="flex justify-between w-full ">

@@ -6,8 +6,8 @@ interface ProgressProps {
 const ProgressBar = ({ progress, page }: ProgressProps) => {
   const progressBarPercent = `${progress}%`;
   return (
-    <div className="w-[23.438rem]">
-      <div className="w-[23.438rem] h-[0.125rem] box-border bg-[#BDBDBD] relative">
+    <div className="w-full">
+      <div className="h-[0.125rem] box-border bg-[#BDBDBD] relative">
         <div
           className="w h-full bg-primary "
           style={{ width: progressBarPercent }}></div>
