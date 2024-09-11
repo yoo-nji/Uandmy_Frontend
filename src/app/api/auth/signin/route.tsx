@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     // 로그인 성공 응답
     // console.log(data);
 
-    return NextResponse.redirect(new URL('/splash', req.url).toString());
+    return NextResponse.redirect(new URL('/onboarding', req.url).toString());
   } catch (error) {
     console.error('Unexpected login error:', error);
     return NextResponse.json(

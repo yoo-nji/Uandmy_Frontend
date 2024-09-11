@@ -124,7 +124,7 @@ const SignUp = () => {
       </div>
       <div className="flex justify-center items-center">
         <p className="text-[1rem]">계정이 있으신가요?</p>
-        <Link href="/login" className="text-[1rem] hover:text-grey">
+        <Link href="/testlogin" className="text-[1rem] hover:text-grey">
           로그인
         </Link>
       </div>
