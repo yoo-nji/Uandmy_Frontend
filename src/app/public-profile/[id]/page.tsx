@@ -1,12 +1,12 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 import Avartar from '@/components/common/Avatar';
+import BottomButton from '@/components/common/BottomButton';
 import StudyExperienceCard from '@/components/common/StudyExperienceCard';
 import TagList from '@/components/common/TagList';
-import BottomButton from '@/components/common/BottomButton';
-import { useState } from 'react';
 
 interface StudyExperienceDatas {
   title: string;
