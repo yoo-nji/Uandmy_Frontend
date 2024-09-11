@@ -74,6 +74,7 @@ const dropdownItems = [
 const Page = () => {
   // 슬라이드 메뉴
   const [selectedMenu, setSelectedMenu] = useState('study'); // 초기값은 'study'로 설정
+  const [searchStudy, setSearchStudy] = useState('');
   const menus = [
     { id: 'study', label: '스터디 찾기' },
     { id: 'user', label: '팀원 찾기' },
@@ -110,11 +111,18 @@ const Page = () => {
   };
 
   // 모집 중인 카드 항목 필터링
+  // 모집 중인 카드 항목 + 검색 필터 적용
   const today = new Date();
   const filteredStudyroomCardItems = searchResults.filter((cardItem) => {
-    return showRecruitingOnly
+    // 모집 중 필터 적용 후, 검색어 필터 추가
+    const isRecruiting = showRecruitingOnly
       ? new Date(cardItem.startDate).getTime() >= today.getTime()
       : true;
+    const matchesSearch = cardItem.title
+      .toLowerCase()
+      .includes(searchStudy.toLowerCase());
+
+    return isRecruiting && matchesSearch;
   });
 
   return (
@@ -133,8 +141,8 @@ const Page = () => {
               name="search"
               className="block w-full pl-11 pr-[.875rem] py-[.6875rem] rounded-lg bg-[#F3F3F3] placeholder:text-[#41364A] text-[#41364A] text-sm ring-1 ring-inset ring-[#DDDDDD] focus:ring-2 focus:ring-[#DDDDDD] focus:outline-none"
               placeholder="어떤 스터디를 찾고 싶나요?"
-              // value={inputValue}
-              // onChange={handleInputChange}
+              value={searchStudy}
+              onChange={(e) => setSearchStudy(e.target.value)}
             />
           </div>
 
