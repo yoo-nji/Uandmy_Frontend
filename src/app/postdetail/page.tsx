@@ -1,11 +1,11 @@
 'use client';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+
 import Avatar from '@/components/common/Avatar';
 import BottomButton from '@/components/common/BottomButton';
 import TagBox from '@/components/common/TagBox';
 import { View } from '@/components/icons/View';
-import { useRouter } from 'next/navigation';
-
-import { useState } from 'react';
 
 const PostDetailPage = () => {
   const router = useRouter();

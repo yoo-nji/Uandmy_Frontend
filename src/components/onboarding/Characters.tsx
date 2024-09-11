@@ -52,52 +52,52 @@ const Character = ({ onNext, onBack }: SelectedCharacterProps) => {
   };
   return (
     <>
-      <div className=" flex justify-center items-center w-[23.438rem] flex-col space-y-4">
+      <div className="w-full flex justify-center items-center flex-col space-y-4">
         <ProgressBar progress={75} page={3} />
-        <div className="p-[0.938rem] w-full">
-          <div className="flex justify-start flex-col gap-4 w-full">
+        <div className="pt-[0.938rem] px-[1.938rem] ">
+          <div className="flex justify-start flex-col gap-4">
             <span className="text-[#262626] font-semibold text-2xl">
               김서희님은
             </span>
             <span className="text-[#262626] font-semibold text-2xl">
               어떤 스타일이신가요?
             </span>
-            <p className="text-[#82829B] text-[0.875rem] ">
+            <p className=" text-[#82829B] text-[0.875rem] ">
               유앤미님과 비슷하다고 생각되는 키워드를 모두 선택해주세요!
             </p>
-          </div>
-          <div className="flex w-[23.438rem] mt-10 mb-15 overflow-y-auto max-h-96">
-            <TagList
-              tagData={[
-                ...tagDatas,
-                ...selectedTag.filter((tag) => !tagDatas.includes(tag)),
-              ]}
-              className={'flex flex-wrap gap-2'}
-              onTagSelect={handleTagSelect}
-            />
-          </div>
-          <div className="flex">
-            {!isInput ? (
-              <Button
-                label="+직접 입력하기"
-                onClick={() => setIsInput(true)}
-                bgColor="bg-[#ECECEC]"
-                textColor="text-[#82829B]"
-                className="flex items-center w-auto h-[2.5rem] cursor-pointer box-border border-2 rounded-lg pl-1 pr-2 border-greyBorder mt-2"
-              />
-            ) : (
-              <input
-                type="text"
-                value={newTag}
-                onChange={(e) => setNewTag(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="직접 입력"
-                className="border border-gray-300 rounded-md px-3 py-2 text-sm mt-2"
-                autoFocus
-              />
-            )}
-          </div>
 
+            <div className="flex mt-10 mb-15 overflow-y-auto max-h-96">
+              <TagList
+                tagData={[
+                  ...tagDatas,
+                  ...selectedTag.filter((tag) => !tagDatas.includes(tag)),
+                ]}
+                className={'flex flex-wrap gap-2'}
+                onTagSelect={handleTagSelect}
+              />
+            </div>
+            <div className="flex">
+              {!isInput ? (
+                <Button
+                  label="+직접 입력하기"
+                  onClick={() => setIsInput(true)}
+                  bgColor="bg-[#ECECEC]"
+                  textColor="text-[#82829B]"
+                  className="flex items-center w-auto h-[2.5rem] cursor-pointer box-border border-2 rounded-lg pl-1 pr-2 border-greyBorder mt-2"
+                />
+              ) : (
+                <input
+                  type="text"
+                  value={newTag}
+                  onChange={(e) => setNewTag(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="직접 입력"
+                  className="border border-gray-300 rounded-md px-3 py-2 text-sm mt-2"
+                  autoFocus
+                />
+              )}
+            </div>
+          </div>
           <p className="text-[#ADB5BD] text-[0.75rem] text-center mb-2">
             내용은 다시 수정할 수 있어요!
           </p>

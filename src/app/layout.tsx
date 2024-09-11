@@ -3,8 +3,6 @@ import './globals.css';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
-import Gnb from '@/components/common/Gnb';
-
 const pretendard = localFont({
   src: '../fonts/PretendardVariable.woff2',
   display: 'swap',
@@ -25,7 +23,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={pretendard.className}>
         {children}
-        <Gnb />
+        {/* <Gnb /> */}
       </body>
     </html>
   );

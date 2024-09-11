@@ -7,7 +7,7 @@ import StudyCreateCard from '@/components/common/StudyCreateCard';
 export default function page() {
   return (
     <>
-      <div className="flex flex-col max-w-[23.438rem] h-full justify-center items-center gap-[4.813rem] px-[1rem] m-auto">
+      <div className="flex flex-col max-w-[23.438rem] h-full justify-center items-center gap-[4.813rem] px-[1rem] mt-20 m-auto">
         <div className="flex flex-col gap-[1.25rem] w-full">
           <div className="flex justify-start items-end gap-[0.063rem]">
             <h1 className="text-[1.5rem] font-semibold">
