@@ -53,7 +53,7 @@ const StudyroomCard = ({
 
       <div className="flex flex-wrap gap-2 mt-[.75rem] mb-[1.5rem]">
         {tags.map((tag, idx) => (
-          <TagBox key={idx} label={tag} />
+          <TagBox key={idx}>{tag}</TagBox>
         ))}
       </div>
 

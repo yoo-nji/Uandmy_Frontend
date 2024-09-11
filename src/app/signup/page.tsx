@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 import Button from '@/components/common/Button';
-import Input from '@/components/common/Input';
+import { Input } from '@/components/common/Input';
 
 interface SignUpDatas {
   name: string;
@@ -36,8 +36,8 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center flex-col space-y-2">
-        <div className="flex items-start flex-col">
+      <div className="w-full mt-20 flex justify-center items-center flex-col space-y-4">
+        <div className="flex -ml-20 items-start flex-col">
           <Image
             src="/images/Waving_hand.svg"
             alt="Waving Hand"
