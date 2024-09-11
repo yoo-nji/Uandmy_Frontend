@@ -1,11 +1,18 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+
 interface NavHeaderProps {
   title?: string;
-  handleLeftClick: () => void;
 }
 
-const NavHeader = ({ title, handleLeftClick }: NavHeaderProps) => {
+const NavHeader = ({ title }: NavHeaderProps) => {
+  const router = useRouter();
+  const handleLeftClick = () => {
+    router.back();
+  };
   return (
-    <div className="sticky top-0 flex items-center justify-center">
+    <div className="sticky  mb-5 h-[3.125rem] border-b-1 border-[#D9D9D9] flex items-center justify-center">
       {/* 이전 단계로 이동 */}
       <button onClick={handleLeftClick} className="fixed left-0">
         <svg
