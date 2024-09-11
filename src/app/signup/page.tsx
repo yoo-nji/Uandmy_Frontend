@@ -43,9 +43,8 @@ const SignUp = () => {
         throw new Error(errorData.error || 'Signup failed');
       }
 
-      const result = await response.json();
-      console.log(result);
-      router.push('/signup-complete');
+      alert('회원가입 성공');
+      router.push('/testlogin');
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
