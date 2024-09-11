@@ -1,10 +1,10 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import PendingProfileCard from '@/components/common/PendingProfileCard';
 import BottomButton from '@/components/common/BottomButton';
-import { useRouter } from 'next/navigation';
+import PendingProfileCard from '@/components/common/PendingProfileCard';
 
 interface ProfileDatas {
   id: string;
@@ -77,10 +77,11 @@ const PendingRequest = () => {
     //서버로 수락된 프로필 전달 로직 필요
 
     setProfileData([]);
+    router.push('/studyroomcreated');
   };
 
   return (
-    <>
+    <div>
       <div className="flex justify-center items-center h-auto ">
         <div className="flex items-center flex-col w-[21.438rem] space-y-5">
           <div className="relative text-center space-y-5 ">
@@ -124,7 +125,7 @@ const PendingRequest = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default PendingRequest;

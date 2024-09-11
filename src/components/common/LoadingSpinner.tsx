@@ -5,7 +5,7 @@ interface SpinnerProps {
   spinnerSize?: string;
 }
 
-export default function Spinner({
+export default function LoadingSpinner({
   message = '로딩 중...',
   spinnerSize = 'w-[4.1875rem] h-[4.1875rem]',
 }: SpinnerProps) {

@@ -46,7 +46,7 @@ const StudyPurpose = ({ onNext, onBack }: StudyPurposeProps) => {
 
   return (
     <>
-      <div className="flex justify-center items-center w-[23.438rem] flex-col space-y-4">
+      <div className="w-full flex justify-center items-center  flex-col space-y-4">
         <ProgressBar progress={50} page={2} />
         <div className="p-[0.938rem]">
           <div className="flex justify-start flex-col gap-4 w-full ">

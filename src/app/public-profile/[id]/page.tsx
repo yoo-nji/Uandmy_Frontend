@@ -80,7 +80,7 @@ const PublicProfile = () => {
     setAcceptedCount(acceptedCount + 1);
   };
   return (
-    <>
+    <div>
       <div className="flex justify-center min-h-screen pb-32 ">
         <div className="flex items-center flex-col w-[21.438rem] space-y-5">
           <div className="relative text-center space-y-5 ">
@@ -176,7 +176,7 @@ const PublicProfile = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default PublicProfile;

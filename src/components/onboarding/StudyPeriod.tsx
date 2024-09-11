@@ -35,32 +35,30 @@ const StudyPeriod = ({ onNext, onBack }: StudyPeriodProps) => {
   };
   return (
     <>
-      <div className="flex justify-center items-center w-[23.438rem] flex-col space-y-4">
-        <div className="flex justify-start flex-col gap-4">
-          <ProgressBar progress={100} page={4} />
-          <div className="p-[0.938rem] w-full">
-            <div className="flex justify-start flex-col gap-4 w-full">
-              <span className="text-[#262626] font-semibold text-2xl">
-                김서희님의
-              </span>
-              <span className="text-[#262626] font-semibold text-2xl">
-                예상 스터디 기간은 얼마인가요?
-              </span>
-              <p className="text-[#82829B] text-[0.875rem]">
-                나와 비슷한 유저들과 스터디할 수 있도록 도와드려요!
-              </p>
-            </div>
+      <div className="w-full flex justify-center items-center flex-col space-y-4">
+        <ProgressBar progress={100} page={4} />
+        <div className="flex p-[0.938rem] justify-start flex-col gap-4">
+          <div className="flex justify-start flex-col gap-4 w-full">
+            <span className="text-[#262626] font-semibold text-2xl">
+              김서희님의
+            </span>
+            <span className="text-[#262626] font-semibold text-2xl">
+              예상 스터디 기간은 얼마인가요?
+            </span>
+            <p className="text-[#82829B] text-[0.875rem]">
+              나와 비슷한 유저들과 스터디할 수 있도록 도와드려요!
+            </p>
+          </div>
 
-            <div className="flex space-x-4 pt-10 pb-20">
-              <CheckBoxList
-                checkBoxDatas={checkBoxDatas}
-                selectedValue={selectedPeriod}
-                onChange={(value) => {
-                  handlePeriodClick(value as string);
-                }}
-                singleSelect
-              />
-            </div>
+          <div className="flex space-x-4 pt-10 pb-20">
+            <CheckBoxList
+              checkBoxDatas={checkBoxDatas}
+              selectedValue={selectedPeriod}
+              onChange={(value) => {
+                handlePeriodClick(value as string);
+              }}
+              singleSelect
+            />
           </div>
 
           <p className="text-[#ADB5BD] text-[0.75rem] text-center mb-2">
