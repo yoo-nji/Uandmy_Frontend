@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import BottomButton from '@/components/common/BottomButton';
+import NavHeader from '@/components/common/NavHeader';
 import PendingProfileCard from '@/components/common/PendingProfileCard';
 
 interface ProfileDatas {
@@ -46,9 +47,6 @@ const PendingRequest = () => {
   const [acceptedCount, setAcceptedCount] = useState(0);
   const [totalCount, setTotalCount] = useState(4);
 
-  const handleLeftClick = () => {
-    router.back();
-  };
   const handleReject = (id: string) => {
     //해당 참여요청 거절버튼 클릭
     setProfileData((profiles) =>
@@ -82,32 +80,11 @@ const PendingRequest = () => {
 
   return (
     <div>
+      <NavHeader title="대기중인 요청" />
       <div className="flex justify-center items-center h-auto ">
-        <div className="flex items-center flex-col w-[21.438rem] space-y-5">
+        <div className="flex items-center flex-col w-[21.438rem] ">
           <div className="relative text-center space-y-5 ">
-            <div className="sticky top-0 flex items-center justify-center">
-              {/* 이전 페이지로 이동 */}
-              <button onClick={handleLeftClick} className="fixed left-0">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="cursor-pointer">
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M15.5303 3.96967C15.8232 4.26256 15.8232 4.73744 15.5303 5.03033L8.56066 12L15.5303 18.9697C15.8232 19.2626 15.8232 19.7374 15.5303 20.0303C15.2374 20.3232 14.7626 20.3232 14.4697 20.0303L6.96967 12.5303C6.67678 12.2374 6.67678 11.7626 6.96967 11.4697L14.4697 3.96967C14.7626 3.67678 15.2374 3.67678 15.5303 3.96967Z"
-                    fill="black"
-                    fillOpacity="0.8"
-                  />
-                </svg>
-              </button>
-
-              <div className="font-bold text-lg mx-auto">대기중인 요청</div>
-            </div>
-            <hr className="w-[24.125rem] border-1 border-greyBorder mt-5 mb-5" />
+            {/* <hr className="w-[24.125rem] border-1 border-greyBorder mt-5 mb-5" /> */}
           </div>
 
           <PendingProfileCard
