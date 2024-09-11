@@ -1,6 +1,10 @@
 import Link from 'next/link';
 
-const Page = () => {
+import { supabase } from '@/utils/supabaseClient';
+
+const Page = async () => {
+  const user = await supabase.auth.getUser();
+  console.log(user);
   return (
     <div className="h-screen flex flex-col gap-[4.5rem] items-center onboarding-bg ">
       <div className="flex flex-col items-center gap-[0.125rem] mt-[5rem]">
