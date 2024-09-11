@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import Button from '@/components/common/Button';
@@ -14,6 +15,7 @@ interface SignUpDatas {
 }
 const SignUp = () => {
   const router = useRouter();
+  const [error, setError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -26,12 +28,30 @@ const SignUp = () => {
     },
   });
 
-  const onSignUpSubmit = (data: SignUpDatas) => {
-    console.log(data);
-  };
+  const onSignUpSubmit = async (data: SignUpDatas) => {
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-  const handleClick = (route: string) => {
-    router.push(route);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Signup failed');
+      }
+
+      alert('회원가입 성공');
+      router.push('/testlogin');
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('An unexpected error occurred');
+      }
+    }
   };
 
   return (
@@ -85,11 +105,12 @@ const SignUp = () => {
             )}
           </div>
 
+          {error && <div className="text-primary mt-2">{error}</div>}
+
           <div className="flex justify-center mt-6">
             <Button
               label="회원가입"
               type="submit"
-              onClick={() => handleClick('/testlogin')}
               className="w-[21.438rem] h-[3.125rem] rounded-lg"
             />
           </div>
