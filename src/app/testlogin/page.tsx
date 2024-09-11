@@ -1,12 +1,14 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import Button from '@/components/common/Button';
-import Input from '@/components/common/Input';
+import { Input } from '@/components/common/Input';
 
 const Login = () => {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ email: '', password: '' });
@@ -86,6 +88,7 @@ const Login = () => {
               label="로그인"
               type="submit"
               className="w-[21.438rem] h-[3.125rem] rounded-lg"
+              onClick={() => router.push('/onboarding')}
             />
           </div>
         </form>
